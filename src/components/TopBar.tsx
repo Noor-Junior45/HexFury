@@ -104,18 +104,16 @@ export default function TopBar({ showBack, backTo = '/dashboard', rightSlot }: P
               <Link
                 to="/dashboard"
                 onClick={() => setIsProfileOpen(false)}
-                className="flex items-center justify-between rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 transition-colors"
+                className="flex items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 transition-colors"
               >
                 <span>My 60-Day Dashboard</span>
-                <ArrowRight size={16} />
               </Link>
               <Link
                 to="/day/12"
                 onClick={() => setIsProfileOpen(false)}
-                className="flex items-center justify-between rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-200 transition-colors"
+                className="flex items-center justify-center rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-200 transition-colors"
               >
                 <span>Today's Task (Day 12)</span>
-                <ArrowRight size={14} />
               </Link>
             </div>
           </div>

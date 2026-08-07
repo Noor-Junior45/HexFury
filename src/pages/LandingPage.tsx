@@ -60,7 +60,6 @@ export default function LandingPage() {
             >
               <Flame size={20} strokeWidth={2.5} className="group-hover:animate-flame" />
               <span>Commit to 60-Day Challenge</span>
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
 
             <Link
@@ -68,7 +67,6 @@ export default function LandingPage() {
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-5 py-3.5 text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-400 transition-colors"
             >
               <span>See Today's Build (Day 12)</span>
-              <ArrowRight size={16} />
             </Link>
           </div>
 
@@ -357,7 +355,6 @@ export default function LandingPage() {
                 className="mt-6 inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-orange-500/30 hover:scale-105 transition-all active:scale-98"
               >
                 <span>Start Your 60-Day Streak</span>
-                <ArrowRight size={18} />
               </Link>
             </div>
           </div>

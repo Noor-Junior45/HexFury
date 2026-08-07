@@ -12,7 +12,11 @@ import {
   ClipboardCheck,
   Link2,
   AlertCircle,
-  Snowflake,
+  Share2,
+  Copy,
+  Check,
+  ExternalLink,
+  Sparkles,
 } from 'lucide-react';
 import { Github, Linkedin } from '@/components/BrandIcons';
 import {
@@ -26,6 +30,7 @@ import {
 import TopBar from '@/components/TopBar';
 import MobileShell from '@/components/MobileShell';
 import StreakFreeze from '@/components/StreakFreeze';
+import { triggerSuccessConfetti } from '@/lib/confetti';
 
 export default function DayPage() {
   const { day } = useParams<{ day: string }>();
@@ -40,6 +45,8 @@ export default function DayPage() {
     linkedin: !!streakDay?.linkedin,
   });
   const [errors, setErrors] = useState<{ github?: string; linkedin?: string }>({});
+
+  const [copiedTemplate, setCopiedTemplate] = useState(false);
 
   if (!task) {
     return (
@@ -63,6 +70,27 @@ export default function DayPage() {
   const track = getTrack(task.trackId)!;
   const bothSubmitted = submitted.github && submitted.linkedin;
   const oneSubmitted = submitted.github || submitted.linkedin;
+
+  const linkedInPostText = `🚀 Day ${task.day} of my 60-Day Build Challenge!
+
+Title: ${task.title}
+Summary: ${task.summary}
+
+Definition of Done:
+${task.requirements.map((r, i) => `${i + 1}. ${r}`).join('\n')}
+
+Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineering #${task.trackId.toUpperCase()}`;
+
+  const handleShareToLinkedIn = () => {
+    triggerSuccessConfetti();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(linkedInPostText);
+      setCopiedTemplate(true);
+      setTimeout(() => setCopiedTemplate(false), 3000);
+    }
+    const shareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(linkedInPostText)}`;
+    window.open(shareUrl, '_blank', 'noopener,noreferrer');
+  };
 
   const validateUrl = (val: string, hosts: string[]): boolean => {
     if (!val.trim()) return false;
@@ -88,6 +116,7 @@ export default function DayPage() {
     }
     setErrors((e) => ({ ...e, [field]: undefined }));
     setSubmitted((s) => ({ ...s, [field]: true }));
+    triggerSuccessConfetti();
   };
 
   const handleEdit = (field: 'github' | 'linkedin') => {
@@ -250,6 +279,58 @@ export default function DayPage() {
           </div>
         </div>
 
+        {/* Pre-filled Share to LinkedIn card */}
+        <div className="mt-5 rounded-2xl border border-sky-500/30 bg-gradient-to-br from-sky-950/40 via-obsidian-850 to-obsidian-900 p-4 shadow-md animate-fade-up delay-6">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500/20 text-sky-400 border border-sky-500/30">
+                <Linkedin size={20} />
+              </span>
+              <div>
+                <h3 className="text-sm font-bold text-mist-100 flex items-center gap-1.5">
+                  <span>Share Day {task.day} Progress</span>
+                  <Sparkles size={13} className="text-amber-400" />
+                </h3>
+                <p className="text-[11px] text-mist-400">
+                  Pre-filled template ready for your LinkedIn post
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={handleShareToLinkedIn}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-sky-500 px-3.5 py-2 text-xs font-bold text-white shadow-md hover:bg-sky-400 transition-all active:scale-95 shrink-0 cursor-pointer"
+            >
+              <Linkedin size={14} />
+              <span>Share to LinkedIn</span>
+              <ExternalLink size={12} />
+            </button>
+          </div>
+
+          {/* Post preview box */}
+          <div className="mt-3 rounded-xl border border-obsidian-700 bg-obsidian-900/80 p-3 text-xs text-mist-300 font-mono relative">
+            <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-obsidian-800 text-[10px] text-mist-500 font-sans">
+              <span className="font-semibold uppercase tracking-wider text-sky-400">Pre-filled LinkedIn Draft</span>
+              <button
+                onClick={() => {
+                  if (navigator.clipboard) {
+                    navigator.clipboard.writeText(linkedInPostText);
+                    setCopiedTemplate(true);
+                    setTimeout(() => setCopiedTemplate(false), 3000);
+                  }
+                }}
+                className="inline-flex items-center gap-1 text-mist-400 hover:text-mist-100 transition-colors cursor-pointer"
+              >
+                {copiedTemplate ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
+                <span>{copiedTemplate ? 'Copied!' : 'Copy Template'}</span>
+              </button>
+            </div>
+            <p className="whitespace-pre-line leading-relaxed text-[11px] text-mist-200 select-all">
+              {linkedInPostText}
+            </p>
+          </div>
+        </div>
+
         {/* Streak Freeze on day view */}
         <div className="mt-4 animate-fade-up delay-6">
           <StreakFreeze
@@ -260,21 +341,7 @@ export default function DayPage() {
           />
         </div>
 
-        {/* Nav footer */}
-        <div className="mt-6 flex items-center justify-between">
-          <Link
-            to="/dashboard"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-mist-400 hover:text-mist-200 transition-colors"
-          >
-            <ArrowLeft size={14} /> Dashboard
-          </Link>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-mist-400 hover:text-mist-200 transition-colors"
-          >
-            About ABTalks <ArrowRight size={14} />
-          </Link>
-        </div>
+
       </div>
     </MobileShell>
   );

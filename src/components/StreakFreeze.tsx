@@ -23,7 +23,7 @@ export default function StreakFreeze({
 
   if (variant === 'badge') {
     return (
-      <div className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium bg-sky-500/10 text-sky-300 border border-sky-400/30">
+      <div className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium bg-sky-500/10 text-sky-300">
         <Snowflake size={12} className={available ? 'animate-pulse' : ''} />
         <span>Streak Freeze {available ? `× ${remaining}` : 'used'}</span>
       </div>
@@ -32,47 +32,53 @@ export default function StreakFreeze({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl border p-4 transition-colors ${
+      className={`relative overflow-hidden rounded-2xl p-4 transition-colors ${
         isApplied
-          ? 'border-sky-400/40 bg-sky-500/10'
+          ? 'bg-sky-500/10'
           : available
-          ? 'border-obsidian-600 bg-obsidian-850'
-          : 'border-obsidian-700 bg-obsidian-850/60 opacity-70'
+          ? 'bg-obsidian-850'
+          : 'bg-obsidian-850/60 opacity-70'
       }`}
     >
       <div className="flex items-start gap-3">
         <div
-          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${
-            isApplied ? 'bg-sky-500/20 text-sky-300' : available ? 'bg-sky-500/15 text-sky-300' : 'bg-obsidian-700 text-mist-500'
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
+            isApplied ? 'bg-sky-500/20 text-sky-300' : available ? 'bg-sky-500/15 text-sky-300' : 'bg-obsidian-750 text-mist-500'
           }`}
         >
-          {isApplied ? <ShieldCheck size={20} /> : <Snowflake size={20} className={available ? 'animate-pulse' : ''} />}
+          {isApplied ? <ShieldCheck size={18} /> : <Snowflake size={18} className={available ? 'animate-pulse' : ''} />}
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
-            <h3 className="text-sm font-semibold text-mist-100">Streak Freeze</h3>
-            <Tooltip text="A Streak Freeze protects your streak on a day you can't submit. You get one free pass per 60-day cycle. Apply it to a missed day and your streak continues as if you'd shipped — no guilt, no reset." />
+            <h3 className="text-sm font-semibold text-mist-100">Streak Freeze Pass</h3>
+            <Tooltip text="A Streak Freeze protects your streak on a day you can't submit. You get one free pass per 60-day cycle. Apply it to a missed day and your streak continues as if you'd shipped." />
           </div>
-          <p className="mt-0.5 text-xs text-mist-400">
+          <p className="mt-0.5 text-xs text-mist-400 leading-relaxed">
             {isApplied
               ? `Applied to Day ${appliedToDay} — your streak is protected.`
               : available
-              ? `${remaining} of ${total} remaining. Use it to cover a missed day.`
-              : 'No freezes left this cycle. Stay consistent from here.'}
+              ? `${remaining} of ${total} pass available. Use it to cover a missed day.`
+              : 'No passes remaining this cycle.'}
           </p>
 
           {onApply && !isApplied && available && (
-            <button
-              onClick={onApply}
-              className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-sky-500/15 px-3 py-1.5 text-xs font-semibold text-sky-300 border border-sky-400/30 hover:bg-sky-500/25 hover:text-sky-200 transition-colors active:scale-95"
-            >
-              <Snowflake size={13} /> Apply to missed day
-            </button>
+            <div className="mt-3">
+              <button
+                onClick={onApply}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-sky-500/20 px-4 py-2 text-xs font-bold text-sky-300 hover:bg-sky-500/30 transition-all cursor-pointer"
+              >
+                <Snowflake size={14} />
+                <span>Apply Freeze Pass</span>
+              </button>
+            </div>
           )}
           {isApplied && (
-            <span className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-sky-500/15 px-3 py-1.5 text-xs font-semibold text-sky-300 border border-sky-400/30">
-              <ShieldCheck size={13} /> Streak protected
-            </span>
+            <div className="mt-3">
+              <span className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl bg-sky-500/20 px-4 py-2 text-xs font-bold text-sky-300">
+                <ShieldCheck size={14} />
+                <span>Streak Protected</span>
+              </span>
+            </div>
           )}
         </div>
       </div>

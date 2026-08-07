@@ -1,18 +1,10 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Flame } from 'lucide-react';
 import { appData, getStreakDay } from '@/data/mockData';
+import { triggerSuccessConfetti } from '@/lib/confetti';
 
 type DayStatus = 'complete' | 'missed' | 'pending' | 'future' | 'frozen';
-
-function getDayStatus(day: number, freezeAppliedDay: number | null): DayStatus {
-  if (freezeAppliedDay === day) return 'frozen';
-
-  const history = getStreakDay(day);
-  if (history?.status === 'complete') return 'complete';
-  if (history?.status === 'missed') return 'missed';
-  if (history?.status === 'pending' || day === appData.student.currentDay) return 'pending';
-  return 'future';
-}
 
 const statusLabel: Record<DayStatus, string> = {
   complete: 'Task done',
@@ -24,8 +16,37 @@ const statusLabel: Record<DayStatus, string> = {
 
 export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay: number | null }) {
   const total = appData.brand.cycleDays;
-  const completeCount = appData.streakHistory.filter((day) => day.status === 'complete').length;
-  const missedCount = appData.streakHistory.filter((day) => day.status === 'missed').length;
+  const [userCompletedDays, setUserCompletedDays] = useState<Set<number>>(
+    new Set(appData.streakHistory.filter((d) => d.status === 'complete').map((d) => d.day))
+  );
+
+  const toggleDayCompletion = (day: number) => {
+    setUserCompletedDays((prev) => {
+      const next = new Set(prev);
+      if (next.has(day)) {
+        next.delete(day);
+      } else {
+        next.add(day);
+        triggerSuccessConfetti();
+      }
+      return next;
+    });
+  };
+
+  const getDayStatus = (day: number): DayStatus => {
+    if (freezeAppliedDay === day) return 'frozen';
+    if (userCompletedDays.has(day)) return 'complete';
+
+    const history = getStreakDay(day);
+    if (history?.status === 'missed' && freezeAppliedDay !== day) return 'missed';
+    if (day === appData.student.currentDay) return 'pending';
+    return 'future';
+  };
+
+  const completeCount = userCompletedDays.size;
+  const missedCount = appData.streakHistory.filter(
+    (day) => day.status === 'missed' && freezeAppliedDay !== day.day && !userCompletedDays.has(day.day)
+  ).length;
   const remainingCount = total - completeCount - missedCount;
 
   return (
@@ -38,7 +59,7 @@ export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay:
             </span>
             <div>
               <h3 className="text-sm font-semibold text-mist-100">Your 60-day streak</h3>
-              <p className="text-[10px] text-mist-500">One small box for every day.</p>
+              <p className="text-[10px] text-mist-500">Click any day to toggle completed & celebrate!</p>
             </div>
           </div>
         </div>
@@ -59,11 +80,13 @@ export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay:
       >
         {Array.from({ length: total }, (_, index) => {
           const day = index + 1;
+          const status = getDayStatus(day);
           return (
             <DayBox
               key={day}
               day={day}
-              status={getDayStatus(day, freezeAppliedDay)}
+              status={status}
+              onToggle={() => toggleDayCompletion(day)}
             />
           );
         })}
@@ -79,13 +102,20 @@ export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay:
   );
 }
 
-function DayBox({ day, status }: { day: number; status: DayStatus }) {
-  const isClickable = day === 12;
-  const statusMarker = status === 'complete' ? '+' : status === 'missed' ? 'x' : status === 'frozen' ? '*' : status === 'pending' ? 'o' : '-';
-  const destination = isClickable ? '/day/12' : '#';
+function DayBox({
+  day,
+  status,
+  onToggle,
+}: {
+  day: number;
+  status: DayStatus;
+  onToggle: () => void;
+}) {
+  const statusMarker =
+    status === 'complete' ? '+' : status === 'missed' ? 'x' : status === 'frozen' ? '*' : status === 'pending' ? 'o' : '-';
 
   const statusStyle: Record<DayStatus, string> = {
-    complete: 'border-sage-500/40 bg-sage-500/10 text-mist-100',
+    complete: 'border-sage-500/40 bg-sage-500/10 text-mist-100 shadow-xs shadow-sage-500/10',
     missed: 'border-rose-500/50 bg-rose-500/10 text-mist-100',
     frozen: 'border-sky-400/40 bg-sky-500/10 text-mist-100',
     pending: 'border-ember-400/70 bg-ember-500/10 text-mist-100',
@@ -93,26 +123,34 @@ function DayBox({ day, status }: { day: number; status: DayStatus }) {
   };
 
   return (
-    <Link
-      to={destination}
-      onClick={(event) => {
-        if (!isClickable) event.preventDefault();
-      }}
+    <button
+      type="button"
+      onClick={onToggle}
       aria-label={`Day ${day}: ${statusLabel[status]}`}
       style={{ flex: '0 0 calc((100% - 25px) / 6)' }}
-      className={`flex h-9 min-w-0 flex-col items-center justify-center rounded-md border transition-all ${statusStyle[status]} ${
-        day === appData.student.currentDay ? 'ring-1 ring-ember-300/80 ring-offset-1 ring-offset-obsidian-850' : ''
-      } ${isClickable ? 'hover:border-ember-300 hover:bg-ember-500/20 active:scale-95' : ''}`}
+      className={`flex h-9 min-w-0 flex-col items-center justify-center rounded-md border transition-all cursor-pointer ${
+        statusStyle[status]
+      } ${
+        day === appData.student.currentDay
+          ? 'ring-1 ring-ember-300/80 ring-offset-1 ring-offset-obsidian-850'
+          : ''
+      } hover:scale-105 active:scale-95`}
     >
       <span className="text-[10px] font-bold leading-none">{day}</span>
       <span
         className={`mt-0.5 font-mono text-[11px] font-bold leading-none ${
-          status === 'complete' ? 'text-sage-400' : status === 'missed' ? 'text-rose-400' : status === 'frozen' ? 'text-sky-300' : 'text-mist-600'
+          status === 'complete'
+            ? 'text-sage-400'
+            : status === 'missed'
+            ? 'text-rose-400'
+            : status === 'frozen'
+            ? 'text-sky-300'
+            : 'text-mist-600'
         }`}
       >
         {statusMarker}
       </span>
-    </Link>
+    </button>
   );
 }
 

@@ -27,36 +27,36 @@ export default function BadgeCard({ badge }: { badge: Badge }) {
   const Icon = iconMap[badge.icon] ?? Award;
   return (
     <div
-      className={`relative flex flex-col items-center gap-2 rounded-2xl border p-3 text-center transition-all ${
+      className={`relative flex flex-col items-center gap-1.5 rounded-2xl p-3 text-center transition-all border-0 ${
         badge.earned
-          ? 'border-ember-500/30 bg-obsidian-850 hover:border-ember-400/50'
-          : 'border-obsidian-700 bg-obsidian-850/50'
+          ? 'bg-obsidian-850'
+          : 'bg-obsidian-850/60'
       }`}
     >
       <div
-        className={`relative flex h-12 w-12 items-center justify-center rounded-full ${
+        className={`relative flex h-10 w-10 items-center justify-center rounded-full ${
           badge.earned
-            ? 'bg-gradient-to-br from-ember-500/25 to-ember-700/10 text-ember-300'
-            : 'bg-obsidian-700 text-mist-600'
+            ? 'bg-ember-500/15 text-ember-400'
+            : 'bg-obsidian-800 text-mist-600'
         }`}
       >
         {badge.earned ? (
-          <Icon size={22} />
+          <Icon size={20} />
         ) : (
-          <Lock size={18} />
+          <Lock size={16} />
         )}
       </div>
       <div>
-        <p className={`text-xs font-semibold leading-tight ${badge.earned ? 'text-mist-100' : 'text-mist-500'}`}>
+        <p className={`text-[11px] font-bold leading-tight ${badge.earned ? 'text-mist-100' : 'text-mist-500'}`}>
           {badge.name}
         </p>
         {badge.progress && (
-          <p className="mt-1 text-[10px] text-mist-500">
+          <p className="mt-0.5 text-[10px] text-mist-500">
             {badge.progress.current}/{badge.progress.target}
           </p>
         )}
       </div>
-      <span className="absolute right-2 top-2">
+      <span className="absolute right-1.5 top-1.5">
         <Tooltip text={badge.description} />
       </span>
     </div>

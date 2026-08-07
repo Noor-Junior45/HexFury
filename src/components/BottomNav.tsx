@@ -4,7 +4,7 @@ import { Home, LayoutDashboard, CalendarDays } from 'lucide-react';
 const items = [
   { to: '/', label: 'Home', icon: Home, end: true },
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, end: false },
-  { to: '/day/12', label: 'Day 12', icon: CalendarDays, end: false },
+  { to: '/calendar', label: 'Calendar', icon: CalendarDays, end: false },
 ];
 
 export default function BottomNav() {
