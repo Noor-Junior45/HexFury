@@ -18,7 +18,14 @@
       "shortName": "FS & AI",
       "color": "ember",
       "description": "Ship production-grade apps with React, Node, and applied AI — from RAG pipelines to semantic search.",
-      "skills": ["React", "Node.js", "Python", "Vector Search", "Postgres", "LLMs"]
+      "skills": [
+        "React",
+        "Node.js",
+        "Python",
+        "Vector Search",
+        "Postgres",
+        "LLMs"
+      ]
     },
     {
       "id": "backend-systems",
@@ -26,7 +33,13 @@
       "shortName": "Backend",
       "color": "sage",
       "description": "Design resilient APIs, queues, and data infrastructure that scale under real load.",
-      "skills": ["Go", "Kafka", "Redis", "gRPC", "Postgres"]
+      "skills": [
+        "Go",
+        "Kafka",
+        "Redis",
+        "gRPC",
+        "Postgres"
+      ]
     },
     {
       "id": "devops-cloud",
@@ -34,7 +47,13 @@
       "shortName": "DevOps",
       "color": "amber",
       "description": "Automate deploys, observability, and infrastructure-as-code across cloud providers.",
-      "skills": ["Docker", "Kubernetes", "Terraform", "AWS", "Grafana"]
+      "skills": [
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "AWS",
+        "Grafana"
+      ]
     },
     {
       "id": "data-ml",
@@ -42,7 +61,13 @@
       "shortName": "Data/ML",
       "color": "rose",
       "description": "Build pipelines, feature stores, and models that turn raw data into decisions.",
-      "skills": ["Python", "Spark", "PyTorch", "Airflow", "dbt"]
+      "skills": [
+        "Python",
+        "Spark",
+        "PyTorch",
+        "Airflow",
+        "dbt"
+      ]
     }
   ],
   "student": {
@@ -63,18 +88,103 @@
     }
   },
   "streakHistory": [
-    { "day": 1, "status": "complete", "date": "2025-11-12", "project": "CLI Pomodoro Timer", "github": "https://github.com/noor-h/abtalks-day01", "linkedin": "https://linkedin.com/feed/update/noor-day01" },
-    { "day": 2, "status": "complete", "date": "2025-11-13", "project": "Markdown Note Taker", "github": "https://github.com/noor-h/abtalks-day02", "linkedin": "https://linkedin.com/feed/update/noor-day02" },
-    { "day": 3, "status": "complete", "date": "2025-11-14", "project": "Weather CLI with API", "github": "https://github.com/noor-h/abtalks-day03", "linkedin": "https://linkedin.com/feed/update/noor-day03" },
-    { "day": 4, "status": "complete", "date": "2025-11-15", "project": "Expense Splitter", "github": "https://github.com/noor-h/abtalks-day04", "linkedin": "https://linkedin.com/feed/update/noor-day04" },
-    { "day": 5, "status": "complete", "date": "2025-11-16", "project": "URL Shortener API", "github": "https://github.com/noor-h/abtalks-day05", "linkedin": "https://linkedin.com/feed/update/noor-day05" },
-    { "day": 6, "status": "complete", "date": "2025-11-17", "project": "Realtime Chat (Sockets)", "github": "https://github.com/noor-h/abtalks-day06", "linkedin": "https://linkedin.com/feed/update/noor-day06" },
-    { "day": 7, "status": "complete", "date": "2025-11-18", "project": "Auth Flow w/ JWT", "github": "https://github.com/noor-h/abtalks-day07", "linkedin": "https://linkedin.com/feed/update/noor-day07" },
-    { "day": 8, "status": "missed", "date": "2025-11-19", "project": null, "github": null, "linkedin": null, "missReason": "College mid-sem exam — no submission made." },
-    { "day": 9, "status": "complete", "date": "2025-11-20", "project": "REST Rate Limiter", "github": "https://github.com/noor-h/abtalks-day09", "linkedin": "https://linkedin.com/feed/update/noor-day09" },
-    { "day": 10, "status": "complete", "date": "2025-11-21", "project": "File Upload Service", "github": "https://github.com/noor-h/abtalks-day10", "linkedin": "https://linkedin.com/feed/update/noor-day10" },
-    { "day": 11, "status": "complete", "date": "2025-11-22", "project": "CRUD w/ Pagination", "github": "https://github.com/noor-h/abtalks-day11", "linkedin": "https://linkedin.com/feed/update/noor-day11" },
-    { "day": 12, "status": "pending", "date": "2025-11-23", "project": null, "github": null, "linkedin": null }
+    {
+      "day": 1,
+      "status": "complete",
+      "date": "2025-11-12",
+      "project": "CLI Pomodoro Timer",
+      "github": "https://github.com/noor-h/abtalks-day01",
+      "linkedin": "https://linkedin.com/feed/update/noor-day01"
+    },
+    {
+      "day": 2,
+      "status": "complete",
+      "date": "2025-11-13",
+      "project": "Markdown Note Taker",
+      "github": "https://github.com/noor-h/abtalks-day02",
+      "linkedin": "https://linkedin.com/feed/update/noor-day02"
+    },
+    {
+      "day": 3,
+      "status": "complete",
+      "date": "2025-11-14",
+      "project": "Weather CLI with API",
+      "github": "https://github.com/noor-h/abtalks-day03",
+      "linkedin": "https://linkedin.com/feed/update/noor-day03"
+    },
+    {
+      "day": 4,
+      "status": "complete",
+      "date": "2025-11-15",
+      "project": "Expense Splitter",
+      "github": "https://github.com/noor-h/abtalks-day04",
+      "linkedin": "https://linkedin.com/feed/update/noor-day04"
+    },
+    {
+      "day": 5,
+      "status": "complete",
+      "date": "2025-11-16",
+      "project": "URL Shortener API",
+      "github": "https://github.com/noor-h/abtalks-day05",
+      "linkedin": "https://linkedin.com/feed/update/noor-day05"
+    },
+    {
+      "day": 6,
+      "status": "complete",
+      "date": "2025-11-17",
+      "project": "Realtime Chat (Sockets)",
+      "github": "https://github.com/noor-h/abtalks-day06",
+      "linkedin": "https://linkedin.com/feed/update/noor-day06"
+    },
+    {
+      "day": 7,
+      "status": "complete",
+      "date": "2025-11-18",
+      "project": "Auth Flow w/ JWT",
+      "github": "https://github.com/noor-h/abtalks-day07",
+      "linkedin": "https://linkedin.com/feed/update/noor-day07"
+    },
+    {
+      "day": 8,
+      "status": "missed",
+      "date": "2025-11-19",
+      "project": null,
+      "github": null,
+      "linkedin": null,
+      "missReason": "College mid-sem exam — no submission made."
+    },
+    {
+      "day": 9,
+      "status": "complete",
+      "date": "2025-11-20",
+      "project": "REST Rate Limiter",
+      "github": "https://github.com/noor-h/abtalks-day09",
+      "linkedin": "https://linkedin.com/feed/update/noor-day09"
+    },
+    {
+      "day": 10,
+      "status": "complete",
+      "date": "2025-11-21",
+      "project": "File Upload Service",
+      "github": "https://github.com/noor-h/abtalks-day10",
+      "linkedin": "https://linkedin.com/feed/update/noor-day10"
+    },
+    {
+      "day": 11,
+      "status": "complete",
+      "date": "2025-11-22",
+      "project": "CRUD w/ Pagination",
+      "github": "https://github.com/noor-h/abtalks-day11",
+      "linkedin": "https://linkedin.com/feed/update/noor-day11"
+    },
+    {
+      "day": 12,
+      "status": "pending",
+      "date": "2025-11-23",
+      "project": null,
+      "github": null,
+      "linkedin": null
+    }
   ],
   "currentStreak": {
     "count": 4,
@@ -158,7 +268,10 @@
       "icon": "Trophy",
       "earned": false,
       "tier": "streak",
-      "progress": { "current": 12, "target": 15 }
+      "progress": {
+        "current": 12,
+        "target": 15
+      }
     },
     {
       "id": "open-source",
@@ -183,13 +296,31 @@
       "icon": "Award",
       "earned": false,
       "tier": "milestone",
-      "progress": { "current": 12, "target": 60 }
+      "progress": {
+        "current": 12,
+        "target": 60
+      }
     }
   ],
   "recruiters": [
-    { "company": "Zomato", "role": "AI Backend Intern", "location": "Gurugram", "watching": true },
-    { "company": "Razorpay", "role": "Full Stack Engineer", "location": "Bengaluru", "watching": true },
-    { "company": "Postman", "role": "Platform Engineer", "location": "Remote", "watching": true }
+    {
+      "company": "Zomato",
+      "role": "AI Backend Intern",
+      "location": "Gurugram",
+      "watching": true
+    },
+    {
+      "company": "Razorpay",
+      "role": "Full Stack Engineer",
+      "location": "Bengaluru",
+      "watching": true
+    },
+    {
+      "company": "Postman",
+      "role": "Platform Engineer",
+      "location": "Remote",
+      "watching": true
+    }
   ],
   "testimonials": [
     {
@@ -203,6 +334,1751 @@
       "college": "COEP Pune",
       "quote": "The two-part submission forced me to actually explain my work publicly. Three recruiters DM'd me from my LinkedIn posts.",
       "outcome": "AI intern at Zomato"
+    }
+  ],
+  "days": [
+    {
+      "day": 1,
+      "title": "CLI Pomodoro Timer with Desktop Notifications",
+      "trackId": "backend-systems",
+      "duration": "~1.5 hrs",
+      "difficulty": "Beginner",
+      "summary": "Build a cross-platform command line pomodoro timer with customizable work/rest intervals, terminal progress animation, and desktop notifications.",
+      "why": "A clean CLI utility demonstrates fundamental OS interaction, timers, state management, and clear terminal UX.",
+      "requirements": [
+        "Custom work and break durations via CLI flags (--work, --break).",
+        "Live terminal progress bar or ASCII countdown display.",
+        "Desktop notification on timer completion.",
+        "Audio chime or bell alert when session finishes.",
+        "Clean documentation with installation and CLI usage instructions."
+      ],
+      "hints": [
+        "Use argparse/commander for argument parsing.",
+        "Terminal ANSI escape codes allow in-place redraws of progress bars.",
+        "Test audio chimes gracefully across different terminal environments."
+      ],
+      "recruiterNote": "Demonstrates clean code organization, CLI parsing, and asynchronous timer controls in core language runtime.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day01",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day01",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 2,
+      "title": "Markdown Note Taker with Live HTML Preview",
+      "trackId": "fullstack-ai",
+      "duration": "~2 hrs",
+      "difficulty": "Beginner",
+      "summary": "Build a web-based Markdown note editor with real-time preview rendering, local storage auto-saving, and syntax highlighting.",
+      "why": "DOM manipulation, reactive state synchronization, and client-side data persistence are core full-stack foundations.",
+      "requirements": [
+        "Split view with Markdown editor on left and live HTML on right.",
+        "Debounced auto-save to browser localStorage.",
+        "Support for code block syntax highlighting and GFM task lists.",
+        "Export note to raw .md or .html file.",
+        "Responsive layout supporting dark and light themes."
+      ],
+      "hints": [
+        "Use marked.js or remark for fast markdown parsing.",
+        "Debounce auto-save by 300ms to avoid thrashing localStorage.",
+        "Sanitize rendered HTML to prevent XSS vulnerabilities."
+      ],
+      "recruiterNote": "Shows strong client-side state handling, performance considerations, and security awareness with raw user input.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day02",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day02",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 3,
+      "title": "Weather CLI & API Wrapper with Multi-City Forecasts",
+      "trackId": "fullstack-ai",
+      "duration": "~2 hrs",
+      "difficulty": "Beginner",
+      "summary": "Integrate with OpenWeatherMap API to fetch current weather and 5-day forecasts with formatted ASCII charts and memory caching.",
+      "why": "Interfacing with external third-party REST APIs, error handling, rate limiting, and output formatting are daily developer tasks.",
+      "requirements": [
+        "Fetch weather by city name or geographic coordinates.",
+        "Display current temperature, humidity, wind, and weather condition.",
+        "In-memory cache with 10-minute TTL to reduce redundant API calls.",
+        "Formatted terminal ASCII output or colored JSON.",
+        "Graceful handling for invalid city names or network timeouts."
+      ],
+      "hints": [
+        "Check response status codes and return user-friendly errors.",
+        "Use absolute temperature conversions (Kelvin to Celsius/Fahrenheit).",
+        "Store API keys safely in environment variables."
+      ],
+      "recruiterNote": "Proves ability to work with REST endpoints, env secrets, and client-side caching strategies.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day03",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day03",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 4,
+      "title": "Expense Splitter API & Bill Calculation Engine",
+      "trackId": "backend-systems",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Design a REST API to divide group expenses with unequal split ratios, tip percentages, and debt-simplification matrix logic.",
+      "why": "Financial logic requires precise arithmetic calculation, data modeling for multi-user transactions, and debt minimization algorithms.",
+      "requirements": [
+        "POST /expenses to record a group expense among members.",
+        "Support equal, percentage-based, and exact amount splits.",
+        "Debt simplification algorithm to minimize total transaction count.",
+        "GET /balances returning net owe/owed amounts per person.",
+        "Comprehensive unit tests covering edge cases and round-offs."
+      ],
+      "hints": [
+        "Avoid floating point inaccuracies by calculating in cents or using Decimal types.",
+        "Graph modeling helps reduce N-way debts to minimal transfers.",
+        "Ensure total split percentages sum to exactly 100%."
+      ],
+      "recruiterNote": "Algorithm design and debt minimization logic demonstrate mathematical precision and clean domain modeling.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day04",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day04",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 5,
+      "title": "High-Performance URL Shortener Service",
+      "trackId": "backend-systems",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a URL shortener with Base62 encoding, custom aliases, click analytics tracking, and Redis caching.",
+      "why": "URL shorteners are classic system design interview problems testing database indexing, caching, and redirection logic.",
+      "requirements": [
+        "POST /shorten generating a 6-character Base62 hash or custom alias.",
+        "GET /:code redirecting with HTTP 302 and incrementing click count.",
+        "Redis cache layer for hot short URLs.",
+        "Analytics endpoint GET /analytics/:code returning total clicks and timestamps.",
+        "Rate limit creation endpoints to prevent spam."
+      ],
+      "hints": [
+        "Base62 encoding derived from auto-increment IDs prevents hash collisions.",
+        "HTTP 302 Found ensures click analytics are counted on every hit.",
+        "Expire unaccessed URLs after a configurable retention period."
+      ],
+      "recruiterNote": "A staple system design project showcasing caching, encoding algorithms, and high-frequency redirection mechanics.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day05",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day05",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 6,
+      "title": "Realtime Multi-Room Chat with WebSockets",
+      "trackId": "fullstack-ai",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Develop a real-time multi-room messaging app using Socket.io or WebSockets with typing indicators and online user presence.",
+      "why": "Event-driven bi-directional communication is necessary for collaborative apps, live feeds, and real-time dashboards.",
+      "requirements": [
+        "Join/leave rooms dynamically without reconnecting the socket.",
+        "Real-time broadcasting of text messages and typing indicators.",
+        "Live user count and active participant list per room.",
+        "Message history persistence in SQLite or PostgreSQL.",
+        "Auto-reconnect handling on unexpected network disconnects."
+      ],
+      "hints": [
+        "Acknowledge socket events on receipt for reliable delivery.",
+        "Sanitize message content before broadcasting.",
+        "Debounce 'user typing' events to avoid flooding sockets."
+      ],
+      "recruiterNote": "Real-time networking and socket event handling demonstrate readiness for collaborative web software engineering.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day06",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day06",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 7,
+      "title": "Stateless Authentication Engine with JWT & Refresh Tokens",
+      "trackId": "backend-systems",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Implement secure user registration, password hashing with bcrypt, JWT access token issuance, and HTTP-only cookie refresh rotation.",
+      "why": "Authentication is mandatory in every production API. Secure token management prevents token theft and replay attacks.",
+      "requirements": [
+        "POST /auth/register with password strength validation and bcrypt hashing.",
+        "POST /auth/login issuing short-lived JWT access token and secure refresh cookie.",
+        "POST /auth/refresh rotation issuing new token pair and revoking old refresh token.",
+        "Protected route middleware verifying Bearer tokens.",
+        "Comprehensive unit tests for expired or tampered tokens."
+      ],
+      "hints": [
+        "Keep access tokens short-lived (15 mins) and refresh tokens longer (7 days).",
+        "Set HttpOnly, SameSite=Strict, and Secure flags on refresh cookies.",
+        "Store refresh token hashes in DB to enable global logout."
+      ],
+      "recruiterNote": "Shows strong security foundation, understanding of cryptographically signed tokens, and token lifecycle management.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day07",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day07",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 8,
+      "title": "Distributed Background Job Queue & Task Worker",
+      "trackId": "backend-systems",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a producer-consumer job queue using Redis/BullMQ or Python Celery to process heavy background tasks asynchronously.",
+      "why": "Offloading long-running tasks from the HTTP request cycle is critical for API responsiveness and system reliability.",
+      "requirements": [
+        "POST /jobs to enqueue tasks (e.g. image resizing or PDF generation).",
+        "Worker process consuming jobs from queue with concurrency controls.",
+        "Exponential backoff retry mechanism for failed jobs.",
+        "Job status endpoint GET /jobs/:id returning pending/processing/completed state.",
+        "Dead-letter queue (DLQ) for permanently failed tasks."
+      ],
+      "hints": [
+        "Keep HTTP response fast by returning 202 Accepted with job ID.",
+        "Ensure job processing logic is idempotent.",
+        "Use Redis transactions or Lua scripts for atomic queue operations."
+      ],
+      "recruiterNote": "Demonstrates understanding of asynchronous architecture, queue workers, and failure handling patterns.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day08",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day08",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 9,
+      "title": "Token Bucket API Rate Limiter Middleware",
+      "trackId": "backend-systems",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Implement a sliding window or token bucket rate limiter in Go/Node/Python using Redis to protect APIs against abusive traffic.",
+      "why": "Rate limiting is critical for service availability, DDoS mitigation, and monetized API tiering.",
+      "requirements": [
+        "Configurable rate limits (e.g. 10 requests per minute per IP or API key).",
+        "HTTP response headers: X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset.",
+        "HTTP 429 Too Many Requests response on limit breach.",
+        "Redis atomic operations for distributed consistency across multiple API instances.",
+        "Bypass mechanism for internal admin keys."
+      ],
+      "hints": [
+        "Sliding window log algorithm avoids bursts at boundary windows.",
+        "Execute Redis commands inside pipeline/multi to reduce network roundtrips.",
+        "Set TTL on Redis keys equal to the rate limit window duration."
+      ],
+      "recruiterNote": "Proves ability to protect production services against overload using distributed Redis primitives.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day09",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day09",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 10,
+      "title": "S3-Compatible Cloud File Upload Service with Signed URLs",
+      "trackId": "devops-cloud",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a file upload service using AWS S3 / MinIO signed pre-uploaded URLs, thumbnail generation, and mime-type validation.",
+      "why": "Direct-to-cloud signed uploads keep backend servers lean by avoiding handling binary file streams directly.",
+      "requirements": [
+        "POST /uploads/presign generating short-lived S3 pre-signed upload URL.",
+        "Client uploads directly to storage bucket without hitting application server.",
+        "Image dimension and mime-type magic bytes verification worker.",
+        "Image thumbnail generation background task.",
+        "GET /files/:id returning metadata and secure download URL."
+      ],
+      "hints": [
+        "Validate file extension AND magic byte header in uploaded files.",
+        "Set pre-signed URL expiration to 15 minutes max.",
+        "Use S3 lifecycle rules to auto-clean incomplete multipart uploads."
+      ],
+      "recruiterNote": "Direct-to-S3 signed URL uploads are industry standard for scalable media handling.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day10",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day10",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 11,
+      "title": "RESTful CRUD API with Offset & Cursor Pagination",
+      "trackId": "backend-systems",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a clean RESTful API with PostgreSQL/SQLite featuring both page-based offset and keyset/cursor pagination, sorting, and field filtering.",
+      "why": "Efficient database query pagination prevents memory overflow and keeps API responses snappy as table sizes grow.",
+      "requirements": [
+        "GET /items supporting page & limit (offset) AND cursor-based pagination.",
+        "Dynamic column sorting (?sort=-created_at) and filtering (?category=tech).",
+        "Include total records, page count, and next/prev cursor links in response metadata.",
+        "SQL indexing on filtered and sorted columns to ensure O(log N) queries.",
+        "Comprehensive test suite verifying pagination boundaries."
+      ],
+      "hints": [
+        "Offset pagination degrades on large tables; cursor pagination using ID/timestamp stays fast.",
+        "Always sanitize dynamic sort parameters to prevent SQL injection.",
+        "Enforce maximum page size limit (e.g., max 100 items per request)."
+      ],
+      "recruiterNote": "Understanding offset vs cursor pagination trade-offs is a hallmark of senior backend engineering practice.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day11",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day11",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 12,
+      "date": "2025-11-23",
+      "title": "Building a Semantic Search API with Python & TF-IDF",
+      "trackId": "fullstack-ai",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a FastAPI service that ranks documents by semantic similarity using TF-IDF vectors and cosine distance — the same math powering search inside Notion, Algolia, and early Google.",
+      "why": "Recruiters hiring for AI-adjacent backend roles want to see you reason about text-as-vectors, not just call an OpenAI endpoint. TF-IDF is the foundation every RAG and embedding system builds on. Shipping this proves you understand retrieval from first principles.",
+      "requirements": [
+        "A FastAPI app exposing GET /search?q=<query> returning ranked document titles and scores.",
+        "Implement TF-IDF vectorization from scratch in Python (no sklearn for the vectorizer — numpy is fine).",
+        "Return top 5 matches ranked by cosine similarity, descending.",
+        "Include a /health endpoint and a sample corpus of at least 20 documents.",
+        "Commit with a clear message; the README must show a curl example and sample output."
+      ],
+      "hints": [
+        "Tokenize by lowercase split, strip punctuation, remove stopwords.",
+        "IDF = log(N / (1 + df_t)). The +1 smooths terms unique to one doc.",
+        "Cosine similarity = dot(a,b) / (||a|| * ||b||). numpy.dot and numpy.linalg.norm do the heavy lifting.",
+        "Cache the IDF vector at startup — recompute per query is wasteful."
+      ],
+      "recruiterNote": "Semantic search is one of the most asked-about skills in AI-backend JDs this quarter. A clean TF-IDF implementation — with tests and a deployed endpoint — is a portfolio piece that opens interview doors at product companies building RAG.",
+      "submission": {
+        "githubLabel": "GitHub repository or commit link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day12",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day12",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 13,
+      "date": "2025-11-24",
+      "title": "Day 13: Redis In-Memory Cache Layer for Heavy Database Queries",
+      "trackId": "backend-systems",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Implement a Cache-Aside and Write-Through caching layer with Redis to drastically reduce database latency for frequent read queries.",
+      "why": "Caching is essential for high-throughput microservices handling millions of daily reads.",
+      "requirements": [
+        "Cache read results in Redis with configurable TTL.",
+        "Implement Cache-Aside pattern for database reads.",
+        "Invalidate or update cache entries on data mutation (Write-Through).",
+        "Include fallback handling when Redis connection fails.",
+        "Benchmark response time improvements with and without cache."
+      ],
+      "hints": [
+        "Use key prefixing for namespace separation.",
+        "Set jitter on TTL to prevent cache stampede.",
+        "Monitor cache hit/miss ratio."
+      ],
+      "recruiterNote": "Caching pattern implementation shows senior backend architecture understanding.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day13",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day13",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 14,
+      "date": "2025-11-25",
+      "title": "Day 14: Multi-Stage Dockerization of Node.js & React Applications",
+      "trackId": "devops-cloud",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Create slim, secure Docker images using multi-stage builds, non-root user execution, and layer optimization.",
+      "why": "Containerization is the standard packaging mechanism for modern cloud-native deployments.",
+      "requirements": [
+        "Multi-stage Dockerfile separating build dependencies from runtime artifact.",
+        "Ensure final image size is under 150MB using Alpine/Distroless base.",
+        "Run application under a non-root user for container security.",
+        "Configure .dockerignore to exclude node_modules and build logs.",
+        "Docker Compose configuration with database service and volume persistence."
+      ],
+      "hints": [
+        "Leverage Docker build cache by copying package.json before source files.",
+        "Use healthcheck instructions in compose file."
+      ],
+      "recruiterNote": "Production-ready Dockerfiles are essential for DevOps and cloud development roles.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day14",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day14",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 15,
+      "date": "2025-11-26",
+      "title": "Day 15: Local Vector Database Search with ChromaDB & Embeddings",
+      "trackId": "fullstack-ai",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a document semantic search service by storing text chunks and vector embeddings in ChromaDB or Qdrant.",
+      "why": "Vector databases form the backbone of modern AI search, memory, and RAG pipelines.",
+      "requirements": [
+        "Chunk long text documents with overlapping character windows.",
+        "Generate text embeddings using OpenAI or HuggingFace local models.",
+        "Store chunks and metadata in ChromaDB vector collection.",
+        "Expose search API returning top-K relevant chunks with similarity distance.",
+        "Interactive UI or CLI to query the vector database."
+      ],
+      "hints": [
+        "Chunk size 500 characters with 50 overlap is a good baseline.",
+        "Normalize query strings before generating query embedding."
+      ],
+      "recruiterNote": "Vector database integration demonstrates hands-on competency in modern AI engineering.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day15",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day15",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 16,
+      "date": "2025-11-27",
+      "title": "Day 16: PostgreSQL Indexing, Query Tuning & EXPLAIN ANALYZE",
+      "trackId": "backend-systems",
+      "duration": "~2.5 hrs",
+      "difficulty": "Advanced",
+      "summary": "Diagnose slow SQL queries, create B-tree, Hash, and GIN indexes, and analyze execution plans with EXPLAIN ANALYZE.",
+      "why": "Database query optimization is the single most effective way to improve application performance under load.",
+      "requirements": [
+        "Seed a PostgreSQL database with 500,000 dummy records.",
+        "Identify sequential table scans on unindexed search queries.",
+        "Apply B-tree and Composite indexes to reduce execution time from >500ms to <5ms.",
+        "GIN index for JSONB column key-value queries.",
+        "Document Before/After query plans using EXPLAIN (ANALYZE, BUFFERS)."
+      ],
+      "hints": [
+        "Avoid over-indexing as it slows down write operations.",
+        "Composite index column order matters (most selective column first)."
+      ],
+      "recruiterNote": "Query optimization experience sets candidate apart in technical backend interviews.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day16",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day16",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 17,
+      "date": "2025-11-28",
+      "title": "Day 17: CI/CD Pipeline with GitHub Actions & Automated Testing",
+      "trackId": "devops-cloud",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build an automated CI/CD pipeline using GitHub Actions that runs linters, unit tests, security audits, and builds Docker artifacts.",
+      "why": "Automated delivery pipelines ensure code quality and prevent broken builds from hitting production.",
+      "requirements": [
+        "GitHub Actions workflow triggered on pull requests and pushes to main.",
+        "Parallel jobs for linting, type checking, and test execution.",
+        "Build and tag Docker image on successful tests.",
+        "Cache npm/pip dependencies to reduce pipeline execution time.",
+        "Generate test coverage report badge in README."
+      ],
+      "hints": [
+        "Use matrix builds to test across multiple Node/Python versions.",
+        "Store registry credentials in GitHub Encrypted Secrets."
+      ],
+      "recruiterNote": "Demonstrates practical automation and continuous integration discipline.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day17",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day17",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 18,
+      "date": "2025-11-29",
+      "title": "Day 18: Retrieval-Augmented Generation (RAG) Bot with Gemini API",
+      "trackId": "fullstack-ai",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Combine vector search retrieval with Gemini API prompt engineering to answer context-grounded questions over custom PDF/text files.",
+      "why": "RAG is the dominant enterprise architecture for grounding LLMs on proprietary data without hallucinations.",
+      "requirements": [
+        "Parse PDF/text upload into vector embeddings.",
+        "Retrieve top 3 context passages for incoming user query.",
+        "Construct grounded system prompt passing context snippets to Gemini model.",
+        "Streaming text response back to web client.",
+        "Provide source citations (page/document name) in the generated response."
+      ],
+      "hints": [
+        "Instruct model to explicitly state 'I don't know' if context is insufficient.",
+        "Stream chunks using server-sent events or WebSocket."
+      ],
+      "recruiterNote": "RAG is the #1 requested capability in AI product company job descriptions.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day18",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day18",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 19,
+      "date": "2025-11-30",
+      "title": "Day 19: ETL Data Pipeline with Pandas & Apache Airflow DAG",
+      "trackId": "data-ml",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Design an automated ETL pipeline that ingests raw CSV sales data, cleans null values, aggregates metrics, and loads into PostgreSQL.",
+      "why": "Data engineering pipelines ensure clean, timely data for downstream analytics and machine learning models.",
+      "requirements": [
+        "Extract raw sales data from external CSV or REST endpoint.",
+        "Transform data using Pandas: clean nulls, format timestamps, calculate daily totals.",
+        "Load transformed records into PostgreSQL warehouse schema.",
+        "Define Apache Airflow DAG scheduled to run daily with retries.",
+        "Data validation checks verifying row counts and non-null constraints."
+      ],
+      "hints": [
+        "Use Airflow PostgresOperator for loading steps.",
+        "Log data quality failures to slack or alert channel."
+      ],
+      "recruiterNote": "Shows core data engineering capabilities in data transformation and orchestration.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day19",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day19",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 20,
+      "date": "2025-12-01",
+      "title": "Day 20: GraphQL API Server with DataLoader Batching",
+      "trackId": "fullstack-ai",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a GraphQL API server with Apollo/GraphQL-Yoga featuring nested resolvers, schema design, and DataLoader to solve N+1 query problems.",
+      "why": "GraphQL gives frontend clients precise data fetching control while DataLoader solves database performance bottlenecks.",
+      "requirements": [
+        "GraphQL schema defining Types, Queries, Mutations, and Inputs.",
+        "Resolver implementation for nested relational data (Authors -> Books).",
+        "Implement DataLoader to batch and cache nested database queries.",
+        "GraphQL Playground UI enabled for interactive testing.",
+        "Input validation and custom GraphQL error formatting."
+      ],
+      "hints": [
+        "DataLoader batches all key lookups within a single event loop tick.",
+        "Avoid deep query nesting attacks with depth limiters."
+      ],
+      "recruiterNote": "Proves ability to build efficient, flexible GraphQL APIs without N+1 query performance regressions.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day20",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day20",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 21,
+      "date": "2025-12-02",
+      "title": "Day 21: Prometheus Metrics & Grafana Observability Dashboard",
+      "trackId": "devops-cloud",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Instrument an HTTP application with Prometheus RED metrics (Rate, Errors, Duration) and visualize real-time graphs in Grafana.",
+      "why": "Observability enables quick detection and debugging of outages before users notice.",
+      "requirements": [
+        "Expose /metrics endpoint in application using client library (prom-client/prometheus_client).",
+        "Track HTTP request count by route and status code counter.",
+        "Histogram tracking HTTP request duration latency distribution.",
+        "Prometheus server configuration scraping application target.",
+        "Grafana dashboard showing ops metrics (RPS, 5xx error rate, p95 latency)."
+      ],
+      "hints": [
+        "Use buckets tuned for web request latencies (10ms to 5s).",
+        "Label cardinality should be kept low — do not put user IDs in labels."
+      ],
+      "recruiterNote": "Instrumenting application metrics is crucial for site reliability and cloud platform engineering.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day21",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day21",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 22,
+      "date": "2025-12-03",
+      "title": "Day 22: Event-Driven Message Streaming with Apache Kafka",
+      "trackId": "backend-systems",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Set up a Kafka cluster producing and consuming order processing events with consumer groups and at-least-once delivery semantics.",
+      "why": "Event streaming allows microservices to decouple and communicate asynchronously at massive scale.",
+      "requirements": [
+        "Kafka topic configured with multiple partitions.",
+        "Producer publishing order-created events with partitioning keys.",
+        "Consumer group with multiple workers balancing partition consumption.",
+        "Handle offset commits explicitly to guarantee message processing.",
+        "Graceful shutdown handling flushing pending offsets."
+      ],
+      "hints": [
+        "Use order ID as key to guarantee ordering within partition.",
+        "Set consumer session timeout appropriately for heavy processing."
+      ],
+      "recruiterNote": "Kafka skills are highly sought after for distributed systems and fintech backend roles.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day22",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day22",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 23,
+      "date": "2025-12-04",
+      "title": "Day 23: Sentiment Classification Model with PyTorch & HuggingFace",
+      "trackId": "data-ml",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Fine-tune a DistilBERT transformer model on movie or product reviews to classify positive/negative sentiment.",
+      "why": "Understanding deep learning NLP pipelines from tokenization to model inference is foundational for ML engineers.",
+      "requirements": [
+        "Load and preprocess text dataset using HuggingFace Datasets.",
+        "Tokenize inputs with DistilBERT tokenizer.",
+        "Fine-tune PyTorch model for binary sequence classification.",
+        "Evaluate accuracy, precision, recall, and F1 score on test set.",
+        "Export fine-tuned model weights and create inference function."
+      ],
+      "hints": [
+        "Use mixed precision training (fp16) to speed up GPU training.",
+        "Set random seeds for reproducible evaluation results."
+      ],
+      "recruiterNote": "Demonstrates practical machine learning training, evaluation, and model deployment workflow.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day23",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day23",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 24,
+      "date": "2025-12-05",
+      "title": "Day 24: Role-Based Access Control (RBAC) & Permission Guard Middleware",
+      "trackId": "backend-systems",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Design a granular RBAC middleware supporting Roles (Admin, Editor, Viewer) and specific Scopes (posts:read, posts:write).",
+      "why": "Enterprise platforms require strict security boundaries restricting access based on user authorization roles.",
+      "requirements": [
+        "Database schema for Users, Roles, Permissions, and UserRoles mapping.",
+        "Middleware checking route authorization requirement against user token roles.",
+        "Hierarchical permission inheritance (Admin inherits Editor permissions).",
+        "API endpoints demonstrating allowed vs 403 Forbidden access.",
+        "Unit tests verifying role boundary restrictions."
+      ],
+      "hints": [
+        "Cache user roles in request context or JWT claims to avoid DB query per request.",
+        "Keep permission names explicit (e.g. org:billing:manage)."
+      ],
+      "recruiterNote": "Security and access control design is vital for multi-tenant enterprise software.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day24",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day24",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 25,
+      "date": "2025-12-06",
+      "title": "Day 25: Terraform Infrastructure as Code (IaC) for AWS / GCP",
+      "trackId": "devops-cloud",
+      "duration": "~2.5 hrs",
+      "difficulty": "Advanced",
+      "summary": "Provision a VPC, public/private subnets, storage bucket, and serverless Cloud Run / ECS instance using declarative Terraform scripts.",
+      "why": "Infrastructure as Code allows teams to version control, review, and replicate cloud environments reliably.",
+      "requirements": [
+        "Modularized Terraform configuration (main.tf, variables.tf, outputs.tf).",
+        "Provision networking VPC with isolated subnets.",
+        "Deploy cloud bucket with encryption and public access block enabled.",
+        "Remote state storage configuration with state locking.",
+        "Clean terraform plan and terraform apply workflow."
+      ],
+      "hints": [
+        "Never commit secrets or state files to Git repository.",
+        "Use variables for region and environment naming."
+      ],
+      "recruiterNote": "IaC proficiency with Terraform is mandatory for modern cloud infrastructure roles.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day25",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day25",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 26,
+      "date": "2025-12-07",
+      "title": "Day 26: Automated AI Code Reviewer Bot using Gemini API",
+      "trackId": "fullstack-ai",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a GitHub webhook integration or CLI tool that analyzes code diffs using Gemini API and leaves constructive code review comments.",
+      "why": "AI-assisted developer tooling speeds up pull request reviews and catches syntax bugs automatically.",
+      "requirements": [
+        "Parse git diff or GitHub PR pull request payload.",
+        "Send code diff to Gemini API with targeted code review prompt.",
+        "Categorize feedback into Security, Performance, and Style suggestions.",
+        "Post formatted markdown review comment back to GitHub PR API.",
+        "Ignore autogenerated files and locks."
+      ],
+      "hints": [
+        "Format prompt with structured output JSON schema.",
+        "Trimming whitespace in git diff reduces API token costs."
+      ],
+      "recruiterNote": "Exhibits creative application of AI models to developer workflow automation.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day26",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day26",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 27,
+      "date": "2025-12-08",
+      "title": "Day 27: Feature Flag Engine with Realtime Dynamic Rollouts",
+      "trackId": "fullstack-ai",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a feature flagging library allowing percentage-based rollouts, user targeting rules, and instant toggle changes without redeploying code.",
+      "why": "Feature flags facilitate continuous deployment, A/B testing, and instant kill-switches for faulty features.",
+      "requirements": [
+        "Admin API to create/update feature flags and targeting rules.",
+        "Consistent hashing algorithm for user ID percentage rollouts (e.g., 20% of users).",
+        "Client SDK/helper function evaluating flag state in <1ms.",
+        "Realtime update propagation via SSE or WebSocket.",
+        "Audit log recording flag state changes."
+      ],
+      "hints": [
+        "Use MurmurHash3 on userId + flagKey to produce deterministic percentages.",
+        "Cache flag rules in memory locally."
+      ],
+      "recruiterNote": "Feature flag system design highlights software reliability and deployment strategy awareness.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day27",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day27",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 28,
+      "date": "2025-12-09",
+      "title": "Day 28: Web Scraping Data Pipeline with Playwright & BeautifulSoup",
+      "trackId": "data-ml",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Scrape dynamic rendered web pages using Playwright browser automation, extract structured records, and handle pagination & anti-bot throttling.",
+      "why": "Web data extraction fuels competitive intelligence, price tracking, and training data collection.",
+      "requirements": [
+        "Headless browser navigation handling SPA JavaScript rendering.",
+        "Extract structured product listings (title, price, availability, rating).",
+        "Handle multi-page pagination and lazy loading scroll triggers.",
+        "Rate limiting and request delay jitter to avoid triggering anti-bot blocks.",
+        "Output clean structured JSON or CSV dataset."
+      ],
+      "hints": [
+        "Wait for specific selector state before extracting text.",
+        "Use User-Agent header rotation."
+      ],
+      "recruiterNote": "Data harvesting skills are key for data engineering and scraping automation positions.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day28",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day28",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 29,
+      "date": "2025-12-10",
+      "title": "Day 29: Microservices Inter-Service Communication with gRPC & Protocol Buffers",
+      "trackId": "backend-systems",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Define .proto schemas and implement high-performance gRPC client and server services in Go/Node with binary serialization.",
+      "why": "gRPC delivers up to 10x faster performance than REST JSON for internal microservices communication.",
+      "requirements": [
+        "Define Protocol Buffer service schema with messages and RPC methods.",
+        "Compile .proto to language-specific stubs.",
+        "Server implementation handling Unary and Server Streaming RPC calls.",
+        "Client implementation with connection pooling and deadline timeouts.",
+        "gRPC metadata headers for authentication."
+      ],
+      "hints": [
+        "Always specify explicit deadlines/timeouts on client calls.",
+        "Use protoc plugins for code generation."
+      ],
+      "recruiterNote": "gRPC and Protobuf mastery demonstrates readiness for high-throughput distributed architectures.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day29",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day29",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 30,
+      "date": "2025-12-11",
+      "title": "Day 30: Server-Sent Events (SSE) Real-Time Notification Feed",
+      "trackId": "fullstack-ai",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Implement an SSE endpoint streaming live system events and notifications from backend to browser with automatic reconnection handling.",
+      "why": "SSE provides lightweight, unidirectional real-time updates over standard HTTP without WebSocket overhead.",
+      "requirements": [
+        "GET /events endpoint with Content-Type: text/event-stream headers.",
+        "Keep-alive heartbeats to prevent connection drops by proxies.",
+        "Event ID tracking allowing client to resume missed events via Last-Event-ID header.",
+        "Frontend EventSource client rendering live toast notifications.",
+        "Graceful disconnection handling on server shutdown."
+      ],
+      "hints": [
+        "Disable HTTP response buffering in Nginx/Express.",
+        "Format events with standard 'event:', 'data:', and 'id:' lines."
+      ],
+      "recruiterNote": "Understanding lightweight real-time protocols like SSE shows good architecture judgment.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day30",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day30",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 31,
+      "date": "2025-12-12",
+      "title": "Day 31: Kubernetes Pod Deployment, Services & Ingress Setup",
+      "trackId": "devops-cloud",
+      "duration": "~2.5 hrs",
+      "difficulty": "Advanced",
+      "summary": "Deploy a web app to a local Minikube/K3s Kubernetes cluster using Deployment, ClusterIP Service, ConfigMap, and Ingress manifests.",
+      "why": "Kubernetes is the industry standard container orchestrator for scaling microservices in production.",
+      "requirements": [
+        "Kubernetes Deployment manifest specifying 3 replicas and rolling update strategy.",
+        "ConfigMap and Secret mounted into pod environment variables.",
+        "Service manifest exposing cluster internal endpoint.",
+        "Ingress routing path-based traffic to backend service.",
+        "Liveness and Readiness probe configurations checking /health route."
+      ],
+      "hints": [
+        "Readiness probes prevent traffic routing to booting pods.",
+        "Set resource request and limits on CPU and memory."
+      ],
+      "recruiterNote": "Kubernetes deployment and manifest authorship is a core DevOps requirement.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day31",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day31",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 32,
+      "date": "2025-12-13",
+      "title": "Day 32: LLM Fine-Tuning with LoRA on Custom Domain Dataset",
+      "trackId": "data-ml",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Fine-tune a lightweight LLM (Llama-3-8B or Mistral-7B) using Parameter-Efficient Fine-Tuning (PEFT/LoRA) on custom domain Q&A data.",
+      "why": "Fine-tuning adapts open models to specialized domain terminology and stylistic constraints efficiently.",
+      "requirements": [
+        "Prepare instruction-tuning dataset in JSONL format.",
+        "Configure LoRA parameters (r=8, alpha=16, target_modules).",
+        "Execute training loop using HuggingFace SFTTrainer or Unsloth.",
+        "Track training loss curves and perplexity.",
+        "Evaluate qualitative output before vs after fine-tuning."
+      ],
+      "hints": [
+        "Use 4-bit quantization (QLoRA) to reduce GPU memory requirements.",
+        "Format prompt template consistently during training and inference."
+      ],
+      "recruiterNote": "Hands-on LLM fine-tuning experience is in high demand across AI engineering teams.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day32",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day32",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 33,
+      "date": "2025-12-14",
+      "title": "Day 33: Payment Gateway Integration with Stripe Webhooks",
+      "trackId": "fullstack-ai",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a full checkout flow integrating Stripe Checkout API and secure webhook handling for subscription payment events.",
+      "why": "Monetization flows demand zero-defect transaction handling and secure server-to-server webhook verification.",
+      "requirements": [
+        "Create Stripe Checkout Session endpoint returning checkout URL.",
+        "Webhook endpoint verifying Stripe cryptographic signature header.",
+        "Handle payment_intent.succeeded and customer.subscription.deleted events.",
+        "Database update granting user premium access on payment confirmation.",
+        "Idempotent webhook event processing preventing double credits."
+      ],
+      "hints": [
+        "Never rely solely on frontend redirect for fulfillment — rely on webhooks.",
+        "Use Stripe CLI to test local webhook delivery."
+      ],
+      "recruiterNote": "Payment processing integration is a foundational skill for product-oriented engineers.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day33",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day33",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 34,
+      "date": "2025-12-15",
+      "title": "Day 34: Database Schema Migration Engine & Versioning Tool",
+      "trackId": "backend-systems",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a custom database migration runner executing up/down SQL scripts sequentially with a schema_migrations tracking table.",
+      "why": "Database migrations ensure schema changes are applied deterministically across development, staging, and production.",
+      "requirements": [
+        "Create timestamped migration files (e.g., 20251123_create_users.up.sql and .down.sql).",
+        "CLI commands: `migrate up` and `migrate down`.",
+        "Maintain schema_migrations table tracking executed version hashes.",
+        "Wrap each migration execution inside a single database transaction.",
+        "Prevent dirty state when a migration script fails halfway."
+      ],
+      "hints": [
+        "Transactional DDL in PostgreSQL rolls back schema changes on error.",
+        "Compute checksum hash of migration files to detect altered history."
+      ],
+      "recruiterNote": "Understanding migration lifecycle mechanics shows deep database management discipline.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day34",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day34",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 35,
+      "date": "2025-12-16",
+      "title": "Day 35: Centralized Log Aggregation System with Vector/FluentBit",
+      "trackId": "devops-cloud",
+      "duration": "~2.5 hrs",
+      "difficulty": "Advanced",
+      "summary": "Configure FluentBit or Vector log shippers to collect JSON logs from containers, transform fields, and index into Elasticsearch/Loki.",
+      "why": "Centralized logging enables searching logs across dozens of distributed services during active incidents.",
+      "requirements": [
+        "Structured JSON log formatter in application.",
+        "FluentBit / Vector container parsing container stdout logs.",
+        "Add cluster metadata (pod name, environment) to log records.",
+        "Route log stream to Loki / Elasticsearch sink.",
+        "Query logs using LogQL or Kibana interface."
+      ],
+      "hints": [
+        "Log in JSON format with consistent keys (level, timestamp, message, traceId).",
+        "Filter out health check endpoint noise from logs."
+      ],
+      "recruiterNote": "Centralized logging and log shipping expertise is vital for enterprise cloud platforms.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day35",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day35",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 36,
+      "date": "2025-12-17",
+      "title": "Day 36: Image Generation API Integration with Stable Diffusion / Flux",
+      "trackId": "fullstack-ai",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build a web app generating images from text prompts using HuggingFace Inference API or Replicate Stable Diffusion / Flux endpoint.",
+      "why": "Generative media workflows power creative AI applications and marketing asset generation engines.",
+      "requirements": [
+        "Input form taking text prompt, aspect ratio, and negative prompts.",
+        "Async API route calling image model API.",
+        "Poll or webhook handler waiting for generation completion.",
+        "Save generated image to local/S3 storage.",
+        "UI display grid showing generation history and download options."
+      ],
+      "hints": [
+        "Set prompt length validation to prevent API errors.",
+        "Cache generated image URLs to avoid expensive re-runs."
+      ],
+      "recruiterNote": "Generative media integration shows breadth across AI product development.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day36",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day36",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 37,
+      "date": "2025-12-18",
+      "title": "Day 37: Time-Series Data Aggregation Engine with InfluxDB / TimescaleDB",
+      "trackId": "data-ml",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Design a time-series ingestion pipeline recording IoT sensor readings or server metrics with retention policies and continuous aggregates.",
+      "why": "Time-series databases handle high-volume write workloads optimized for temporal queries and downsampling.",
+      "requirements": [
+        "Ingest high-frequency metric points (timestamp, metric_name, value, tags).",
+        "Hypertable / time-series collection partitioning by time interval.",
+        "Continuous aggregate queries computing 1-minute and 1-hour averages.",
+        "Automated retention policy dropping raw metrics older than 30 days.",
+        "Query API returning smoothed line chart dataset."
+      ],
+      "hints": [
+        "Use batch inserts to maximize write throughput.",
+        "Index on tag dimensions for fast slice-and-dice queries."
+      ],
+      "recruiterNote": "Time-series database expertise is highly valued in IoT, monitoring, and financial trading platforms.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day37",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day37",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 38,
+      "date": "2025-12-19",
+      "title": "Day 38: OAuth 2.0 Single Sign-On (SSO) with Google & GitHub",
+      "trackId": "fullstack-ai",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Implement standard OAuth 2.0 Authorization Code Flow with PKCE for Google and GitHub social logins.",
+      "why": "Social SSO removes password friction and improves user sign-up conversion.",
+      "requirements": [
+        "Redirect user to Provider Authorization URL with state parameter.",
+        "Callback endpoint exchanging auth code for access token.",
+        "Verify state token parameter to prevent CSRF authorization attacks.",
+        "Fetch user profile email/avatar and upsert into database.",
+        "Issue session cookie or JWT on successful login."
+      ],
+      "hints": [
+        "Use state parameter containing cryptographically random string.",
+        "PKCE code verifier adds extra security against auth code interception."
+      ],
+      "recruiterNote": "OAuth 2.0 protocol mastery is expected for all senior full-stack developers.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day38",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day38",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 39,
+      "date": "2025-12-20",
+      "title": "Day 39: Distributed Mutex Lock with Redis & Redlock Algorithm",
+      "trackId": "backend-systems",
+      "duration": "~2.5 hrs",
+      "difficulty": "Advanced",
+      "summary": "Implement a distributed lock library using Redis SET NX PX commands and the Redlock algorithm to prevent race conditions across server nodes.",
+      "why": "Distributed locks prevent duplicate payment charges and concurrent state corruption in distributed systems.",
+      "requirements": [
+        "Acquire lock with key, unique random value, and lease TTL.",
+        "Release lock safely using Lua script verifying unique random ownership value.",
+        "Automatic lock renewal (watchdog timer) for long-running critical sections.",
+        "Retry mechanism with randomized sleep backoff.",
+        "Concurrency stress test demonstrating zero race conditions under 100 concurrent threads."
+      ],
+      "hints": [
+        "Never release a lock without verifying lock value matches process token.",
+        "Keep lock TTL short and extend as needed."
+      ],
+      "recruiterNote": "Understanding distributed concurrency and locking primitives demonstrates senior engineering depth.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day39",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day39",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 40,
+      "date": "2025-12-21",
+      "title": "Day 40: Zero-Downtime Blue-Green Deployment Script",
+      "trackId": "devops-cloud",
+      "duration": "~2.5 hrs",
+      "difficulty": "Advanced",
+      "summary": "Write automated deployment scripts executing Blue-Green application updates using Nginx upstream switching or AWS ALB target groups.",
+      "why": "Zero-downtime deployments ensure continuous application availability during software releases.",
+      "requirements": [
+        "Spin up Green target environment alongside active Blue environment.",
+        "Run automated health checks on Green environment.",
+        "Switch Nginx load balancer upstream traffic seamlessly to Green.",
+        "Monitor error rate for 60 seconds after cutover.",
+        "Automated instant rollback to Blue environment if errors spike."
+      ],
+      "hints": [
+        "Ensure database migrations are backwards compatible before code deployment.",
+        "Drain active connections before terminating old Blue instances."
+      ],
+      "recruiterNote": "Zero-downtime deployment automation shows mastery of production release engineering.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day40",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day40",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 41,
+      "date": "2025-12-22",
+      "title": "Day 41: Autonomous AI Agent with Tool & Function Calling",
+      "trackId": "fullstack-ai",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Build an autonomous AI agent loop that receives a complex user request, calls custom python/JS tool functions (weather, search, math), and returns a final answer.",
+      "why": "Agentic tool-use transforms static LLMs into active problem-solving assistants.",
+      "requirements": [
+        "Define tool schema array describing function names, arguments, and descriptions.",
+        "Pass tools array to Gemini / OpenAI model API.",
+        "Parse tool_calls from model response and execute local function logic.",
+        "Pass tool execution result back to model in loop until final text response.",
+        "Max iteration guard preventing infinite execution loops."
+      ],
+      "hints": [
+        "Function descriptions must be crystal clear to help LLM choose correct tool.",
+        "Return JSON formatted outputs from tool functions."
+      ],
+      "recruiterNote": "Building function-calling AI agents is a cutting-edge skill in high demand across tech companies.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day41",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day41",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 42,
+      "date": "2025-12-23",
+      "title": "Day 42: Data Warehouse Star Schema Modeling with dbt & Snowflake",
+      "trackId": "data-ml",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Model raw transaction data into Fact and Dimension tables using dbt (Data Build Tool) with automated testing and documentation.",
+      "why": "Data warehousing transforms transactional DB tables into fast analytical models for business intelligence.",
+      "requirements": [
+        "Define Fact table (fact_orders) and Dimension tables (dim_users, dim_products).",
+        "Write dbt models with SQL SELECT transformations.",
+        "Configure dbt tests verifying unique and not_null constraints.",
+        "Generate dbt lineage graph and documentation web app.",
+        "Incremental materialization model for high-volume fact tables."
+      ],
+      "hints": [
+        "Use surrogate keys for dimension primary keys.",
+        "Keep staging models focused purely on renaming and casting."
+      ],
+      "recruiterNote": "dbt data modeling expertise is the primary requirement for Analytics Engineer positions.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day42",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day42",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 43,
+      "date": "2025-12-24",
+      "title": "Day 43: Reliable Webhook Delivery System with Exponential Backoff",
+      "trackId": "backend-systems",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Design a webhook event dispatch system that sends HTTP POST payloads to customer endpoints with HMAC signature verification and retry schedules.",
+      "why": "Third-party platform integrations depend on robust webhook delivery systems that survive customer server outages.",
+      "requirements": [
+        "Sign webhook payloads using HMAC-SHA256 signature header.",
+        "Dispatch webhooks asynchronously via task queue.",
+        "Exponential backoff retry schedule on 5xx or timeout errors (1m, 5m, 15m, 1h, 24h).",
+        "Disable endpoint after 10 consecutive permanent failures.",
+        "Customer dashboard showing webhook delivery attempt logs."
+      ],
+      "hints": [
+        "Include timestamp in HMAC signature to prevent replay attacks.",
+        "Return fast 2xx response on webhook acceptance."
+      ],
+      "recruiterNote": "Webhook delivery architecture is crucial for SaaS developer platforms.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day43",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day43",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 44,
+      "date": "2025-12-25",
+      "title": "Day 44: Serverless Microservice API with AWS Lambda & API Gateway",
+      "trackId": "devops-cloud",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Deploy a serverless REST API using AWS Lambda, API Gateway, and DynamoDB configured via AWS SAM or Serverless Framework.",
+      "why": "Serverless architectures eliminate server management overhead and scale automatically from zero to millions of requests.",
+      "requirements": [
+        "Serverless template file defining API Gateway routes and Lambda functions.",
+        "Cold start optimization keeping execution package size small.",
+        "DynamoDB single-table design for CRUD operations.",
+        "Environment variable configuration for staging and production.",
+        "Local testing execution using SAM local or Serverless offline."
+      ],
+      "hints": [
+        "Keep Lambda package dependencies minimal to reduce cold start times.",
+        "Reuse database connections outside Lambda handler scope."
+      ],
+      "recruiterNote": "Serverless deployment experience demonstrates cloud-native cost optimization mindset.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day44",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day44",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 45,
+      "date": "2025-12-26",
+      "title": "Day 45: Voice AI Audio Transcriber & Meeting Summarizer",
+      "trackId": "fullstack-ai",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Build an end-to-end voice processing app accepting recorded audio files, transcribing with Whisper API, and generating structured meeting bullet points.",
+      "why": "Voice AI tools translate unstructured spoken audio into actionable text insights.",
+      "requirements": [
+        "Audio file upload UI supporting mp3, wav, m4a formats.",
+        "Speech-to-text transcription via Whisper API / local Whisper model.",
+        "Generate structured summary: Key Decisions, Action Items, and Open Questions.",
+        "Timestamped transcript viewer with playback sync.",
+        "Export summary as Markdown or PDF report."
+      ],
+      "hints": [
+        "Compress large audio files using ffmpeg before API upload.",
+        "Prompt model with explicit section markdown headers."
+      ],
+      "recruiterNote": "Voice and audio AI applications represent one of the fastest growing AI software segments.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day45",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day45",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 46,
+      "date": "2025-12-27",
+      "title": "Day 46: Apache Spark Distributed Big Data Processing Pipeline",
+      "trackId": "data-ml",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Write PySpark scripts to process, filter, and aggregate multi-gigabyte log datasets across distributed worker nodes.",
+      "why": "Apache Spark is the industry standard engine for large-scale batch data processing.",
+      "requirements": [
+        "Initialize PySpark SparkSession with memory configurations.",
+        "Load partitioning Parquet / CSV data files.",
+        "Perform DataFrame transformations, grouping, and window function aggregations.",
+        "Write processed dataset out in partitioned Parquet format.",
+        "Benchmark Spark execution plan using Spark Web UI."
+      ],
+      "hints": [
+        "Avoid collect() calls on large datasets.",
+        "Partition data by frequent query filter columns like date."
+      ],
+      "recruiterNote": "PySpark proficiency is essential for Big Data and enterprise data engineering careers.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day46",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day46",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 47,
+      "date": "2025-12-28",
+      "title": "Day 47: Idempotency Key Middleware for Financial Transactions",
+      "trackId": "backend-systems",
+      "duration": "~2 hrs",
+      "difficulty": "Advanced",
+      "summary": "Build an idempotency middleware verifying Idempotency-Key HTTP header to guarantee API requests are processed exactly once.",
+      "why": "Network retries can lead to duplicate payments or order creation without strict idempotency protection.",
+      "requirements": [
+        "Require Idempotency-Key header on payment and creation endpoints.",
+        "Store request key, status (started/completed), and cached response in Redis/DB.",
+        "Return cached response immediately if identical key is received twice.",
+        "Lock key during initial execution to prevent concurrent duplicate processing.",
+        "Set 24-hour expiration on stored idempotency keys."
+      ],
+      "hints": [
+        "Fingerprint request body hash alongside key to detect parameter tampering.",
+        "Return 409 Conflict if key is currently processing."
+      ],
+      "recruiterNote": "Idempotency implementation is a critical marker of high-reliability fintech backend engineering.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day47",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day47",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 48,
+      "date": "2025-12-29",
+      "title": "Day 48: Infrastructure Alerting Bot with Prometheus & Slack",
+      "trackId": "devops-cloud",
+      "duration": "~2 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Configure Prometheus Alertmanager rules detecting high CPU usage, 5xx error spikes, or disk space exhaustion and route rich alerts to Slack.",
+      "why": "Proactive alerting guarantees operations teams react quickly before service outages impact users.",
+      "requirements": [
+        "Define Prometheus alert rules (HighErrorRate, HighLatency, NodeDiskFull).",
+        "Configure Alertmanager routing and grouping rules.",
+        "Slack webhook notification template showing alert severity, description, and runbook links.",
+        "Silence and inhibit rules suppressing duplicate notifications during maintenance windows.",
+        "Test alert triggering by simulating artificial load."
+      ],
+      "hints": [
+        "Group related alerts by service or cluster to avoid alert fatigue.",
+        "Include direct Grafana dashboard link in Slack alert payload."
+      ],
+      "recruiterNote": "Alerting automation and incident readiness are core responsibilities for DevOps and SRE roles.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day48",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day48",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 49,
+      "date": "2025-12-30",
+      "title": "Day 49: Multimodal Search API with CLIP Vision-Language Embeddings",
+      "trackId": "fullstack-ai",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Build an image-by-text search engine where users search photos using natural language descriptions powered by OpenAI CLIP embeddings.",
+      "why": "Multimodal AI models bridge text and visual data in a shared vector embedding space.",
+      "requirements": [
+        "Process photo catalog generating CLIP image vector embeddings.",
+        "Index image vectors in vector database.",
+        "Generate text embedding for user query string using CLIP text encoder.",
+        "Perform vector similarity search returning top matching images.",
+        "Interactive UI gallery showing ranked image results."
+      ],
+      "hints": [
+        "Use vector normalization so dot product equals cosine similarity.",
+        "Pre-compute image embeddings offline in batch script."
+      ],
+      "recruiterNote": "Multimodal AI applications are transforming e-commerce visual search and media asset platforms.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day49",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day49",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 50,
+      "date": "2025-12-31",
+      "title": "Day 50: Recommendation Engine with Collaborative Filtering",
+      "trackId": "data-ml",
+      "duration": "~2.5 hrs",
+      "difficulty": "Intermediate",
+      "summary": "Implement Matrix Factorization (SVD) or User-Based Collaborative Filtering to recommend movies or products based on user rating matrix.",
+      "why": "Recommendation algorithms drive user engagement on streaming platforms, e-commerce, and social feeds.",
+      "requirements": [
+        "Build user-item rating matrix from interaction logs.",
+        "Calculate cosine similarity between user preference vectors.",
+        "Predict unrated item scores for active user.",
+        "Return top-10 personalized recommendation list.",
+        "Evaluate precision@K and recall@K recommendation metrics."
+      ],
+      "hints": [
+        "Handle cold-start problem by falling back to popular items for new users.",
+        "Normalize ratings by subtracting user average rating."
+      ],
+      "recruiterNote": "Recommendation system implementation demonstrates practical machine learning applications.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day50",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day50",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 51,
+      "date": "2026-01-01",
+      "title": "Day 51: High-Throughput In-Memory Key-Value Store in Go",
+      "trackId": "backend-systems",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Build a thread-safe, concurrent key-value store in Go with TTL expiration, LRU eviction policy, and TCP protocol interface.",
+      "why": "Building database storage engines from scratch sharpens concurrency, lock contention, and memory management skills.",
+      "requirements": [
+        "Thread-safe map storage using sync.RWMutex or sharded locks.",
+        "LRU (Least Recently Used) cache eviction policy when memory limit is reached.",
+        "Passive and active TTL key expiration background goroutine.",
+        "Custom binary or text protocol over TCP socket.",
+        "Benchmark concurrent read/write operations under high goroutine load."
+      ],
+      "hints": [
+        "Sharded locks reduce mutex contention across multiple CPU cores.",
+        "Use doubly linked list + map for O(1) LRU eviction."
+      ],
+      "recruiterNote": "Low-level concurrency and custom storage engine development shows top-tier systems programming skill.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day51",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day51",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 52,
+      "date": "2026-01-02",
+      "title": "Day 52: Kubernetes Horizontal Pod Autoscaler (HPA) & Chaos Testing",
+      "trackId": "devops-cloud",
+      "duration": "~2.5 hrs",
+      "difficulty": "Advanced",
+      "summary": "Configure Kubernetes HPA scaling pods dynamically on CPU/Memory load, and test system resilience using Chaos Mesh / Litmus Chaos.",
+      "why": "Autoscaling handles unexpected traffic spikes, while chaos engineering proves cluster fault tolerance.",
+      "requirements": [
+        "Metrics Server deployment in Kubernetes cluster.",
+        "HorizontalPodAutoscaler manifest scaling deployment from 2 to 10 replicas.",
+        "Simulate high CPU traffic load with wrk / Locust tool.",
+        "Observe automated scale-out and scale-in behavior.",
+        "Inject random pod deletion chaos experiment and verify zero dropped requests."
+      ],
+      "hints": [
+        "Set scale-down stabilization window to avoid rapid pod churning.",
+        "Verify PodDisruptionBudget limits maximum concurrent down pods."
+      ],
+      "recruiterNote": "Chaos engineering and autoscaling experience demonstrates enterprise cloud reliability expertise.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day52",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day52",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 53,
+      "date": "2026-01-03",
+      "title": "Day 53: Hybrid Search Engine (BM25 + Vector Dense Retrieval)",
+      "trackId": "fullstack-ai",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Combine BM25 keyword search scores with dense vector embeddings using Reciprocal Rank Fusion (RRF) for state-of-the-art search relevance.",
+      "why": "Hybrid search provides the exact-keyword matching of traditional search with the semantic understanding of AI embeddings.",
+      "requirements": [
+        "BM25 sparse keyword index over text document corpus.",
+        "Dense vector embedding index over same corpus.",
+        "Reciprocal Rank Fusion (RRF) algorithm combining sparse and dense rankings.",
+        "Search API returning hybrid-ranked document results.",
+        "A/B comparison UI contrasting Keyword vs Vector vs Hybrid search outputs."
+      ],
+      "hints": [
+        "RRF score = sum(1 / (60 + rank_i)) across sparse and dense ranks.",
+        "Tune BM25 k1 and b parameters for domain text length."
+      ],
+      "recruiterNote": "Hybrid search with RRF is currently the gold standard architecture in production AI retrieval systems.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day53",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day53",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 54,
+      "date": "2026-01-04",
+      "title": "Day 54: Realtime Feature Store for Machine Learning Inference",
+      "trackId": "data-ml",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Build an online/offline feature store serving low-latency feature vectors for real-time model scoring and batch training.",
+      "why": "Feature stores eliminate data leakage between training and inference while serving sub-10ms feature vectors.",
+      "requirements": [
+        "Define entity schemas and feature definitions.",
+        "Online store (Redis) serving real-time feature lookups in <5ms.",
+        "Offline store (Parquet/Postgres) serving point-in-time correct historical training data.",
+        "Feature ingestion pipeline updating online and offline stores simultaneously.",
+        "Point-in-time join query preventing data leakage from future events."
+      ],
+      "hints": [
+        "Timestamp feature writes to enable time-travel queries.",
+        "Use Redis hashes to store feature key-value pairs."
+      ],
+      "recruiterNote": "Feature store architecture is a cornerstone of modern MLOps infrastructure.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day54",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day54",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 55,
+      "date": "2026-01-05",
+      "title": "Day 55: Circuit Breaker Pattern for Resilience in Microservices",
+      "trackId": "backend-systems",
+      "duration": "~2 hrs",
+      "difficulty": "Advanced",
+      "summary": "Implement a Circuit Breaker state machine (Closed, Open, Half-Open) in Go/Node to stop cascading failures when downstream services fail.",
+      "why": "Circuit breakers prevent failing external services from exhausting connection pools and crashing calling applications.",
+      "requirements": [
+        "State transitions: Closed -> Open (on error threshold) -> Half-Open (after timeout) -> Closed/Open.",
+        "Configurable failure rate percentage threshold and evaluation time window.",
+        "Fallback handler execution when circuit is Open.",
+        "Metrics exposing current state and failure counters.",
+        "Unit tests simulating service outages and recovery cycles."
+      ],
+      "hints": [
+        "Use atomic operations or mutexes for thread-safe state transitions.",
+        "Log state changes clearly with timestamp."
+      ],
+      "recruiterNote": "Fault-tolerance patterns like Circuit Breaker are essential knowledge for microservice engineering.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day55",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day55",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 56,
+      "date": "2026-01-06",
+      "title": "Day 56: Multi-Region Cloud Failover Architecture Script",
+      "trackId": "devops-cloud",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Configure DNS Route53 / Cloudflare failover routing between Primary and Secondary cloud regions with database cross-region replication.",
+      "why": "Multi-region redundancy protects mission-critical applications against entire cloud region outages.",
+      "requirements": [
+        "Infrastructure setup in primary (us-east-1) and secondary (us-west-2) regions.",
+        "Cross-region database read-replica or multi-region database.",
+        "Route53 Health Check monitoring primary region endpoint.",
+        "Automated DNS failover routing traffic to secondary region on primary failure.",
+        "RTO (Recovery Time Objective) and RPO evaluation report."
+      ],
+      "hints": [
+        "Keep DNS TTL short (e.g. 60s) to enable fast failover propagation.",
+        "Ensure secondary region has necessary warm capacity."
+      ],
+      "recruiterNote": "Multi-region high-availability design demonstrates top-tier cloud architecture competency.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day56",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day56",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 57,
+      "date": "2026-01-07",
+      "title": "Day 57: AI Collaborative Whiteboard Editor with Live Canvas Sync",
+      "trackId": "fullstack-ai",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Develop a real-time collaborative canvas where multiple users draw shapes, and an AI agent interprets visual drawings to generate code.",
+      "why": "Multi-user canvas synchronization paired with vision AI models creates futuristic design-to-code developer tools.",
+      "requirements": [
+        "HTML5 Canvas or Konva.js drawing editor.",
+        "WebSocket CRDT / Operational Transformation synchronizing shapes across users.",
+        "Capture canvas snapshot and send to Gemini Vision API.",
+        "Generate clean HTML/Tailwind code based on drawn UI wireframe.",
+        "Live preview pane rendering generated code alongside canvas."
+      ],
+      "hints": [
+        "Debounce vision API triggers to avoid frequent costly calls.",
+        "Send canvas image as PNG data URL."
+      ],
+      "recruiterNote": "Combines real-time collaborative frontend graphics with cutting-edge vision AI generation.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day57",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day57",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 58,
+      "date": "2026-01-08",
+      "title": "Day 58: Realtime Anomaly Detection Engine for Fraud Prevention",
+      "trackId": "data-ml",
+      "duration": "~2.5 hrs",
+      "difficulty": "Advanced",
+      "summary": "Train an Isolation Forest or Autoencoder model on transaction data streams to flag suspicious fraudulent activity in real-time.",
+      "why": "Anomaly detection models protect financial platforms by flagging unauthorized transactions instantly.",
+      "requirements": [
+        "Preprocess continuous transaction features (amount, location, velocity).",
+        "Train unsupervised Isolation Forest / Autoencoder model on normal transaction data.",
+        "Real-time scoring endpoint evaluating incoming transaction payload.",
+        "Return anomaly score and binary fraud alert flag.",
+        "Dashboard displaying high-risk flagged transactions with explanation features."
+      ],
+      "hints": [
+        "Standardize numerical feature scaling before model scoring.",
+        "Use SHAP or feature importances to explain why transaction was flagged."
+      ],
+      "recruiterNote": "Real-time fraud detection AI models are standard in fintech and e-commerce security.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day58",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day58",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 59,
+      "date": "2026-01-09",
+      "title": "Day 59: Distributed Tracing with OpenTelemetry & Jaeger",
+      "trackId": "devops-cloud",
+      "duration": "~2.5 hrs",
+      "difficulty": "Advanced",
+      "summary": "Instrument multi-service backend applications with OpenTelemetry trace context propagation and visualize distributed trace timelines in Jaeger.",
+      "why": "Distributed tracing reveals performance bottlenecks and request journeys across microservices boundaries.",
+      "requirements": [
+        "Instrument OpenTelemetry SDK in HTTP client and server endpoints.",
+        "Propagate traceparent headers across inter-service HTTP/gRPC calls.",
+        "Create custom spans for database queries and background operations.",
+        "Export trace spans to Jaeger collector daemon.",
+        "Identify slow trace waterfall spans in Jaeger UI."
+      ],
+      "hints": [
+        "Use automatic instrumentation libraries where available.",
+        "Sample trace rate in production to manage storage volume."
+      ],
+      "recruiterNote": "OpenTelemetry distributed tracing expertise is a key requirement for modern cloud platform observability.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day59",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day59",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
+    },
+    {
+      "day": 60,
+      "date": "2026-01-10",
+      "title": "Day 60: Capstone Project: Production-Grade AI Application Suite",
+      "trackId": "fullstack-ai",
+      "duration": "~3 hrs",
+      "difficulty": "Advanced",
+      "summary": "Build and deploy a complete production-grade full-stack AI platform combining vector search, auth, task queue, and cloud observability.",
+      "why": "A comprehensive capstone project brings together 60 days of software craftsmanship into a crown jewel portfolio item.",
+      "requirements": [
+        "Full-stack architecture integrating React, Node/Python API, and Postgres/Redis.",
+        "AI-powered feature utilizing RAG or function-calling agent.",
+        "Stateless JWT auth, rate limiting, and role-based authorization.",
+        "Automated CI/CD pipeline deploying to cloud hosting with Docker.",
+        "Public production URL, clean README, architecture diagram, and demo video."
+      ],
+      "hints": [
+        "Focus on polish, error state handling, and documentation clarity.",
+        "Add health checks and monitoring metrics."
+      ],
+      "recruiterNote": "A production capstone project shipped with live URL and code proof is the ultimate portfolio proof of work.",
+      "submission": {
+        "githubLabel": "GitHub repository link",
+        "githubPlaceholder": "https://github.com/noor-h/abtalks-day60",
+        "linkedinLabel": "LinkedIn post link",
+        "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day60",
+        "streakSafeWhen": "Both links submitted and validated"
+      }
     }
   ]
 }

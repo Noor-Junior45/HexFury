@@ -14,8 +14,7 @@ export default function StreakStrip() {
         return (
           <Link
             key={d.day}
-            to={d.day === 12 ? '/day/12' : '#'}
-            onClick={(e) => d.day !== 12 && e.preventDefault()}
+            to={`/day/${d.day}`}
             className={`flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-xl border text-[10px] font-extrabold transition-all min-h-[44px] min-w-[44px] ${
               isComplete
                 ? 'border-emerald-300 bg-emerald-50 text-emerald-800 shadow-2xs hover:bg-emerald-100'

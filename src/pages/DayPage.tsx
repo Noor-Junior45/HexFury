@@ -49,7 +49,7 @@ export default function DayPage() {
   const [copiedTemplate, setCopiedTemplate] = useState(false);
 
   // Unlocked check / Locked Empty State
-  if (!task) {
+  if (!task || dayNum > appData.student.currentDay) {
     return (
       <MobileShell>
         <TopBar showBack backTo="/dashboard" />

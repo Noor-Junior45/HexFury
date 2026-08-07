@@ -62,13 +62,17 @@ export const appData = data as {
   streakHistory: StreakDay[];
   currentStreak: { count: number; longestStreak: number; lastCompletedDay: number; todayDay: number; status: string };
   day12: DayTask;
+  days: DayTask[];
   badges: Badge[];
   recruiters: Array<{ company: string; role: string; location: string; watching: boolean }>;
   testimonials: Array<{ name: string; college: string; quote: string; outcome: string }>;
 };
 
 export const getTrack = (id: string) => appData.tracks.find((t) => t.id === id);
-export const getDay = (n: number): DayTask | undefined => (n === 12 ? appData.day12 : undefined);
+export const getDay = (n: number): DayTask | undefined => {
+  if (n < 1 || n > appData.brand.cycleDays) return undefined;
+  return appData.days?.find((d) => d.day === n) ?? (n === 12 ? appData.day12 : undefined);
+};
 export const getStreakDay = (n: number) => appData.streakHistory.find((d) => d.day === n);
 export const earnedBadges = () => appData.badges.filter((b) => b.earned);
 export const lockedBadges = () => appData.badges.filter((b) => !b.earned);

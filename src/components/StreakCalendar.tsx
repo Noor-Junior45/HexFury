@@ -59,7 +59,7 @@ export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay:
             </span>
             <div>
               <h3 className="text-sm font-semibold text-mist-100">Your 60-day streak</h3>
-              <p className="text-[10px] text-mist-500">Click any day to toggle completed & celebrate!</p>
+              <p className="text-[10px] text-mist-500">Click any unlocked day (1–{appData.student.currentDay}) to view or build!</p>
             </div>
           </div>
         </div>
@@ -86,7 +86,6 @@ export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay:
               key={day}
               day={day}
               status={status}
-              onToggle={() => toggleDayCompletion(day)}
             />
           );
         })}
@@ -105,36 +104,35 @@ export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay:
 function DayBox({
   day,
   status,
-  onToggle,
 }: {
   day: number;
   status: DayStatus;
-  onToggle: () => void;
 }) {
+  const isUnlocked = day <= appData.student.currentDay;
   const statusMarker =
     status === 'complete' ? '+' : status === 'missed' ? 'x' : status === 'frozen' ? '*' : status === 'pending' ? 'o' : '-';
 
   const statusStyle: Record<DayStatus, string> = {
-    complete: 'border-sage-500/40 bg-sage-500/10 text-mist-100 shadow-xs shadow-sage-500/10',
-    missed: 'border-rose-500/50 bg-rose-500/10 text-mist-100',
-    frozen: 'border-sky-400/40 bg-sky-500/10 text-mist-100',
-    pending: 'border-ember-400/70 bg-ember-500/10 text-mist-100',
-    future: 'border-obsidian-600 bg-obsidian-900/60 text-mist-500',
+    complete: 'border-sage-500/40 bg-sage-500/10 text-mist-100 shadow-xs shadow-sage-500/10 hover:border-sage-400',
+    missed: 'border-rose-500/50 bg-rose-500/10 text-mist-100 hover:border-rose-400',
+    frozen: 'border-sky-400/40 bg-sky-500/10 text-mist-100 hover:border-sky-300',
+    pending: 'border-ember-400/70 bg-ember-500/10 text-mist-100 hover:border-ember-300',
+    future: 'border-obsidian-700/80 bg-obsidian-900/40 text-mist-600 opacity-60',
   };
 
   return (
-    <button
-      type="button"
-      onClick={onToggle}
-      aria-label={`Day ${day}: ${statusLabel[status]}`}
+    <Link
+      to={`/day/${day}`}
+      aria-label={`Day ${day}: ${statusLabel[status]}${!isUnlocked ? ' (Locked)' : ''}`}
+      title={isUnlocked ? `Go to Day ${day} challenge` : `Day ${day} is locked`}
       style={{ flex: '0 0 calc((100% - 25px) / 6)' }}
-      className={`flex h-9 min-w-0 flex-col items-center justify-center rounded-md border transition-all cursor-pointer ${
+      className={`flex h-9 min-w-0 flex-col items-center justify-center rounded-md border transition-all ${
         statusStyle[status]
       } ${
         day === appData.student.currentDay
           ? 'ring-1 ring-ember-300/80 ring-offset-1 ring-offset-obsidian-850'
           : ''
-      } hover:scale-105 active:scale-95`}
+      } ${isUnlocked ? 'hover:scale-105 active:scale-95 cursor-pointer' : 'hover:opacity-80'}`}
     >
       <span className="text-[10px] font-bold leading-none">{day}</span>
       <span
@@ -145,12 +143,14 @@ function DayBox({
             ? 'text-rose-400'
             : status === 'frozen'
             ? 'text-sky-300'
-            : 'text-mist-600'
+            : isUnlocked
+            ? 'text-ember-400'
+            : 'text-mist-700'
         }`}
       >
         {statusMarker}
       </span>
-    </button>
+    </Link>
   );
 }
 
