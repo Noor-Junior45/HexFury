@@ -1,0 +1,208 @@
+{
+  "brand": {
+    "name": "ABTalks",
+    "tagline": "Build. Commit. Post. Keep your streak.",
+    "cycleDays": 60,
+    "edition": "Winter Cohort '25"
+  },
+  "stats": {
+    "activeBuilders": 1284,
+    "streaksKept": 18760,
+    "recruitersWatching": 92,
+    "projectsShipped": 4310
+  },
+  "tracks": [
+    {
+      "id": "fullstack-ai",
+      "name": "Full Stack & AI",
+      "shortName": "FS & AI",
+      "color": "ember",
+      "description": "Ship production-grade apps with React, Node, and applied AI — from RAG pipelines to semantic search.",
+      "skills": ["React", "Node.js", "Python", "Vector Search", "Postgres", "LLMs"]
+    },
+    {
+      "id": "backend-systems",
+      "name": "Backend Systems",
+      "shortName": "Backend",
+      "color": "sage",
+      "description": "Design resilient APIs, queues, and data infrastructure that scale under real load.",
+      "skills": ["Go", "Kafka", "Redis", "gRPC", "Postgres"]
+    },
+    {
+      "id": "devops-cloud",
+      "name": "DevOps & Cloud",
+      "shortName": "DevOps",
+      "color": "amber",
+      "description": "Automate deploys, observability, and infrastructure-as-code across cloud providers.",
+      "skills": ["Docker", "Kubernetes", "Terraform", "AWS", "Grafana"]
+    },
+    {
+      "id": "data-ml",
+      "name": "Data & ML",
+      "shortName": "Data/ML",
+      "color": "rose",
+      "description": "Build pipelines, feature stores, and models that turn raw data into decisions.",
+      "skills": ["Python", "Spark", "PyTorch", "Airflow", "dbt"]
+    }
+  ],
+  "student": {
+    "name": "Noor Hassan",
+    "college": "Sister Nivedita University",
+    "trackId": "fullstack-ai",
+    "currentDay": 12,
+    "joinedDate": "2025-11-12",
+    "avatarInitials": "NH",
+    "rank": "Gold II",
+    "rankTier": 2,
+    "rankLabel": "Top 18% of cohort",
+    "bio": "Final-year CSE student. Building toward an AI engineer internship by shipping one real project every day.",
+    "streakFreeze": {
+      "total": 1,
+      "used": 0,
+      "available": true
+    }
+  },
+  "streakHistory": [
+    { "day": 1, "status": "complete", "date": "2025-11-12", "project": "CLI Pomodoro Timer", "github": "https://github.com/noor-h/abtalks-day01", "linkedin": "https://linkedin.com/feed/update/noor-day01" },
+    { "day": 2, "status": "complete", "date": "2025-11-13", "project": "Markdown Note Taker", "github": "https://github.com/noor-h/abtalks-day02", "linkedin": "https://linkedin.com/feed/update/noor-day02" },
+    { "day": 3, "status": "complete", "date": "2025-11-14", "project": "Weather CLI with API", "github": "https://github.com/noor-h/abtalks-day03", "linkedin": "https://linkedin.com/feed/update/noor-day03" },
+    { "day": 4, "status": "complete", "date": "2025-11-15", "project": "Expense Splitter", "github": "https://github.com/noor-h/abtalks-day04", "linkedin": "https://linkedin.com/feed/update/noor-day04" },
+    { "day": 5, "status": "complete", "date": "2025-11-16", "project": "URL Shortener API", "github": "https://github.com/noor-h/abtalks-day05", "linkedin": "https://linkedin.com/feed/update/noor-day05" },
+    { "day": 6, "status": "complete", "date": "2025-11-17", "project": "Realtime Chat (Sockets)", "github": "https://github.com/noor-h/abtalks-day06", "linkedin": "https://linkedin.com/feed/update/noor-day06" },
+    { "day": 7, "status": "complete", "date": "2025-11-18", "project": "Auth Flow w/ JWT", "github": "https://github.com/noor-h/abtalks-day07", "linkedin": "https://linkedin.com/feed/update/noor-day07" },
+    { "day": 8, "status": "missed", "date": "2025-11-19", "project": null, "github": null, "linkedin": null, "missReason": "College mid-sem exam — no submission made." },
+    { "day": 9, "status": "complete", "date": "2025-11-20", "project": "REST Rate Limiter", "github": "https://github.com/noor-h/abtalks-day09", "linkedin": "https://linkedin.com/feed/update/noor-day09" },
+    { "day": 10, "status": "complete", "date": "2025-11-21", "project": "File Upload Service", "github": "https://github.com/noor-h/abtalks-day10", "linkedin": "https://linkedin.com/feed/update/noor-day10" },
+    { "day": 11, "status": "complete", "date": "2025-11-22", "project": "CRUD w/ Pagination", "github": "https://github.com/noor-h/abtalks-day11", "linkedin": "https://linkedin.com/feed/update/noor-day11" },
+    { "day": 12, "status": "pending", "date": "2025-11-23", "project": null, "github": null, "linkedin": null }
+  ],
+  "currentStreak": {
+    "count": 4,
+    "longestStreak": 7,
+    "lastCompletedDay": 11,
+    "todayDay": 12,
+    "status": "active"
+  },
+  "day12": {
+    "day": 12,
+    "date": "2025-11-23",
+    "title": "Building a Semantic Search API with Python & TF-IDF",
+    "trackId": "fullstack-ai",
+    "duration": "~2.5 hrs",
+    "difficulty": "Intermediate",
+    "summary": "Build a FastAPI service that ranks documents by semantic similarity using TF-IDF vectors and cosine distance — the same math powering search inside Notion, Algolia, and early Google.",
+    "why": "Recruiters hiring for AI-adjacent backend roles want to see you reason about text-as-vectors, not just call an OpenAI endpoint. TF-IDF is the foundation every RAG and embedding system builds on. Shipping this proves you understand retrieval from first principles.",
+    "requirements": [
+      "A FastAPI app exposing GET /search?q=<query> returning ranked document titles and scores.",
+      "Implement TF-IDF vectorization from scratch in Python (no sklearn for the vectorizer — numpy is fine).",
+      "Return top 5 matches ranked by cosine similarity, descending.",
+      "Include a /health endpoint and a sample corpus of at least 20 documents.",
+      "Commit with a clear message; the README must show a curl example and sample output."
+    ],
+    "hints": [
+      "Tokenize by lowercase split, strip punctuation, remove stopwords.",
+      "IDF = log(N / (1 + df_t)). The +1 smooths terms unique to one doc.",
+      "Cosine similarity = dot(a,b) / (||a|| * ||b||). numpy.dot and numpy.linalg.norm do the heavy lifting.",
+      "Cache the IDF vector at startup — recompute per query is wasteful."
+    ],
+    "recruiterNote": "Semantic search is one of the most asked-about skills in AI-backend JDs this quarter. A clean TF-IDF implementation — with tests and a deployed endpoint — is a portfolio piece that opens interview doors at product companies building RAG.",
+    "submission": {
+      "githubLabel": "GitHub repository or commit link",
+      "githubPlaceholder": "https://github.com/noor-h/abtalks-day12",
+      "linkedinLabel": "LinkedIn post link",
+      "linkedinPlaceholder": "https://linkedin.com/feed/update/noor-day12",
+      "streakSafeWhen": "Both links submitted and validated"
+    }
+  },
+  "badges": [
+    {
+      "id": "first-commit",
+      "name": "First Commit",
+      "description": "Submitted your very first day. The streak begins.",
+      "icon": "GitCommitHorizontal",
+      "earned": true,
+      "earnedDate": "2025-11-12",
+      "tier": "milestone"
+    },
+    {
+      "id": "seven-day-streak",
+      "name": "7-Day Streak",
+      "description": "Seven days in a row. Discipline is becoming a habit.",
+      "icon": "Flame",
+      "earned": true,
+      "earnedDate": "2025-11-18",
+      "tier": "streak"
+    },
+    {
+      "id": "early-bird",
+      "name": "Early Bird Builder",
+      "description": "Submitted before 9 AM three days running.",
+      "icon": "Sunrise",
+      "earned": true,
+      "earnedDate": "2025-11-15",
+      "tier": "special"
+    },
+    {
+      "id": "weekend-warrior",
+      "name": "Weekend Warrior",
+      "description": "Shipped on both Saturday and Sunday of the same week.",
+      "icon": "ShieldHalf",
+      "earned": true,
+      "earnedDate": "2025-11-16",
+      "tier": "special"
+    },
+    {
+      "id": "fifteen-day",
+      "name": "15-Day Streak",
+      "description": "Halfway to the summit. Three more days to unlock.",
+      "icon": "Trophy",
+      "earned": false,
+      "tier": "streak",
+      "progress": { "current": 12, "target": 15 }
+    },
+    {
+      "id": "open-source",
+      "name": "Open Source Spark",
+      "description": "Got a pull request merged into a public repo during the challenge.",
+      "icon": "GitPullRequestArrow",
+      "earned": false,
+      "tier": "special"
+    },
+    {
+      "id": "recruiter-spotted",
+      "name": "Recruiter Spotted",
+      "description": "A recruiter engaged with one of your LinkedIn posts.",
+      "icon": "Eye",
+      "earned": false,
+      "tier": "special"
+    },
+    {
+      "id": "cycle-complete",
+      "name": "60-Day Finisher",
+      "description": "Completed the full 60-day challenge. The summit.",
+      "icon": "Award",
+      "earned": false,
+      "tier": "milestone",
+      "progress": { "current": 12, "target": 60 }
+    }
+  ],
+  "recruiters": [
+    { "company": "Zomato", "role": "AI Backend Intern", "location": "Gurugram", "watching": true },
+    { "company": "Razorpay", "role": "Full Stack Engineer", "location": "Bengaluru", "watching": true },
+    { "company": "Postman", "role": "Platform Engineer", "location": "Remote", "watching": true }
+  ],
+  "testimonials": [
+    {
+      "name": "Aarav Mehta",
+      "college": "BITS Pilani",
+      "quote": "I went from never finishing a project to 47 days straight. ABTalks made consistency the point — not perfection.",
+      "outcome": "SDE-I intern at Razorpay"
+    },
+    {
+      "name": "Sara Kulkarni",
+      "college": "COEP Pune",
+      "quote": "The two-part submission forced me to actually explain my work publicly. Three recruiters DM'd me from my LinkedIn posts.",
+      "outcome": "AI intern at Zomato"
+    }
+  ]
+}
