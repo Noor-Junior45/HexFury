@@ -30,6 +30,7 @@ import StreakStrip from '@/components/StreakStrip';
 import StreakFreeze from '@/components/StreakFreeze';
 import BadgeCard from '@/components/BadgeCard';
 import StreakCalendar from '@/components/StreakCalendar';
+import CodingActivityChart from '@/components/CodingActivityChart';
 
 export default function DashboardPage() {
   const student = appData.student;
@@ -58,19 +59,7 @@ export default function DashboardPage() {
 
   return (
     <MobileShell>
-      <TopBar
-        rightSlot={
-          <Link
-            to="/"
-            className="flex items-center gap-2 rounded-full border border-obsidian-700 bg-obsidian-850 pr-3 pl-2 py-1"
-          >
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-ember-500 to-ember-700 text-[10px] font-bold text-white">
-              {student.avatarInitials}
-            </span>
-            <span className="text-xs font-medium text-mist-300">{student.name.split(' ')[0]}</span>
-          </Link>
-        }
-      />
+      <TopBar />
 
       <div className="px-5 pt-5 pb-4">
         {/* Greeting */}
@@ -176,6 +165,11 @@ export default function DashboardPage() {
             </Link>
           </div>
         )}
+
+        {/* 30-Day Activity Visualization */}
+        <div className="mt-5 animate-fade-up delay-3">
+          <CodingActivityChart />
+        </div>
 
         {/* Missed day state */}
         {missed.length > 0 && freezeAppliedDay === null && (

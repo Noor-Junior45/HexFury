@@ -1,6 +1,6 @@
 {
-  "name": "HexFury - 60-Day Build Streak",
-  "description": "ABTalks 60-day coding challenge tracker. Build daily, commit to GitHub, post on LinkedIn, and keep your streak alive.",
+  "name": "ABTalks - 60-Day Coding Challenge",
+  "description": "ABTalks 60-day proof-of-work challenge for college developers. Ship daily projects, prove code on GitHub & LinkedIn, and build an unbroken streak.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
