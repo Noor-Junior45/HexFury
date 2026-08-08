@@ -370,7 +370,24 @@ Preserve all styling from the recent redesign passes.
 Days 1 through student.currentDay (12) should remain fully accessible with real content and working submission; days 13-60 should show the locked state.
 Apply changes to DayPage.tsx and, if needed, StreakCalendar.tsx.
 
+**Prompt:** In home page at top there is button Commit to 60-Day challenge and see today's build button, make both button equal and make it attractive use proper colour on both button. Remove arrow sign [svg] from commit button.
+In bottom page remove arrow button from start your 60-day streak button [svg].
+Apply style changes to the selected element(s).
+5 components
 
+**Prompt:** IN Dashboard page there is too many arrow [svg] sign in most of button, can you remove all button from all button of dashboard page.
+Apply style changes to the selected element(s).
+7 components
+
+**Prompt:**
+**Prompt:**
+**Prompt:**
+**Prompt:**
+**Prompt:**
+**Prompt:**
+**Prompt:**
+**Prompt:**
+**Prompt:**
 
 
 

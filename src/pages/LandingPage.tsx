@@ -127,22 +127,21 @@ export default function LandingPage() {
           </p>
 
           {/* Call to Actions */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+          <div className="flex flex-col sm:flex-row items-stretch justify-center gap-3 pt-1 max-w-2xl">
             <Link
               to="/dashboard"
-              className="group inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 px-6 py-3.5 text-sm sm:text-base font-bold text-white shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all active:scale-[0.98] cursor-pointer"
+              className="flex-1 inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 px-6 py-3.5 text-sm sm:text-base font-extrabold text-white shadow-lg shadow-orange-500/25 border border-orange-400/30 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all active:scale-[0.98] cursor-pointer text-center"
             >
-              <Flame size={20} strokeWidth={2.5} className="group-hover:animate-flame" />
+              <Flame size={20} strokeWidth={2.5} className="shrink-0 text-white animate-flame" />
               <span>Commit to 60-Day Challenge</span>
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
 
             <Link
               to="/day/12"
-              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white/90 backdrop-blur-xs px-5 py-3.5 text-xs sm:text-sm font-bold text-slate-700 shadow-xs hover:bg-slate-50 hover:border-slate-400 transition-all cursor-pointer"
+              className="flex-1 inline-flex items-center justify-center gap-2.5 rounded-2xl bg-slate-900 border border-slate-800 px-6 py-3.5 text-sm sm:text-base font-extrabold text-white shadow-lg shadow-slate-900/20 hover:bg-slate-800 hover:border-slate-700 hover:-translate-y-0.5 transition-all active:scale-[0.98] cursor-pointer text-center"
             >
-              <Code2 size={16} className="text-orange-600" />
-              <span>See Today's Build (Day 12)</span>
+              <Code2 size={20} strokeWidth={2.5} className="shrink-0 text-orange-400" />
+              <span>See Today's Build</span>
             </Link>
           </div>
 
@@ -616,7 +615,6 @@ export default function LandingPage() {
                     className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 px-8 py-4 text-base font-bold text-white shadow-xl shadow-orange-500/30 hover:scale-105 active:scale-98 transition-all cursor-pointer"
                   >
                     <span>Start Your 60-Day Streak</span>
-                    <ArrowRight size={18} />
                   </Link>
                 </div>
 

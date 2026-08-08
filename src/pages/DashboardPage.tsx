@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Flame,
-  ArrowRight,
   Trophy,
   Award,
   Eye,
@@ -265,7 +264,6 @@ export default function DashboardPage() {
                   <span className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 via-white/10 to-transparent pointer-events-none rounded-t-2xl" />
                   
                   <span className="relative z-10 tracking-wide">Start Day {todayTask.day} Problem</span>
-                  <ArrowRight size={19} className="relative z-10 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
@@ -346,7 +344,6 @@ export default function DashboardPage() {
                         className="flex min-h-[44px] px-3.5 items-center justify-center gap-1.5 rounded-xl bg-slate-100 group-hover:bg-orange-500 text-slate-700 group-hover:text-white font-bold text-xs border border-slate-200 group-hover:border-orange-500 transition-all shadow-2xs"
                       >
                         <span>Open Task</span>
-                        <ArrowRight size={14} />
                       </Link>
                     </div>
                   </div>
@@ -369,7 +366,6 @@ export default function DashboardPage() {
                 className="inline-flex min-h-[44px] items-center justify-center gap-2 py-2.5 px-6 rounded-xl bg-orange-500 text-white font-bold text-xs hover:bg-orange-600 transition-all cursor-pointer shadow-xs"
               >
                 <span>Submit Day {student.currentDay} Build</span>
-                <ArrowRight size={15} />
               </Link>
             </div>
           )}
