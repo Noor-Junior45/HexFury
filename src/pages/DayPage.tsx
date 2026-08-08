@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useState, useRef } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import {
   CheckCircle2,
   ShieldCheck,
@@ -12,12 +12,12 @@ import {
   AlertCircle,
   Copy,
   Check,
-  ExternalLink,
   Sparkles,
   Lightbulb,
   Clock,
   Zap,
   Lock,
+  HelpCircle,
 } from 'lucide-react';
 import { Github, Linkedin } from '@/components/BrandIcons';
 import {
@@ -26,16 +26,18 @@ import {
   getStreakDay,
   formatFullDate,
   appData,
+  useActiveTrack,
 } from '@/data/mockData';
 import TopBar from '@/components/TopBar';
 import MobileShell from '@/components/MobileShell';
-import StreakFreeze from '@/components/StreakFreeze';
 import { triggerSuccessConfetti } from '@/lib/confetti';
 
 export default function DayPage() {
   const { day } = useParams<{ day: string }>();
-  const dayNum = Number(day);
-  const task = getDay(dayNum);
+  const navigate = useNavigate();
+  const { trackId } = useActiveTrack();
+  const dayNum = Number(day) || 12;
+  const task = getDay(dayNum, trackId);
   const streakDay = getStreakDay(dayNum);
 
   const [githubUrl, setGithubUrl] = useState(streakDay?.github ?? '');
@@ -45,11 +47,38 @@ export default function DayPage() {
     linkedin: !!streakDay?.linkedin,
   });
   const [errors, setErrors] = useState<{ github?: string; linkedin?: string }>({});
-
   const [copiedTemplate, setCopiedTemplate] = useState(false);
 
-  // Unlocked check / Locked Empty State
-  if (!task || dayNum > appData.student.currentDay) {
+  // Swipe Gesture Handling
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 55;
+    const isRightSwipe = distance < -55;
+
+    if (isLeftSwipe && dayNum < appData.brand.cycleDays) {
+      navigate(`/day/${dayNum + 1}`);
+    } else if (isRightSwipe && dayNum > 1) {
+      navigate(`/day/${dayNum - 1}`);
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  // If task is unavailable or day is out of bounds
+  if (!task) {
     return (
       <MobileShell>
         <TopBar showBack backTo="/dashboard" />
@@ -61,16 +90,12 @@ export default function DayPage() {
             </span>
           </div>
 
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-3 py-1 text-xs font-extrabold text-orange-800 border border-orange-200 mb-2">
-            Challenge Locked
-          </span>
-
           <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900">
-            Day {dayNum} isn't unlocked yet
+            Day {dayNum} Task Unavailable
           </h1>
 
           <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-sm leading-relaxed">
-            Challenges unlock sequentially as you complete each day's submission. Head back to your dashboard to view your active day.
+            This challenge day is beyond the active 60-day cohort cycle.
           </p>
 
           <Link
@@ -89,6 +114,7 @@ export default function DayPage() {
   const bothSubmitted = submitted.github && submitted.linkedin;
   const oneSubmitted = submitted.github || submitted.linkedin;
 
+  // Dynamic LinkedIn draft tailored specifically to this day's task
   const linkedInPostText = `🚀 Day ${task.day} of my 60-Day Build Challenge!
 
 Title: ${task.title}
@@ -97,7 +123,10 @@ Summary: ${task.summary}
 Definition of Done:
 ${task.requirements.map((r, i) => `${i + 1}. ${r}`).join('\n')}
 
-Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineering #${task.trackId.toUpperCase()}`;
+Key Developer Learnings & Hints:
+${task.hints.slice(0, 3).map((h) => `• ${h}`).join('\n')}
+
+Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineering #${task.trackId.replace(/-/g, '')}`;
 
   const handleShareToLinkedIn = () => {
     triggerSuccessConfetti();
@@ -145,88 +174,88 @@ Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineeri
     <MobileShell>
       <TopBar showBack backTo="/dashboard" />
 
-      <div className="px-4 sm:px-6 pt-4 pb-24 space-y-6">
-        {/* Task Header */}
-        <div className="animate-fade-up space-y-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500 text-white px-3 py-1 text-xs font-extrabold shadow-xs">
-              <Flame size={13} className="animate-flame" /> Day {task.day}
-            </span>
-            <span className="text-xs font-bold text-slate-500 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full">
-              {formatFullDate(task.date)}
-            </span>
-            <span className="text-xs font-extrabold text-orange-700 bg-orange-50 border border-orange-200/80 px-3 py-1 rounded-full">
-              {track.name}
-            </span>
-          </div>
-
+      <div
+        className="px-4 sm:px-6 pt-3 pb-24 space-y-6 touch-pan-y min-h-[85vh]"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {/* Task Header - Clean Heading without Question Mark */}
+        <div className="animate-fade-up space-y-3 pt-1">
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 leading-snug">
             {task.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600">
-            <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 border border-slate-200 px-2.5 py-1">
-              <Zap size={14} className="text-amber-500" /> {task.difficulty}
+          {/* Merged Single-Row Tags Below Heading */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-xs font-bold text-slate-700">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500 text-white px-3 py-1 text-xs font-extrabold shrink-0 shadow-2xs">
+              <Flame size={13} className="animate-flame" /> Day {task.day}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 border border-slate-200 px-2.5 py-1">
-              <Clock size={14} className="text-orange-600" /> {task.duration}
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100/90 text-slate-700 px-3 py-1 shrink-0">
+              {formatFullDate(task.date)}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 border border-slate-200 px-2.5 py-1">
-              <Sparkles size={14} className="text-sky-600" /> {track.shortName}
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-50 text-orange-800 px-3 py-1 shrink-0 font-extrabold">
+              <Sparkles size={13} className="text-orange-500" /> {track.name}
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100/90 text-slate-700 px-3 py-1 shrink-0">
+              <Zap size={13} className="text-amber-500" /> {task.difficulty}
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100/90 text-slate-700 px-3 py-1 shrink-0">
+              <Clock size={13} className="text-orange-600" /> {task.duration}
             </span>
           </div>
         </div>
 
-        {/* Task Summary Card */}
-        <div className="rounded-3xl border border-slate-200/90 bg-white p-5 shadow-xs animate-fade-up delay-1">
-          <p className="text-sm leading-relaxed text-slate-700 font-normal">{task.summary}</p>
+        {/* Unified Continuous Document Flow (MS Word / A4 Page Style - No Card Borders) */}
+        <div className="bg-white rounded-3xl p-5 sm:p-7 space-y-6 animate-fade-up border-0 shadow-2xs">
+          {/* Real Question / Problem Challenge Statement with Question Mark Icon */}
+          <Section icon={HelpCircle} title="Task Challenge & Question" accent="orange">
+            <p className="text-sm leading-relaxed text-slate-800 font-normal">{task.summary}</p>
+          </Section>
+
+          {/* Why It Matters */}
+          <Section icon={Target} title="Why it matters" accent="amber">
+            <p className="text-xs sm:text-sm leading-relaxed text-slate-700">{task.why}</p>
+          </Section>
+
+          {/* Definition of Done Checklist */}
+          <Section icon={ClipboardCheck} title="Definition of done" accent="emerald">
+            <ul className="space-y-2">
+              {task.requirements.map((r, i) => (
+                <li key={i} className="flex items-start gap-2.5">
+                  <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-md bg-emerald-500 text-white font-extrabold text-[9px]">
+                    <Check size={11} strokeWidth={3} />
+                  </span>
+                  <span className="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed min-w-0 flex-1">
+                    {r}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          {/* Developer Hints Section */}
+          <Section icon={Lightbulb} title="Developer Hints & Strategy" accent="amber">
+            <ul className="space-y-2">
+              {task.hints.map((h, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                  <Lightbulb size={15} className="mt-0.5 shrink-0 text-amber-500" />
+                  <span className="leading-relaxed">{h}</span>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          {/* Recruiter Note Section */}
+          <Section icon={Briefcase} title="Recruiter Relevance" accent="sky">
+            <p className="text-xs sm:text-sm leading-relaxed text-slate-700">{task.recruiterNote}</p>
+          </Section>
         </div>
 
-        {/* Why It Matters Section */}
-        <Section icon={Target} title="Why it matters" delay={2} accent="amber">
-          <p className="text-xs sm:text-sm leading-relaxed text-slate-700">{task.why}</p>
-        </Section>
-
-        {/* Requirements / Definition of Done Checklist */}
-        <Section icon={ClipboardCheck} title="Definition of done" delay={3} accent="emerald">
-          <ul className="space-y-2.5">
-            {task.requirements.map((r, i) => (
-              <li
-                key={i}
-                className="group flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50/80 p-3 hover:bg-slate-100/80 transition-all"
-              >
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-lg bg-emerald-500 text-white font-extrabold text-[10px] shadow-2xs group-hover:scale-110 transition-transform">
-                  <Check size={12} strokeWidth={3} />
-                </span>
-                <span className="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed min-w-0 flex-1">
-                  {r}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        {/* Hints Section */}
-        <Section icon={Lightbulb} title="Developer Hints" delay={4} accent="amber">
-          <ul className="space-y-2">
-            {task.hints.map((h, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                <Lightbulb size={16} className="mt-0.5 shrink-0 text-amber-500" />
-                <span className="leading-relaxed">{h}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        {/* Recruiter Note Section */}
-        <Section icon={Briefcase} title="Recruiter Relevance" delay={5} accent="sky">
-          <p className="text-xs sm:text-sm leading-relaxed text-slate-700">{task.recruiterNote}</p>
-        </Section>
-
-        {/* Submission Flow */}
+        {/* Proof of Work Submission Box - Preserved Card Box Style for Student Submissions */}
         <div className="animate-fade-up delay-5 space-y-3">
           <div className="flex items-center gap-2 px-1">
-            <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500 text-white shadow-xs">
+            <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs">
               <Link2 size={14} />
             </span>
             <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
@@ -235,15 +264,17 @@ Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineeri
           </div>
 
           <div
-            className={`rounded-3xl border p-5 sm:p-6 transition-all shadow-sm space-y-5 ${
-              bothSubmitted
-                ? 'border-emerald-300 bg-gradient-to-br from-emerald-50/90 via-white to-teal-50/40 ring-1 ring-emerald-300/60'
-                : 'border-slate-200/90 bg-white'
+            className={`rounded-3xl bg-gradient-to-b from-slate-50/90 via-white to-slate-100/70 p-6 sm:p-7 shadow-xl shadow-slate-200/50 space-y-6 relative overflow-hidden backdrop-blur-sm transition-all border border-slate-200/80 ${
+              bothSubmitted ? 'ring-2 ring-emerald-500/30 bg-gradient-to-br from-emerald-50/80 via-white to-teal-50/50' : ''
             }`}
           >
+            {/* Soft Ambient Background Glow */}
+            <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-emerald-400/10 blur-2xl pointer-events-none" />
+            <div className="absolute -bottom-12 -left-12 h-32 w-32 rounded-full bg-teal-400/10 blur-2xl pointer-events-none" />
+
             {/* Streak-Safe Banner (When Both Submitted) */}
             {bothSubmitted && (
-              <div className="flex items-center gap-3.5 rounded-2xl bg-emerald-500 text-white p-4 shadow-md animate-scale-in">
+              <div className="flex items-center gap-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white p-4 shadow-lg shadow-emerald-600/20 animate-scale-in relative z-10">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/20 text-white">
                   <ShieldCheck size={24} />
                 </div>
@@ -263,10 +294,10 @@ Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineeri
 
             {/* Partial State Banner */}
             {oneSubmitted && !bothSubmitted && (
-              <div className="flex items-center gap-3 rounded-2xl bg-amber-50 border border-amber-300 p-3.5 text-amber-900 text-xs font-bold shadow-2xs">
+              <div className="flex items-center gap-3 rounded-2xl bg-amber-500/10 p-3.5 text-amber-900 text-xs font-bold shadow-2xs relative z-10">
                 <AlertCircle size={18} className="text-amber-600 shrink-0" />
                 <p className="leading-relaxed">
-                  Almost there! 1 of 2 submitted — submit both GitHub and LinkedIn proof to lock in today's streak.
+                  Almost there! 1 of 2 submitted — submit both GitHub and LinkedIn proof to lock in Day {task.day}'s streak.
                 </p>
               </div>
             )}
@@ -287,9 +318,9 @@ Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineeri
               onEdit={() => handleEdit('github')}
             />
 
-            <div className="flex items-center gap-3 text-slate-400 my-1">
+            <div className="flex items-center gap-3 text-slate-300 my-1">
               <span className="h-px flex-1 bg-slate-200" />
-              <span className="text-[10px] font-black uppercase tracking-wider text-slate-500">AND</span>
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">AND</span>
               <span className="h-px flex-1 bg-slate-200" />
             </div>
 
@@ -311,18 +342,18 @@ Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineeri
             />
 
             {/* Status Summary Bar */}
-            <div className="flex items-center justify-between rounded-2xl bg-slate-50 border border-slate-200/80 px-4 py-3">
+            <div className="flex items-center justify-between rounded-2xl bg-white shadow-xs px-4 py-3 relative z-10">
               <div className="flex items-center gap-4 text-xs font-bold">
                 <StatusPill ok={submitted.github} label="GitHub Repo" />
                 <StatusPill ok={submitted.linkedin} label="LinkedIn Post" />
               </div>
 
               {bothSubmitted ? (
-                <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-700 bg-emerald-100 border border-emerald-200 px-3 py-1 rounded-full">
+                <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-800 bg-emerald-100/90 px-3 py-1 rounded-full">
                   <Flame size={14} className="text-orange-500 animate-flame" /> Streak Verified
                 </span>
               ) : (
-                <span className="text-xs font-bold text-amber-700 bg-amber-100 border border-amber-200 px-2.5 py-1 rounded-full">
+                <span className="text-xs font-bold text-amber-800 bg-amber-100/80 px-2.5 py-1 rounded-full">
                   Streak Pending
                 </span>
               )}
@@ -330,38 +361,15 @@ Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineeri
           </div>
         </div>
 
-        {/* Pre-filled Share to LinkedIn Card */}
-        <div className="rounded-3xl border border-sky-200 bg-gradient-to-br from-sky-50/90 via-white to-blue-50/50 p-5 shadow-xs space-y-3 animate-fade-up delay-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-sky-600 text-white shadow-xs">
-                <Linkedin size={20} />
-              </span>
-              <div>
-                <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-1.5">
-                  <span>Share Day {task.day} Progress</span>
-                  <Sparkles size={14} className="text-amber-500" />
-                </h3>
-                <p className="text-xs text-slate-500">
-                  Pre-filled post template optimized for recruiter visibility
-                </p>
-              </div>
-            </div>
-
-            <button
-              onClick={handleShareToLinkedIn}
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-sky-700 active:scale-98 transition-all shrink-0 cursor-pointer"
-            >
-              <Linkedin size={15} />
-              <span>Share on LinkedIn</span>
-              <ExternalLink size={13} />
-            </button>
-          </div>
-
+        {/* Dynamic Pre-filled Share to LinkedIn Card (White Theme) */}
+        <div className="rounded-3xl bg-white border border-slate-200/90 text-slate-900 p-5 shadow-xs animate-fade-up delay-6">
           {/* Post Preview Box */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4 text-xs text-slate-200 font-mono relative shadow-inner">
-            <div className="flex items-center justify-between mb-2 pb-2 border-b border-slate-800 text-[11px] font-sans">
-              <span className="font-extrabold uppercase tracking-wider text-sky-400">Pre-filled LinkedIn Post Draft</span>
+          <div className="rounded-2xl bg-slate-50/90 border border-slate-200/80 p-4 text-xs font-sans relative shadow-2xs">
+            <div className="flex items-center justify-between mb-2 pb-2 border-b border-slate-200 text-[11px]">
+              <span className="font-extrabold uppercase tracking-wider text-sky-600 flex items-center gap-1.5">
+                <Linkedin size={14} className="text-sky-600" />
+                <span>Day {task.day} LinkedIn Post Draft</span>
+              </span>
               <button
                 onClick={() => {
                   if (navigator.clipboard) {
@@ -370,26 +378,16 @@ Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineeri
                     setTimeout(() => setCopiedTemplate(false), 3000);
                   }
                 }}
-                className="inline-flex min-h-[32px] items-center gap-1.5 text-slate-300 hover:text-white transition-colors cursor-pointer px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700"
+                className="inline-flex min-h-[32px] items-center gap-1.5 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer px-2.5 py-1 rounded-lg bg-slate-200/80 hover:bg-slate-300/80 font-bold"
               >
-                {copiedTemplate ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
-                <span className="font-bold">{copiedTemplate ? 'Copied to Clipboard!' : 'Copy Template'}</span>
+                {copiedTemplate ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
+                <span>{copiedTemplate ? 'Copied to Clipboard!' : 'Copy Draft'}</span>
               </button>
             </div>
-            <p className="whitespace-pre-line leading-relaxed text-[11px] text-slate-300 select-all font-sans">
+            <p className="whitespace-pre-line leading-relaxed text-[11px] text-slate-700 select-all font-sans">
               {linkedInPostText}
             </p>
           </div>
-        </div>
-
-        {/* Streak Freeze Banner */}
-        <div className="animate-fade-up delay-6">
-          <StreakFreeze
-            total={appData.student.streakFreeze.total}
-            used={appData.student.streakFreeze.used}
-            available={appData.student.streakFreeze.available}
-            variant="card"
-          />
         </div>
       </div>
     </MobileShell>
@@ -400,13 +398,12 @@ function Section({
   icon: Icon,
   title,
   children,
-  delay,
   accent = 'orange',
 }: {
   icon: React.ComponentType<{ size?: number; className?: string }>;
   title: string;
   children: React.ReactNode;
-  delay: number;
+  delay?: number;
   accent?: 'orange' | 'amber' | 'emerald' | 'sky';
 }) {
   const colors = {
@@ -417,14 +414,14 @@ function Section({
   };
 
   return (
-    <div className="animate-fade-up space-y-2">
-      <div className="flex items-center gap-2 px-1">
-        <span className={`flex h-6 w-6 items-center justify-center rounded-lg font-bold ${colors[accent]}`}>
+    <div className="space-y-1.5">
+      <div className="flex items-center gap-2">
+        <span className={`flex h-6 w-6 items-center justify-center rounded-lg font-bold shrink-0 ${colors[accent]}`}>
           <Icon size={14} />
         </span>
         <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-800">{title}</h2>
       </div>
-      <div className="rounded-3xl border border-slate-200/90 bg-white p-5 shadow-xs">
+      <div className="pl-8 text-xs sm:text-sm text-slate-700 leading-relaxed">
         {children}
       </div>
     </div>
@@ -455,18 +452,18 @@ function SubmissionField({
   iconColor?: string;
 }) {
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-1.5 relative z-10">
       <label className="flex items-center gap-2 text-xs font-extrabold text-slate-800">
         <Icon size={15} className={iconColor} /> {label}
       </label>
 
       <div
-        className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-2 rounded-2xl border p-2 transition-all ${
+        className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-2 rounded-2xl p-2.5 transition-all shadow-sm ${
           error
-            ? 'border-rose-400 bg-rose-50/60 ring-2 ring-rose-200/50'
+            ? 'bg-rose-50/80 ring-2 ring-rose-300'
             : submitted
-            ? 'border-emerald-400 bg-emerald-50/60 ring-2 ring-emerald-200/50'
-            : 'border-slate-300 bg-slate-50 focus-within:border-orange-500 focus-within:bg-white focus-within:ring-2 focus-within:ring-orange-200'
+            ? 'bg-emerald-50/80 ring-2 ring-emerald-300'
+            : 'bg-white focus-within:ring-2 focus-within:ring-emerald-500/30'
         }`}
       >
         <input
@@ -489,7 +486,7 @@ function SubmissionField({
         ) : (
           <button
             onClick={onSubmit}
-            className="min-h-[44px] shrink-0 rounded-xl bg-orange-500 hover:bg-orange-600 px-5 py-2.5 text-xs font-extrabold text-white shadow-xs transition-all active:scale-98 cursor-pointer"
+            className="min-h-[44px] shrink-0 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 hover:from-emerald-500 hover:to-teal-500 px-5 py-2.5 text-xs font-black text-white shadow-md shadow-emerald-600/20 transition-all active:scale-98 cursor-pointer"
           >
             Verify & Submit
           </button>
@@ -523,3 +520,4 @@ function StatusPill({ ok, label }: { ok: boolean; label: string }) {
     </span>
   );
 }
+

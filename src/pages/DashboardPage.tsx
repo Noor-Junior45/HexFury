@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Flame,
   ArrowRight,
@@ -17,6 +17,7 @@ import {
   Zap,
   Code2,
   AlertTriangle,
+  GraduationCap,
 } from 'lucide-react';
 import { Github, Linkedin } from '@/components/BrandIcons';
 import {
@@ -28,6 +29,7 @@ import {
   earnedBadges,
   lockedBadges,
   formatDate,
+  useActiveTrack,
 } from '@/data/mockData';
 import TopBar from '@/components/TopBar';
 import MobileShell from '@/components/MobileShell';
@@ -38,10 +40,11 @@ import BadgeCard from '@/components/BadgeCard';
 import CodingActivityChart from '@/components/CodingActivityChart';
 
 export default function DashboardPage() {
+  const navigate = useNavigate();
+  const { trackId, track, changeTrack } = useActiveTrack();
   const student = appData.student;
-  const track = getTrack(student.trackId)!;
-  const todayTask = getDay(student.currentDay);
-  const completed = completedDays();
+  const todayTask = getDay(student.currentDay, trackId);
+  const completed = completedDays(trackId);
   const missed = missedDays();
   const earned = earnedBadges();
   const locked = lockedBadges();
@@ -71,6 +74,13 @@ export default function DashboardPage() {
   const nextMilestone = 15;
   const ringProgress = Math.min((effectiveStreak / nextMilestone) * 100, 100);
 
+  const currentDateStr = new Date().toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
   return (
     <MobileShell>
       <TopBar />
@@ -78,16 +88,13 @@ export default function DashboardPage() {
       <div className="px-4 sm:px-6 pt-4 pb-24 space-y-7">
         {/* Header / Student Greeting */}
         <div className="animate-fade-up">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <span className="inline-self-start text-[11px] font-bold tracking-wide text-orange-700 bg-orange-50 border border-orange-200/80 px-3 py-1 rounded-full shadow-2xs">
-              {formatDate(todayTask?.date ?? '2025-11-23')} · {appData.brand.edition}
+          <div className="flex items-center justify-between">
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold tracking-wide text-orange-800 bg-orange-50 border border-orange-200/90 px-3 py-1 rounded-full shadow-2xs">
+              <CalendarDays size={13} className="text-orange-600 shrink-0" />
+              <span>{currentDateStr}</span>
+              <span className="text-orange-300">·</span>
+              <span>{appData.brand.edition}</span>
             </span>
-            <Link
-              to="/calendar"
-              className="w-full sm:w-auto text-center rounded-xl bg-slate-100 hover:bg-slate-200 px-4 py-2 text-xs font-bold text-slate-700 transition-colors cursor-pointer border border-slate-200"
-            >
-              View 60-Day Calendar →
-            </Link>
           </div>
           <h1 className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
             Welcome back, {student.name.split(' ')[0]}!
@@ -107,7 +114,7 @@ export default function DashboardPage() {
                 <Flame size={14} className="animate-flame" />
               </span>
               <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
-                1. Current Streak
+                Current Streak
               </h2>
             </div>
             <span className="text-[10px] font-bold text-orange-700 bg-orange-100 px-2.5 py-0.5 rounded-full border border-orange-200">
@@ -202,55 +209,8 @@ export default function DashboardPage() {
                 <CalendarDays size={15} className="text-orange-600" />
                 <span>Open 60-Day Progress Map</span>
               </Link>
-
-              {missed.length > 0 && freezeAppliedDay === null && (
-                <button
-                  onClick={handleApplyFreeze}
-                  className="w-full flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-sky-600 hover:bg-sky-700 py-2.5 px-4 text-xs font-bold text-white transition-all text-center cursor-pointer shadow-xs"
-                >
-                  <Snowflake size={15} />
-                  <span>Protect Streak with Freeze Pass</span>
-                </button>
-              )}
             </div>
           </div>
-
-          {/* Missed Day Recovery Banner */}
-          {missed.length > 0 && freezeAppliedDay === null && (
-            <div className="rounded-2xl bg-amber-50 border border-amber-300/90 p-4 space-y-2.5 shadow-xs">
-              <div className="flex items-start gap-3">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white font-bold shadow-2xs">
-                  <AlertTriangle size={18} />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <p className="text-xs font-extrabold text-amber-900">Missed Day {missed[0].day} Recovery</p>
-                    <span className="text-[10px] font-bold text-amber-800 bg-amber-200 px-2 py-0.5 rounded-full">
-                      Action Needed
-                    </span>
-                  </div>
-                  <p className="text-xs text-amber-800/90 mt-0.5 leading-relaxed">
-                    {missed[0].missReason ?? 'No submission recorded for Day 9.'} You can use your Streak Freeze pass to recover this day and keep your flame alive.
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={handleApplyFreeze}
-                className="w-full min-h-[44px] py-2.5 px-4 rounded-xl bg-amber-600 text-white font-bold text-xs hover:bg-amber-700 transition-all text-center cursor-pointer shadow-xs"
-              >
-                Apply Streak Freeze Pass Now
-              </button>
-            </div>
-          )}
-
-          {/* Streak Freeze Sub-component */}
-          <StreakFreeze
-            total={student.streakFreeze.total}
-            used={student.streakFreeze.used}
-            available={student.streakFreeze.available && freezeAppliedDay === null}
-            onApply={handleApplyFreeze}
-            appliedToDay={freezeAppliedDay}
-          />
         </section>
 
         {/* SECTION 2: TODAY'S TASK (PRIMARY ACTION) */}
@@ -261,7 +221,7 @@ export default function DashboardPage() {
                 <Zap size={14} />
               </span>
               <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
-                2. Today's Primary Task
+                Today's Primary Task
               </h2>
             </div>
             <span className="text-[10px] font-extrabold text-orange-700 bg-orange-100 px-2.5 py-0.5 rounded-full border border-orange-200">
@@ -270,12 +230,13 @@ export default function DashboardPage() {
           </div>
 
           {todayTask && (
-            <div className="rounded-3xl border border-orange-200/90 bg-white p-5 sm:p-6 shadow-sm space-y-4 hover:border-orange-300 transition-all">
-              <div className="flex items-center justify-between gap-2">
-                <span className="rounded-lg bg-orange-100 text-orange-700 border border-orange-200 px-3 py-1 text-xs font-extrabold">
-                  {track.name}
+            <div className="rounded-3xl border-2 border-emerald-200/80 bg-gradient-to-b from-emerald-50/30 via-white to-white p-5 sm:p-6 shadow-sm space-y-4 hover:border-emerald-300 transition-all relative overflow-hidden">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="h-7 px-2.5 text-xs font-extrabold text-emerald-800 bg-emerald-100 border border-emerald-200/90 rounded-lg inline-flex items-center gap-1.5 shrink-0 shadow-2xs">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                  <span>{track.name}</span>
                 </span>
-                <span className="rounded-lg bg-slate-100 text-slate-700 border border-slate-200 px-2.5 py-1 text-xs font-bold">
+                <span className="h-7 px-2.5 text-xs font-extrabold text-slate-700 bg-slate-100 border border-slate-200 rounded-lg inline-flex items-center shrink-0">
                   {todayTask.difficulty}
                 </span>
               </div>
@@ -289,34 +250,140 @@ export default function DashboardPage() {
                 </p>
               </div>
 
-              {/* Requirement Highlights & Primary CTA */}
-              <div className="pt-3 border-t border-slate-100 space-y-3">
-                <div className="flex items-center justify-between text-xs font-semibold text-slate-500">
-                  <span className="inline-flex items-center gap-1.5"><Sparkles size={14} className="text-amber-500" /> Est: {todayTask.duration}</span>
-                  <span className="inline-flex items-center gap-1.5"><TrendingUp size={14} className="text-emerald-600" /> {todayTask.difficulty} Level</span>
+              {/* Requirement Highlights & Primary Glossy Medical Green CTA */}
+              <div className="pt-3 border-t border-slate-100 space-y-3.5">
+                <div className="flex items-center justify-between text-xs font-semibold text-slate-600">
+                  <span className="inline-flex items-center gap-1.5 text-slate-700"><Sparkles size={14} className="text-amber-500" /> Est: {todayTask.duration}</span>
+                  <span className="inline-flex items-center gap-1.5 text-slate-700"><TrendingUp size={14} className="text-emerald-600" /> Proof: GitHub + LinkedIn</span>
                 </div>
 
                 <Link
                   to={`/day/${todayTask.day}`}
-                  className="w-full min-h-[48px] flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white font-extrabold text-sm sm:text-base hover:shadow-md hover:shadow-orange-500/20 active:scale-[0.99] transition-all cursor-pointer"
+                  className="relative w-full min-h-[50px] flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-2xl bg-gradient-to-b from-emerald-500 via-emerald-600 to-teal-700 hover:from-emerald-400 hover:to-teal-600 text-white font-black text-sm sm:text-base shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/40 active:scale-[0.99] transition-all cursor-pointer border-t border-emerald-300/50 ring-1 ring-emerald-500/50 overflow-hidden group"
                 >
-                  <span>Start Day {todayTask.day} Problem</span>
-                  <ArrowRight size={18} />
+                  {/* Glossy Reflection Highlight Overlay */}
+                  <span className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 via-white/10 to-transparent pointer-events-none rounded-t-2xl" />
+                  
+                  <span className="relative z-10 tracking-wide">Start Day {todayTask.day} Problem</span>
+                  <ArrowRight size={19} className="relative z-10 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
           )}
         </section>
 
-        {/* SECTION 3: CHALLENGE PROGRESS & ACTIVITY LOG */}
+        {/* SECTION 3: SHIPPED PROJECTS & PROOF */}
         <section className="animate-fade-up delay-3 space-y-3">
+          <div className="flex items-center justify-between px-1">
+            <div className="flex items-center gap-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs">
+                <CheckCircle2 size={14} />
+              </span>
+              <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
+                Shipped Projects & Proof
+              </h2>
+            </div>
+            <span className="text-[10px] font-extrabold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              {completed.length} Verified
+            </span>
+          </div>
+
+          {hasSubmissions ? (
+            <div className="space-y-2.5">
+              {[...completed].slice(-6).reverse().map((d) => {
+                const dayTask = getDay(d.day);
+                const taskTitle = dayTask?.title ?? d.project ?? `Day ${d.day} Challenge`;
+
+                return (
+                  <div
+                    key={d.day}
+                    onClick={() => navigate(`/day/${d.day}`)}
+                    className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-slate-200/90 bg-white p-4 shadow-xs hover:border-orange-400 hover:shadow-md transition-all cursor-pointer"
+                  >
+                    <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-100 font-extrabold text-xs text-orange-700 border border-orange-200/60 shadow-2xs group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                        D{d.day}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors">
+                          {taskTitle}
+                        </p>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <p className="text-[11px] font-semibold text-slate-500">{formatDate(d.date)}</p>
+                          <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.2 rounded border border-emerald-200">
+                            Verified
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-0 border-slate-100">
+                      <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                        <a
+                          href={d.github ?? '#'}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label="GitHub Repository"
+                          title="GitHub Repository"
+                          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 p-2 text-slate-800 transition-colors border border-slate-200"
+                        >
+                          <Github size={16} />
+                        </a>
+                        <a
+                          href={d.linkedin ?? '#'}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label="LinkedIn Post"
+                          title="LinkedIn Post"
+                          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-sky-50 hover:bg-sky-100 p-2 text-sky-600 transition-colors border border-sky-200"
+                        >
+                          <Linkedin size={16} />
+                        </a>
+                      </div>
+                      <Link
+                        to={`/day/${d.day}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex min-h-[44px] px-3.5 items-center justify-center gap-1.5 rounded-xl bg-slate-100 group-hover:bg-orange-500 text-slate-700 group-hover:text-white font-bold text-xs border border-slate-200 group-hover:border-orange-500 transition-all shadow-2xs"
+                      >
+                        <span>Open Task</span>
+                        <ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="rounded-3xl border border-slate-200/90 bg-white p-6 text-center space-y-4 shadow-xs">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-orange-600 border border-orange-200">
+                <Code2 size={24} />
+              </div>
+              <div>
+                <h3 className="text-sm font-extrabold text-slate-900">No submissions recorded yet</h3>
+                <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+                  Your shipped repos and LinkedIn proof links will appear here after your first submission.
+                </p>
+              </div>
+              <Link
+                to={`/day/${student.currentDay}`}
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 py-2.5 px-6 rounded-xl bg-orange-500 text-white font-bold text-xs hover:bg-orange-600 transition-all cursor-pointer shadow-xs"
+              >
+                <span>Submit Day {student.currentDay} Build</span>
+                <ArrowRight size={15} />
+              </Link>
+            </div>
+          )}
+        </section>
+
+        {/* SECTION 4: CHALLENGE PROGRESS & ACTIVITY LOG */}
+        <section className="animate-fade-up delay-4 space-y-3">
           <div className="flex items-center justify-between px-1">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-amber-500 text-white shadow-xs">
                 <BarChart3 size={14} />
               </span>
               <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
-                3. Challenge Progress
+                Challenge Progress
               </h2>
             </div>
             <span className="text-[10px] font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">
@@ -342,94 +409,6 @@ export default function DashboardPage() {
           <CodingActivityChart />
         </section>
 
-        {/* SECTION 4: SHIPPED PROJECTS & PROOF */}
-        <section className="animate-fade-up delay-4 space-y-3">
-          <div className="flex items-center justify-between px-1">
-            <div className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs">
-                <CheckCircle2 size={14} />
-              </span>
-              <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
-                4. Shipped Projects & Proof
-              </h2>
-            </div>
-            <span className="text-[10px] font-extrabold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">
-              {completed.length} Verified
-            </span>
-          </div>
-
-          {hasSubmissions ? (
-            <div className="space-y-2.5">
-              {[...completed].slice(-4).reverse().map((d) => (
-                <div
-                  key={d.day}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-slate-200/90 bg-white p-4 shadow-xs hover:border-slate-300 transition-all"
-                >
-                  <div className="flex items-center gap-3.5 min-w-0">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-100 font-extrabold text-xs text-orange-700 border border-orange-200/60 shadow-2xs">
-                      D{d.day}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="truncate text-sm font-extrabold text-slate-900">{d.project}</p>
-                      <div className="flex items-center gap-2 mt-0.5">
-                        <p className="text-[11px] font-semibold text-slate-500">{formatDate(d.date)}</p>
-                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.2 rounded border border-emerald-200">
-                          Verified
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-0 border-slate-100">
-                    <div className="flex items-center gap-2">
-                      <a
-                        href={d.github ?? '#'}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="GitHub Repository"
-                        className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 p-2 text-slate-800 transition-colors border border-slate-200"
-                      >
-                        <Github size={16} />
-                      </a>
-                      <a
-                        href={d.linkedin ?? '#'}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="LinkedIn Post"
-                        className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-sky-50 hover:bg-sky-100 p-2 text-sky-600 transition-colors border border-sky-200"
-                      >
-                        <Linkedin size={16} />
-                      </a>
-                    </div>
-                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 font-bold border border-emerald-200">
-                      <Check size={16} strokeWidth={3} />
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="rounded-3xl border border-slate-200/90 bg-white p-6 text-center space-y-4 shadow-xs">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-orange-600 border border-orange-200">
-                <Code2 size={24} />
-              </div>
-              <div>
-                <h3 className="text-sm font-extrabold text-slate-900">No submissions recorded yet</h3>
-                <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-                  Your shipped repos and LinkedIn proof links will appear here after your first submission.
-                </p>
-              </div>
-              <Link
-                to={`/day/${student.currentDay}`}
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 py-2.5 px-6 rounded-xl bg-orange-500 text-white font-bold text-xs hover:bg-orange-600 transition-all cursor-pointer shadow-xs"
-              >
-                <span>Submit Day {student.currentDay} Build</span>
-                <ArrowRight size={15} />
-              </Link>
-            </div>
-          )}
-        </section>
-
         {/* SECTION 5: STANDING & ACHIEVEMENTS */}
         <section className="animate-fade-up delay-5 space-y-3">
           <div className="flex items-center justify-between px-1">
@@ -438,7 +417,7 @@ export default function DashboardPage() {
                 <Trophy size={14} />
               </span>
               <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
-                5. Standing & Achievements
+                Standing & Achievements
               </h2>
             </div>
             <span className="text-[10px] font-extrabold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-200">
@@ -516,17 +495,78 @@ export default function DashboardPage() {
               ))}
             </div>
           </div>
+        </section>
 
-          {/* Student Track & Campus Metadata */}
-          <div className="rounded-2xl border border-slate-200/90 bg-white p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-2xs">
-            <div>
-              <p className="text-[10px] uppercase font-extrabold text-slate-400">Enrolled Track & College</p>
-              <p className="text-xs font-extrabold text-slate-900">{track.name}</p>
-              <p className="text-xs font-semibold text-slate-500">{student.college}</p>
+        {/* SECTION 6: ENROLLED TRACK & COLLEGE INFO */}
+        <section className="animate-fade-up delay-6">
+          <div className="rounded-3xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-2xs space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div className="flex items-center gap-2">
+                <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-orange-500 text-white shadow-2xs">
+                  <GraduationCap size={15} />
+                </span>
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
+                  Enrolled Track & College
+                </h3>
+              </div>
+              <span className="text-[10px] font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                Active Builder
+              </span>
             </div>
-            <span className="inline-self-start sm:inline-self-auto text-xs font-semibold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
-              {student.bio}
-            </span>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {/* Specialization Track */}
+              <div className="flex flex-col justify-between gap-3 bg-gradient-to-br from-orange-50/90 to-amber-50/50 p-4 rounded-2xl border border-orange-200/80 shadow-2xs">
+                <div className="flex items-start gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-white shadow-xs">
+                    <Code2 size={18} />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-1">
+                      <p className="text-[10px] uppercase font-extrabold tracking-wider text-orange-700">Specialization Track</p>
+                      <span className="text-[9px] font-bold bg-orange-200/70 text-orange-800 px-2 py-0.5 rounded-md">
+                        Selected
+                      </span>
+                    </div>
+                    <p className="text-sm font-extrabold text-slate-900 truncate mt-0.5">{track.name}</p>
+                    <p className="text-[11px] font-medium text-slate-600 mt-0.5 line-clamp-1">{track.skills.join(' · ')}</p>
+                  </div>
+                </div>
+
+                {/* Track Switch Buttons */}
+                <div className="pt-2 border-t border-orange-200/60">
+                  <p className="text-[10px] font-bold text-slate-500 mb-1.5">Switch Specialization Track:</p>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {appData.tracks.map((t) => (
+                      <button
+                        key={t.id}
+                        type="button"
+                        onClick={() => changeTrack(t.id)}
+                        className={`px-2 py-1 text-[10px] font-bold rounded-lg border text-left truncate transition-all cursor-pointer ${
+                          t.id === trackId
+                            ? 'bg-orange-500 text-white border-orange-600 shadow-2xs'
+                            : 'bg-white text-slate-700 border-slate-200 hover:bg-orange-100 hover:text-orange-900'
+                        }`}
+                      >
+                        {t.shortName}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Campus / College */}
+              <div className="flex items-start gap-3 bg-slate-50/80 p-3.5 rounded-2xl border border-slate-200/60">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-sky-600 border border-sky-200/60">
+                  <GraduationCap size={18} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[10px] uppercase font-extrabold tracking-wider text-slate-400">College / Institution</p>
+                  <p className="text-xs font-extrabold text-slate-900 truncate mt-0.5">{student.college}</p>
+                  <p className="text-[11px] font-medium text-slate-500 mt-0.5">{student.bio}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>

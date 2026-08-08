@@ -49,7 +49,6 @@ export default function TopBar({ showBack, backTo = '/dashboard', rightSlot }: P
                 className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-orange-500 via-amber-500 to-amber-600 text-white font-bold text-xs shadow-md shadow-orange-500/20 ring-2 ring-orange-500/30 hover:ring-orange-500 hover:scale-105 transition-all active:scale-95"
               >
                 <span className="tracking-tight">{student.avatarInitials}</span>
-                <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full bg-emerald-500 ring-2 ring-white" />
               </button>
             )}
           </div>
@@ -71,7 +70,6 @@ export default function TopBar({ showBack, backTo = '/dashboard', rightSlot }: P
             <div className="flex flex-col items-center text-center">
               <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-tr from-orange-500 via-amber-500 to-amber-600 text-white text-xl font-bold shadow-lg shadow-orange-500/25 ring-4 ring-orange-100">
                 {student.avatarInitials}
-                <span className="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-emerald-500 ring-2 ring-white" />
               </div>
               <h3 className="mt-3 text-lg font-bold text-slate-900">{student.name}</h3>
               <p className="text-xs font-medium text-slate-500">{student.rank} · {student.rankLabel}</p>

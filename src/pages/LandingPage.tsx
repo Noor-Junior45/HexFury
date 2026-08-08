@@ -19,7 +19,7 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 import { Github, Linkedin } from '@/components/BrandIcons';
-import { appData, getTrack } from '@/data/mockData';
+import { appData, getTrack, useActiveTrack } from '@/data/mockData';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import TopBar from '@/components/TopBar';
 import MobileShell from '@/components/MobileShell';
@@ -72,11 +72,26 @@ function ScrollReveal({
 }
 
 export default function LandingPage() {
-  const selectedTrack = getTrack(appData.student.trackId);
+  const { trackId, track: selectedTrack, changeTrack } = useActiveTrack();
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const handleSelectTrack = (tId: string, tName: string) => {
+    changeTrack(tId);
+    setToastMessage(`Selected Specialization: ${tName}! Your dashboard and daily curriculum are now set.`);
+    setTimeout(() => setToastMessage(null), 4000);
+  };
 
   return (
     <MobileShell>
       <TopBar />
+
+      {/* Floating Track Selected Toast */}
+      {toastMessage && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 rounded-2xl bg-slate-900 px-5 py-3 text-xs font-extrabold text-white shadow-2xl border border-orange-500/50 animate-bounce">
+          <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
 
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 sm:px-6 pt-6 pb-10 text-left">
@@ -427,48 +442,82 @@ export default function LandingPage() {
       </section>
 
       {/* Available Tracks */}
-      {selectedTrack && (
-        <section className="px-4 sm:px-6 py-10">
-          <div className="max-w-3xl mx-auto">
-            <ScrollReveal>
-              <div className="text-center mb-8">
-                <span className="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
-                  Curriculum Tracks
-                </span>
-                <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900">Pick your specialization</h2>
-                <p className="mt-1.5 text-xs text-slate-500">Every track is structured with 60 daily progressive challenges.</p>
-              </div>
-            </ScrollReveal>
+      <section className="px-4 sm:px-6 py-10">
+        <div className="max-w-3xl mx-auto">
+          <ScrollReveal>
+            <div className="text-center mb-8">
+              <span className="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1.5 rounded-full border border-orange-200/80 shadow-2xs">
+                Interactive Specialization Picker
+              </span>
+              <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900">Pick your specialization</h2>
+              <p className="mt-1.5 text-xs sm:text-sm text-slate-600">Click any track below to customize your 60-day daily projects, questions, and dashboard proof.</p>
+            </div>
+          </ScrollReveal>
 
-            <div className="space-y-3.5">
-              {appData.tracks.map((t, idx) => (
+          <div className="space-y-3.5">
+            {appData.tracks.map((t, idx) => {
+              const isSelected = t.id === trackId;
+              return (
                 <ScrollReveal key={t.id} delay={idx * 70}>
                   <div
-                    className={`rounded-2xl border p-5 transition-all ${
-                      t.id === selectedTrack.id
-                        ? 'border-orange-400 bg-gradient-to-r from-orange-50/90 to-amber-50/60 shadow-md ring-1 ring-orange-400/30'
-                        : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-xs'
+                    onClick={() => handleSelectTrack(t.id, t.name)}
+                    className={`group relative cursor-pointer rounded-2xl border p-5 transition-all duration-200 ${
+                      isSelected
+                        ? 'border-orange-500 bg-gradient-to-r from-orange-50/90 via-amber-50/70 to-orange-50/40 shadow-md ring-2 ring-orange-500/30'
+                        : 'border-slate-200 bg-white hover:border-orange-300 hover:shadow-md hover:bg-slate-50/60'
                     }`}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex items-center gap-2.5">
+                        <span
+                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-bold text-xs transition-colors ${
+                            isSelected
+                              ? 'bg-orange-500 text-white shadow-xs'
+                              : 'bg-slate-100 text-slate-700 group-hover:bg-orange-100 group-hover:text-orange-700'
+                          }`}
+                        >
+                          0{idx + 1}
+                        </span>
+                        <div>
+                          <p className="text-base font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors">
+                            {t.name}
+                          </p>
+                          <p className="text-[11px] font-semibold text-slate-500">{t.shortName} · 60 Days Scope</p>
+                        </div>
+                      </div>
+
                       <div className="flex items-center gap-2">
-                        <p className="text-base font-bold text-slate-900">{t.name}</p>
-                        {t.id === selectedTrack.id && (
-                          <span className="rounded-full bg-orange-500 px-2.5 py-0.5 text-[10px] font-bold text-white shadow-xs">
-                            Active Student Choice
+                        {isSelected ? (
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500 px-3 py-1 text-xs font-bold text-white shadow-xs animate-fade-in">
+                            <Check size={14} strokeWidth={3} /> Active Specialization
                           </span>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleSelectTrack(t.id, t.name);
+                            }}
+                            className="inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all cursor-pointer shadow-2xs"
+                          >
+                            <span>Pick Option</span>
+                            <ArrowRight size={13} />
+                          </button>
                         )}
                       </div>
-                      <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 inline-self-start sm:inline-self-auto">
-                        60 Days Scope
-                      </span>
                     </div>
-                    <p className="mt-2 text-xs text-slate-600 leading-relaxed">{t.description}</p>
+
+                    <p className="mt-3 text-xs text-slate-600 leading-relaxed font-medium">{t.description}</p>
+
                     <div className="mt-3.5 flex flex-wrap gap-1.5">
                       {t.skills.map((s) => (
                         <span
                           key={s}
-                          className="rounded-lg bg-slate-100 border border-slate-200 px-2.5 py-1 text-[11px] font-semibold text-slate-700"
+                          className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+                            isSelected
+                              ? 'bg-orange-100 text-orange-800 border border-orange-200/80'
+                              : 'bg-slate-100 text-slate-700 border border-slate-200/80'
+                          }`}
                         >
                           {s}
                         </span>
@@ -476,11 +525,11 @@ export default function LandingPage() {
                     </div>
                   </div>
                 </ScrollReveal>
-              ))}
-            </div>
+              );
+            })}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* Student Testimonials with Initials Avatar & Visual Separation */}
       <section className="px-4 sm:px-6 py-10 bg-white border-y border-slate-200">

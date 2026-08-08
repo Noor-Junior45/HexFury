@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Flame, CalendarDays, CheckCircle2, Award, Zap, Check, XCircle, Clock } from 'lucide-react';
+import {
+  Flame,
+  CalendarDays,
+  CheckCircle2,
+  Award,
+  Zap,
+  Check,
+  XCircle,
+  Clock,
+} from 'lucide-react';
 import { appData, completedDays, getDay } from '@/data/mockData';
 import TopBar from '@/components/TopBar';
 import MobileShell from '@/components/MobileShell';
@@ -15,12 +24,21 @@ export default function CalendarPage() {
     setFreezeAppliedDay(dayToFreeze);
   };
 
+  const handleUnfreeze = () => {
+    setFreezeAppliedDay(null);
+  };
+
   const currentDayTask = getDay(student.currentDay);
   const cycleTotal = appData.brand.cycleDays;
   const completedCount = completedDays().length;
-  const missedCount = appData.streakHistory.filter(
+
+  const missedHistoryDays = appData.streakHistory.filter((day) => day.status === 'missed');
+  const primaryMissedDay = missedHistoryDays[0] ?? { day: 8, missReason: 'College mid-sem exam — no submission recorded.' };
+
+  const activeMissedList = appData.streakHistory.filter(
     (day) => day.status === 'missed' && freezeAppliedDay !== day.day
-  ).length;
+  );
+  const missedCount = activeMissedList.length;
   const toGoCount = cycleTotal - completedCount - missedCount;
 
   return (
@@ -88,7 +106,10 @@ export default function CalendarPage() {
                 <Flame size={14} />
                 <span className="text-[10px] font-semibold text-slate-600">Current</span>
               </div>
-              <p className="mt-1 text-lg font-extrabold text-slate-900">{currentStreak.count} <span className="text-[10px] font-normal text-slate-500">days</span></p>
+              <p className="mt-1 text-lg font-extrabold text-slate-900">
+                {freezeAppliedDay ? currentStreak.count + 1 : currentStreak.count}{' '}
+                <span className="text-[10px] font-normal text-slate-500">days</span>
+              </p>
             </div>
 
             <div className="rounded-xl border border-amber-100 bg-amber-50/50 p-2.5 text-center">
@@ -138,18 +159,22 @@ export default function CalendarPage() {
           <StreakCalendar freezeAppliedDay={freezeAppliedDay} />
         </div>
 
-        {/* Streak Freeze Banner (bottom of calendar) */}
+        {/* Merged Streak Protection Boarding Pass Ticket */}
         <div className="mt-5 animate-fade-up delay-4">
           <StreakFreeze
             total={student.streakFreeze.total}
             used={student.streakFreeze.used}
             available={student.streakFreeze.available}
-            onApply={() => handleApplyFreeze(9)}
+            onApply={() => handleApplyFreeze(primaryMissedDay?.day ?? 8)}
+            onUnfreeze={handleUnfreeze}
             appliedToDay={freezeAppliedDay}
-            variant="card"
+            missedDayNumber={primaryMissedDay?.day ?? 8}
+            missedReason={primaryMissedDay?.missReason ?? 'College mid-sem exam — no submission recorded.'}
+            variant="ticket"
           />
         </div>
       </div>
     </MobileShell>
   );
 }
+

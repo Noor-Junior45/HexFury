@@ -93,51 +93,49 @@ export default function CodingActivityChart() {
           </p>
         </div>
 
-        {/* View Controls */}
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="flex items-center gap-1 rounded-xl bg-slate-100 p-1 border border-slate-200/60">
-            <button
-              onClick={() => setMetric('commits')}
-              className={`flex items-center gap-1.5 rounded-lg px-3 py-1 text-xs font-bold transition-all cursor-pointer min-h-[32px] ${
-                metric === 'commits'
-                  ? 'bg-white text-orange-600 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <GitCommit size={13} />
-              <span>Commits</span>
-            </button>
-            <button
-              onClick={() => setMetric('lines')}
-              className={`flex items-center gap-1.5 rounded-lg px-3 py-1 text-xs font-bold transition-all cursor-pointer min-h-[32px] ${
-                metric === 'lines'
-                  ? 'bg-white text-orange-600 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <Code2 size={13} />
-              <span>Lines</span>
-            </button>
-          </div>
+        {/* View Controls - Single merged line for all buttons */}
+        <div className="inline-flex items-center gap-1 rounded-xl bg-slate-100/90 p-1 border border-slate-200/80 self-start sm:self-auto overflow-x-auto max-w-full shrink-0">
+          <button
+            onClick={() => setMetric('commits')}
+            className={`flex items-center gap-1 rounded-lg px-2 sm:px-2.5 py-1 text-[11px] font-extrabold transition-all cursor-pointer whitespace-nowrap ${
+              metric === 'commits'
+                ? 'bg-white text-orange-600 shadow-2xs'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <GitCommit size={12} />
+            <span>Commits</span>
+          </button>
+          <button
+            onClick={() => setMetric('lines')}
+            className={`flex items-center gap-1 rounded-lg px-2 sm:px-2.5 py-1 text-[11px] font-extrabold transition-all cursor-pointer whitespace-nowrap ${
+              metric === 'lines'
+                ? 'bg-white text-orange-600 shadow-2xs'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <Code2 size={12} />
+            <span>Lines</span>
+          </button>
 
-          <div className="flex items-center gap-1 rounded-xl bg-slate-100 p-1 border border-slate-200/60">
-            <button
-              onClick={() => setChartType('area')}
-              className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer min-h-[32px] ${
-                chartType === 'area' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500'
-              }`}
-            >
-              Area
-            </button>
-            <button
-              onClick={() => setChartType('bar')}
-              className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer min-h-[32px] ${
-                chartType === 'bar' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500'
-              }`}
-            >
-              Bar
-            </button>
-          </div>
+          <div className="h-3.5 w-[1px] bg-slate-300/80 mx-0.5 shrink-0" />
+
+          <button
+            onClick={() => setChartType('area')}
+            className={`px-2 sm:px-2.5 py-1 text-[11px] font-extrabold rounded-lg transition-all cursor-pointer whitespace-nowrap ${
+              chartType === 'area' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            Area
+          </button>
+          <button
+            onClick={() => setChartType('bar')}
+            className={`px-2 sm:px-2.5 py-1 text-[11px] font-extrabold rounded-lg transition-all cursor-pointer whitespace-nowrap ${
+              chartType === 'bar' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            Bar
+          </button>
         </div>
       </div>
 
