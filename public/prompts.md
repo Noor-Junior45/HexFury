@@ -379,15 +379,9 @@ Apply style changes to the selected element(s).
 Apply style changes to the selected element(s).
 7 components
 
-**Prompt:**
-**Prompt:**
-**Prompt:**
-**Prompt:**
-**Prompt:**
-**Prompt:**
-**Prompt:**
-**Prompt:**
-**Prompt:**
+**Prompt:** There is one thing I want that right now when i open website in laptop than it not open wide like other website, right now whole website open like A4 size page, both side there is empty white space and in middle on whole website seen means in laptop screen it shown as margin. Fix it let website touch to whole screen and fit all type of screen. Check bug and fix it. If possible than add my prompt in prompts.md file.
+Apply style changes to the selected element(s).
+5 components
 
 
 

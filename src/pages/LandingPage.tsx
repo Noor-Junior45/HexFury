@@ -105,7 +105,7 @@ export default function LandingPage() {
           aria-hidden="true"
         />
 
-        <div className="relative max-w-3xl mx-auto space-y-6">
+        <div className="relative max-w-5xl mx-auto space-y-6">
           {/* Season Pill Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50/90 px-3.5 py-1 text-xs font-bold text-orange-700 shadow-xs backdrop-blur-xs">
             <Sparkles size={14} className="text-orange-500 animate-pulse" />
@@ -256,8 +256,8 @@ export default function LandingPage() {
       </section>
 
       {/* Why ABTalks Works - Section */}
-      <section className="px-4 sm:px-6 py-10 bg-white border-y border-slate-200/80">
-        <div className="max-w-3xl mx-auto">
+      <section className="px-4 sm:px-6 lg:px-8 py-10 bg-white border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center max-w-xl mx-auto mb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200/60">
@@ -272,7 +272,7 @@ export default function LandingPage() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <ScrollReveal delay={50}>
               <FeatureBox
                 icon={Code2}
@@ -325,8 +325,8 @@ export default function LandingPage() {
       </section>
 
       {/* The 3-Step Daily Loop with Visual Connected Timeline */}
-      <section className="px-4 sm:px-6 py-10">
-        <div className="max-w-3xl mx-auto">
+      <section className="px-4 sm:px-6 lg:px-8 py-10">
+        <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
@@ -338,7 +338,7 @@ export default function LandingPage() {
           </ScrollReveal>
 
           {/* Sequential Timeline Container */}
-          <div className="relative space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Connecting Vertical Line */}
             <div
               className="pointer-events-none absolute left-6 top-7 bottom-7 w-0.5 bg-gradient-to-b from-orange-400 via-sky-400 via-amber-400 to-emerald-400 z-0 hidden sm:block"
@@ -410,8 +410,8 @@ export default function LandingPage() {
       </section>
 
       {/* Cohort Live Stats */}
-      <section className="px-4 sm:px-6 py-10 bg-slate-100/70 border-y border-slate-200">
-        <div className="max-w-3xl mx-auto">
+      <section className="px-4 sm:px-6 lg:px-8 py-10 bg-slate-100/70 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-6">
               <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500">
@@ -441,8 +441,8 @@ export default function LandingPage() {
       </section>
 
       {/* Available Tracks */}
-      <section className="px-4 sm:px-6 py-10">
-        <div className="max-w-3xl mx-auto">
+      <section className="px-4 sm:px-6 lg:px-8 py-10">
+        <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1.5 rounded-full border border-orange-200/80 shadow-2xs">
@@ -531,8 +531,8 @@ export default function LandingPage() {
       </section>
 
       {/* Student Testimonials with Initials Avatar & Visual Separation */}
-      <section className="px-4 sm:px-6 py-10 bg-white border-y border-slate-200">
-        <div className="max-w-3xl mx-auto">
+      <section className="px-4 sm:px-6 lg:px-8 py-10 bg-white border-y border-slate-200">
+        <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center max-w-xl mx-auto mb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
@@ -544,7 +544,7 @@ export default function LandingPage() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {appData.testimonials.map((t, idx) => {
               const initials = t.name
                 .split(' ')
@@ -583,8 +583,8 @@ export default function LandingPage() {
       </section>
 
       {/* Final Commitment CTA - Premium Dark Card */}
-      <section className="px-4 sm:px-6 pb-12 pt-2">
-        <div className="max-w-3xl mx-auto">
+      <section className="px-4 sm:px-6 lg:px-8 pb-12 pt-2">
+        <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-7 sm:p-10 text-center text-white shadow-2xl border border-slate-800">
               <div

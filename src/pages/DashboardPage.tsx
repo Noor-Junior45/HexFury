@@ -84,7 +84,7 @@ export default function DashboardPage() {
     <MobileShell>
       <TopBar />
 
-      <div className="px-4 sm:px-6 pt-4 pb-24 space-y-7">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-24 space-y-7">
         {/* Header / Student Greeting */}
         <div className="animate-fade-up">
           <div className="flex items-center justify-between">
@@ -105,8 +105,10 @@ export default function DashboardPage() {
           </p>
         </div>
 
-        {/* SECTION 1: CURRENT STREAK (EMOTIONAL VISUAL CENTERPIECE) */}
-        <section className="animate-fade-up delay-1 space-y-3">
+        {/* Top Desktop Row: Streak Overview & Today's Task */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* SECTION 1: CURRENT STREAK */}
+          <section className="animate-fade-up delay-1 space-y-3">
           <div className="flex items-center justify-between px-1">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500 text-white shadow-xs">
@@ -269,9 +271,12 @@ export default function DashboardPage() {
             </div>
           )}
         </section>
+        </div>
 
-        {/* SECTION 3: SHIPPED PROJECTS & PROOF */}
-        <section className="animate-fade-up delay-3 space-y-3">
+        {/* Second Desktop Row: Shipped Projects & Progress History */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* SECTION 3: SHIPPED PROJECTS & PROOF */}
+          <section className="animate-fade-up delay-3 space-y-3">
           <div className="flex items-center justify-between px-1">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs">
@@ -404,9 +409,12 @@ export default function DashboardPage() {
           {/* 30-Day Activity Chart */}
           <CodingActivityChart />
         </section>
+        </div>
 
-        {/* SECTION 5: STANDING & ACHIEVEMENTS */}
-        <section className="animate-fade-up delay-5 space-y-3">
+        {/* Third Desktop Row: Standing & Enrolled Track */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* SECTION 5: STANDING & ACHIEVEMENTS */}
+          <section className="animate-fade-up delay-5 space-y-3">
           <div className="flex items-center justify-between px-1">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-amber-500 text-white shadow-xs">
@@ -565,6 +573,7 @@ export default function DashboardPage() {
             </div>
           </div>
         </section>
+        </div>
       </div>
 
       {/* Freeze Toast Notification */}

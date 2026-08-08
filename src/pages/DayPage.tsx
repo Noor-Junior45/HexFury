@@ -179,7 +179,7 @@ Follow my building progress on #60DayChallenge #BuildInPublic #SoftwareEngineeri
       <TopBar showBack backTo="/dashboard" />
 
       <div
-        className="px-4 sm:px-6 pt-3 pb-24 space-y-6 touch-pan-y min-h-[85vh]"
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 pb-24 space-y-6 touch-pan-y min-h-[85vh]"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
