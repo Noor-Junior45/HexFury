@@ -379,9 +379,37 @@ Apply style changes to the selected element(s).
 Apply style changes to the selected element(s).
 7 components
 
-**Prompt:** There is one thing I want that right now when i open website in laptop than it not open wide like other website, right now whole website open like A4 size page, both side there is empty white space and in middle on whole website seen means in laptop screen it shown as margin. Fix it let website touch to whole screen and fit all type of screen. Check bug and fix it. If possible than add my prompt in prompts.md file.
+**Prompt:** In home page, there is one vertical line from top to bottom in right side, which look like a margin line, can you remove that vertical line from top to bottom.
+Add f & q section in home page below of what builders say..., and above start your 60- day streak box. Also more comment inside what builder say after completing the streak.
+Also make sure in home page when website is open in tab than make sure each box which are in 2*2 format than make sure each box are equal.
+From now on add my all prompt inside prompts.md file.
+
+**Prompt:** In Home page, move pick your specialization [section] below of F&Q section. And Make little bit bigger [div].
 Apply style changes to the selected element(s).
-5 components
+2 components
+
+**Prompt:** In home page, make little bit bigger [div component] tag of free access, verified proof, 4200+ active and Leaderboard bigger and make it more attractive.
+Apply style changes to the selected element(s).
+1 component
+
+**Prompt:** In home page add more details below of Heading [h1] in top, make it little bit bigger and more details full. And if possible than make heading easier to understand means use normal language like 60 Days. 1 Build per Day or something [h1], use same colours in Heading and use different fonts like use RELIGATH font in heading [h1].
+Apply style changes to the selected element(s).
+2 components
+
+**Prompt:** Use Libre Baskerville font in heading [h1] of Home page.
+Apply style changes to the selected element(s).
+1 component
+
+**Prompt:** Remove The pick option [div] tag from pick your specialization each box. Move circle box beside of heading of each box or for better look think what we can do with that circle box.
+Remove Toast notification when user choose any option in specializations.
+Can you do any attractive thing which attract student to choose the option from specialization.
+Apply style changes to the selected element(s).
+2 components
+
+**Prompt:** Remove 60 Days scope tag from each box of specialization. And redesign the Active 60 day curriculum tag from selected box, let it use different colour for that tag box.
+Apply style changes to the selected element(s).
+2 components
+
 
 
 

@@ -394,6 +394,30 @@
       "college": "COEP Pune",
       "quote": "The two-part submission forced me to actually explain my work publicly. Three recruiters DM'd me from my LinkedIn posts.",
       "outcome": "AI intern at Zomato"
+    },
+    {
+      "name": "Rohan Sharma",
+      "college": "DTU Delhi",
+      "quote": "Building 1 real project every single day for 60 days completely transformed my GitHub graph and confidence in technical rounds.",
+      "outcome": "Full Stack Intern at Postman"
+    },
+    {
+      "name": "Priyanshu Das",
+      "college": "IIT Kharagpur",
+      "quote": "The streak freeze pass saved me during end-semester exams! Completed all 60 days and landed 2 off-campus SDE offers.",
+      "outcome": "Software Engineer at Swiggy"
+    },
+    {
+      "name": "Ananya Roy",
+      "college": "Sister Nivedita University",
+      "quote": "Instead of collecting useless certificates, ABTalks gave me 60 verified projects on GitHub. Recruiters literally skipped the basic coding test!",
+      "outcome": "Backend Engineer at BrowserStack"
+    },
+    {
+      "name": "Vikramaditya Singh",
+      "college": "RVCE Bengaluru",
+      "quote": "Posting daily on LinkedIn was intimidating at first, but it built my personal brand. I got my first remote dev contract on Day 38!",
+      "outcome": "Frontend Lead at GrowthX"
     }
   ],
   "days": [

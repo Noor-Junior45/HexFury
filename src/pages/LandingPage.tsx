@@ -17,6 +17,7 @@ import {
   Check,
   Star,
   ArrowUpRight,
+  ChevronDown,
 } from 'lucide-react';
 import { Github, Linkedin } from '@/components/BrandIcons';
 import { appData, getTrack, useActiveTrack } from '@/data/mockData';
@@ -73,25 +74,14 @@ function ScrollReveal({
 
 export default function LandingPage() {
   const { trackId, track: selectedTrack, changeTrack } = useActiveTrack();
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  const handleSelectTrack = (tId: string, tName: string) => {
+  const handleSelectTrack = (tId: string) => {
     changeTrack(tId);
-    setToastMessage(`Selected Specialization: ${tName}! Your dashboard and daily curriculum are now set.`);
-    setTimeout(() => setToastMessage(null), 4000);
   };
 
   return (
     <MobileShell>
       <TopBar />
-
-      {/* Floating Track Selected Toast */}
-      {toastMessage && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 rounded-2xl bg-slate-900 px-5 py-3 text-xs font-extrabold text-white shadow-2xl border border-orange-500/50 animate-bounce">
-          <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
-          <span>{toastMessage}</span>
-        </div>
-      )}
 
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 sm:px-6 pt-6 pb-10 text-left">
@@ -113,17 +103,17 @@ export default function LandingPage() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.15] tracking-tight text-slate-900">
-            60 Days. 1 Build a Day.
+          <h1 className="font-baskerville text-3xl sm:text-5xl md:text-6xl font-bold leading-[1.15] tracking-tight text-slate-900" style={{ fontFamily: "'Libre Baskerville', Georgia, serif" }}>
+            60 Days. 1 Build per Day.
             <br />
             <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-amber-500 bg-clip-text text-transparent">
-              A Portfolio Recruiters Can't Ignore.
+              A Real Coding Streak That Gets You Hired.
             </span>
           </h1>
 
           {/* Description */}
-          <p className="text-sm sm:text-base leading-relaxed text-slate-600 max-w-2xl font-normal">
-            ABTalks is India's premier 60-day proof-of-work challenge. Pick a track, ship a real project daily, and build an unbroken streak on GitHub and LinkedIn that top engineering companies actually respect.
+          <p className="text-base sm:text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl font-medium">
+            ABTalks is India's premier 60-day proof-of-work challenge built specifically for engineering & CS students. Choose your specialization track, ship a real production-grade project every single day, verify your code with dual GitHub commits and LinkedIn posts, and build an unbroken streak that recruiters actually trust over static resumes.
           </p>
 
           {/* Call to Actions */}
@@ -209,45 +199,45 @@ export default function LandingPage() {
           </div>
 
           {/* Quick Trust Highlights */}
-          <div className="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-3.5 sm:p-4 shadow-xs">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-orange-500/15 text-orange-700 font-extrabold text-xs">
+          <div className="mt-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 text-left">
+              <div className="flex items-center gap-3.5 rounded-2xl border border-slate-200/90 bg-white p-4 sm:p-5 shadow-xs hover:shadow-md hover:border-orange-300 hover:-translate-y-0.5 transition-all duration-200">
+                <span className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 text-white font-black text-sm shadow-md shadow-orange-500/25">
                   100%
                 </span>
-                <div>
-                  <p className="text-xs font-bold text-slate-800">Free Access</p>
-                  <p className="text-[10px] text-slate-500">For all college devs</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">Free Access</p>
+                  <p className="text-xs font-medium text-slate-500 mt-0.5">For all college devs</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-700 font-bold text-xs">
-                  <ShieldCheck size={16} />
+              <div className="flex items-center gap-3.5 rounded-2xl border border-slate-200/90 bg-white p-4 sm:p-5 shadow-xs hover:shadow-md hover:border-emerald-300 hover:-translate-y-0.5 transition-all duration-200">
+                <span className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-black text-sm shadow-md shadow-emerald-500/25">
+                  <ShieldCheck size={22} strokeWidth={2.5} />
                 </span>
-                <div>
-                  <p className="text-xs font-bold text-slate-800">Verified Proof</p>
-                  <p className="text-[10px] text-slate-500">GitHub & LinkedIn</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">Verified Proof</p>
+                  <p className="text-xs font-medium text-slate-500 mt-0.5">GitHub & LinkedIn</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-sky-500/15 text-sky-700 font-bold text-xs">
-                  <Users size={16} />
+              <div className="flex items-center gap-3.5 rounded-2xl border border-slate-200/90 bg-white p-4 sm:p-5 shadow-xs hover:shadow-md hover:border-sky-300 hover:-translate-y-0.5 transition-all duration-200">
+                <span className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 text-white font-black text-sm shadow-md shadow-sky-500/25">
+                  <Users size={22} strokeWidth={2.5} />
                 </span>
-                <div>
-                  <p className="text-xs font-bold text-slate-800">4,200+ Active</p>
-                  <p className="text-[10px] text-slate-500">Students shipping</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">4,200+ Active</p>
+                  <p className="text-xs font-medium text-slate-500 mt-0.5">Students shipping</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-amber-500/15 text-amber-700 font-bold text-xs">
-                  <Award size={16} />
+              <div className="flex items-center gap-3.5 rounded-2xl border border-slate-200/90 bg-white p-4 sm:p-5 shadow-xs hover:shadow-md hover:border-amber-300 hover:-translate-y-0.5 transition-all duration-200">
+                <span className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 text-white font-black text-sm shadow-md shadow-amber-500/25">
+                  <Award size={22} strokeWidth={2.5} />
                 </span>
-                <div>
-                  <p className="text-xs font-bold text-slate-800">Leaderboard</p>
-                  <p className="text-[10px] text-slate-500">Recruiter hiring list</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">Leaderboard</p>
+                  <p className="text-xs font-medium text-slate-500 mt-0.5">Recruiter hiring list</p>
                 </div>
               </div>
             </div>
@@ -273,7 +263,7 @@ export default function LandingPage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <ScrollReveal delay={50}>
+            <ScrollReveal className="h-full" delay={50}>
               <FeatureBox
                 icon={Code2}
                 title="Resumes lie. Code doesn't."
@@ -285,7 +275,7 @@ export default function LandingPage() {
               />
             </ScrollReveal>
 
-            <ScrollReveal delay={100}>
+            <ScrollReveal className="h-full" delay={100}>
               <FeatureBox
                 icon={Zap}
                 title="Bite-Sized Daily Projects"
@@ -297,7 +287,7 @@ export default function LandingPage() {
               />
             </ScrollReveal>
 
-            <ScrollReveal delay={150}>
+            <ScrollReveal className="h-full" delay={150}>
               <FeatureBox
                 icon={Linkedin}
                 title="Dual-Verification System"
@@ -309,7 +299,7 @@ export default function LandingPage() {
               />
             </ScrollReveal>
 
-            <ScrollReveal delay={200}>
+            <ScrollReveal className="h-full" delay={200}>
               <FeatureBox
                 icon={ShieldCheck}
                 title="Safety Net: Streak Freeze"
@@ -324,7 +314,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* The 3-Step Daily Loop with Visual Connected Timeline */}
+      {/* The 3-Step Daily Loop */}
       <section className="px-4 sm:px-6 lg:px-8 py-10">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
@@ -337,14 +327,8 @@ export default function LandingPage() {
             </div>
           </ScrollReveal>
 
-          {/* Sequential Timeline Container */}
+          {/* Sequential Cards Container */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Connecting Vertical Line */}
-            <div
-              className="pointer-events-none absolute left-6 top-7 bottom-7 w-0.5 bg-gradient-to-b from-orange-400 via-sky-400 via-amber-400 to-emerald-400 z-0 hidden sm:block"
-              aria-hidden="true"
-            />
-
             {[
               {
                 step: '01',
@@ -379,29 +363,23 @@ export default function LandingPage() {
                 accent: 'border-l-4 border-l-amber-500',
               },
             ].map(({ step, icon: Icon, label, desc, color, accent }, index) => (
-              <ScrollReveal key={label} delay={index * 80}>
+              <ScrollReveal key={label} className="h-full" delay={index * 80}>
                 <div
-                  className={`relative z-10 flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs hover:shadow-md transition-all ${accent}`}
+                  className={`flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs hover:shadow-md transition-all h-full ${accent}`}
                 >
-                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl font-bold text-base border shadow-xs ${color}`}>
-                    <Icon size={22} />
-                  </span>
-
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-bold text-sm border shadow-xs ${color}`}>
+                        <Icon size={20} />
+                      </span>
                       <span className="text-[10px] font-extrabold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-md border border-orange-200/60 tracking-wider">
                         STEP {step}
                       </span>
-                      <h3 className="text-base font-bold text-slate-900">{label}</h3>
                     </div>
-                    <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">{desc}</p>
-                  </div>
 
-                  {index < 3 && (
-                    <span className="hidden sm:flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-400 self-center">
-                      ↓
-                    </span>
-                  )}
+                    <h3 className="mt-3 text-sm font-bold text-slate-900">{label}</h3>
+                    <p className="mt-1.5 text-xs text-slate-600 leading-relaxed font-medium">{desc}</p>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -440,96 +418,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Available Tracks */}
-      <section className="px-4 sm:px-6 lg:px-8 py-10">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <div className="text-center mb-8">
-              <span className="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1.5 rounded-full border border-orange-200/80 shadow-2xs">
-                Interactive Specialization Picker
-              </span>
-              <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900">Pick your specialization</h2>
-              <p className="mt-1.5 text-xs sm:text-sm text-slate-600">Click any track below to customize your 60-day daily projects, questions, and dashboard proof.</p>
-            </div>
-          </ScrollReveal>
-
-          <div className="space-y-3.5">
-            {appData.tracks.map((t, idx) => {
-              const isSelected = t.id === trackId;
-              return (
-                <ScrollReveal key={t.id} delay={idx * 70}>
-                  <div
-                    onClick={() => handleSelectTrack(t.id, t.name)}
-                    className={`group relative cursor-pointer rounded-2xl border p-5 transition-all duration-200 ${
-                      isSelected
-                        ? 'border-orange-500 bg-gradient-to-r from-orange-50/90 via-amber-50/70 to-orange-50/40 shadow-md ring-2 ring-orange-500/30'
-                        : 'border-slate-200 bg-white hover:border-orange-300 hover:shadow-md hover:bg-slate-50/60'
-                    }`}
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                      <div className="flex items-center gap-2.5">
-                        <span
-                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-bold text-xs transition-colors ${
-                            isSelected
-                              ? 'bg-orange-500 text-white shadow-xs'
-                              : 'bg-slate-100 text-slate-700 group-hover:bg-orange-100 group-hover:text-orange-700'
-                          }`}
-                        >
-                          0{idx + 1}
-                        </span>
-                        <div>
-                          <p className="text-base font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors">
-                            {t.name}
-                          </p>
-                          <p className="text-[11px] font-semibold text-slate-500">{t.shortName} · 60 Days Scope</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        {isSelected ? (
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500 px-3 py-1 text-xs font-bold text-white shadow-xs animate-fade-in">
-                            <Check size={14} strokeWidth={3} /> Active Specialization
-                          </span>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleSelectTrack(t.id, t.name);
-                            }}
-                            className="inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all cursor-pointer shadow-2xs"
-                          >
-                            <span>Pick Option</span>
-                            <ArrowRight size={13} />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-
-                    <p className="mt-3 text-xs text-slate-600 leading-relaxed font-medium">{t.description}</p>
-
-                    <div className="mt-3.5 flex flex-wrap gap-1.5">
-                      {t.skills.map((s) => (
-                        <span
-                          key={s}
-                          className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
-                            isSelected
-                              ? 'bg-orange-100 text-orange-800 border border-orange-200/80'
-                              : 'bg-slate-100 text-slate-700 border border-slate-200/80'
-                          }`}
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Student Testimonials with Initials Avatar & Visual Separation */}
       <section className="px-4 sm:px-6 lg:px-8 py-10 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto">
@@ -551,7 +439,7 @@ export default function LandingPage() {
                 .map((n) => n[0])
                 .join('');
               return (
-                <ScrollReveal key={t.name} delay={idx * 80}>
+                <ScrollReveal key={t.name} className="h-full" delay={idx * 80}>
                   <div className="flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-slate-50/90 p-5 shadow-xs hover:shadow-md hover:border-slate-300 transition-all h-full">
                     <div>
                       <div className="flex items-center justify-between">
@@ -573,6 +461,135 @@ export default function LandingPage() {
                         <p className="text-xs font-extrabold text-slate-900">{t.name}</p>
                         <p className="text-[11px] font-medium text-slate-500 truncate">{t.college}</p>
                       </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions Section */}
+      <FaqSection />
+
+      {/* Available Tracks - Moved Below FAQ & Made Bigger */}
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-white via-slate-50/60 to-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <div className="text-center mb-10 max-w-2xl mx-auto">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-orange-600 bg-orange-100/90 px-4 py-1.5 rounded-full border border-orange-200 shadow-2xs">
+                Interactive Specialization Picker
+              </span>
+              <h2 className="mt-3.5 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Pick your specialization
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
+                Click any track below to customize your 60-day daily projects, questions, and dashboard proof.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            {appData.tracks.map((t, idx) => {
+              const isSelected = t.id === trackId;
+              const badgeList = [
+                { label: '🔥 Most Popular • High Hiring Rate', color: 'bg-orange-100 text-orange-800 border-orange-200' },
+                { label: '🧠 Top Package Scope in AI', color: 'bg-amber-100 text-amber-900 border-amber-200' },
+                { label: '⚡ High Demand at Tech Giants', color: 'bg-sky-100 text-sky-900 border-sky-200' },
+                { label: '📱 Fast Launch & Recruiter Favorite', color: 'bg-emerald-100 text-emerald-900 border-emerald-200' },
+              ];
+              const badge = badgeList[idx % badgeList.length];
+
+              return (
+                <ScrollReveal key={t.id} className="h-full" delay={idx * 70}>
+                  <div
+                    onClick={() => handleSelectTrack(t.id)}
+                    className={`group relative cursor-pointer rounded-3xl border-2 p-6 sm:p-8 transition-all duration-300 h-full flex flex-col justify-between ${
+                      isSelected
+                        ? 'border-orange-500 bg-gradient-to-br from-orange-50/90 via-amber-50/60 to-orange-50/30 shadow-xl ring-4 ring-orange-500/20 scale-[1.01]'
+                        : 'border-slate-200/90 bg-white hover:border-orange-400 hover:shadow-xl hover:bg-slate-50/80 hover:-translate-y-1'
+                    }`}
+                  >
+                    <div>
+                      {/* Top Attraction Badge */}
+                      <div className="flex items-center justify-between mb-3.5">
+                        <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-black border shadow-2xs ${badge.color}`}>
+                          {badge.label}
+                        </span>
+                      </div>
+
+                      <div className="flex items-start gap-3.5">
+                        <span
+                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl font-black text-sm transition-all ${
+                            isSelected
+                              ? 'bg-orange-500 text-white shadow-md shadow-orange-500/30'
+                              : 'bg-slate-100 text-slate-700 group-hover:bg-orange-100 group-hover:text-orange-700'
+                          }`}
+                        >
+                          0{idx + 1}
+                        </span>
+
+                        <div className="min-w-0 flex-1">
+                          {/* Heading with Circular Box Beside It */}
+                          <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
+                            <h3 className="text-lg sm:text-xl font-black text-slate-900 group-hover:text-orange-600 transition-colors tracking-tight">
+                              {t.name}
+                            </h3>
+
+                            {/* Circular Selection Box Beside Heading */}
+                            <div
+                              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-200 ${
+                                isSelected
+                                  ? 'border-orange-500 bg-orange-500 text-white shadow-md shadow-orange-500/30 ring-4 ring-orange-500/20 scale-105'
+                                  : 'border-slate-300 bg-white text-slate-300 group-hover:border-orange-400 group-hover:bg-orange-50'
+                              }`}
+                            >
+                              <Check
+                                size={16}
+                                strokeWidth={3.5}
+                                className={isSelected ? 'scale-100 opacity-100 transition-transform' : 'scale-0 opacity-0'}
+                              />
+                            </div>
+                          </div>
+
+                          <p className="text-xs font-bold text-slate-500 mt-0.5">{t.shortName}</p>
+                        </div>
+                      </div>
+
+                      <p className="mt-4 text-sm text-slate-600 leading-relaxed font-medium">{t.description}</p>
+                    </div>
+
+                    <div>
+                      <div className="mt-5 pt-4 flex flex-wrap gap-2 border-t border-slate-200/70">
+                        {t.skills.map((s) => (
+                          <span
+                            key={s}
+                            className={`rounded-xl px-3 py-1.5 text-xs font-bold transition-colors ${
+                              isSelected
+                                ? 'bg-orange-100 text-orange-900 border border-orange-200'
+                                : 'bg-slate-100 text-slate-700 border border-slate-200/80'
+                            }`}
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Active Selected Banner */}
+                      {isSelected && (
+                        <div className="mt-4 pt-3 border-t border-emerald-200/80 flex items-center justify-between text-xs font-black text-emerald-950 bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-emerald-500/15 px-4 py-2.5 rounded-2xl animate-fade-in border border-emerald-300/70 shadow-2xs">
+                          <span className="flex items-center gap-2 text-emerald-950 font-black">
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-white shadow-xs">
+                              <Check size={13} strokeWidth={3.5} />
+                            </span>
+                            <span>Active 60-Day Curriculum</span>
+                          </span>
+                          <span className="text-[11px] font-extrabold text-emerald-800 bg-white px-2.5 py-1 rounded-lg border border-emerald-300/80 shadow-2xs">
+                            Dashboard Ready ✓
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </ScrollReveal>
@@ -648,18 +665,117 @@ function FeatureBox({
   iconBg: string;
 }) {
   return (
-    <div className={`rounded-2xl border p-5 transition-all shadow-xs hover:shadow-md ${boxStyle}`}>
-      <div className="flex items-center justify-between">
-        <span className={`flex h-10 w-10 items-center justify-center rounded-xl font-bold shadow-xs ${iconBg}`}>
-          <Icon size={20} />
-        </span>
-        <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold border ${badgeStyle}`}>
-          {badge}
-        </span>
+    <div className={`rounded-2xl border p-5 transition-all shadow-xs hover:shadow-md ${boxStyle} h-full flex flex-col justify-between`}>
+      <div>
+        <div className="flex items-center justify-between">
+          <span className={`flex h-10 w-10 items-center justify-center rounded-xl font-bold shadow-xs ${iconBg}`}>
+            <Icon size={20} />
+          </span>
+          <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold border ${badgeStyle}`}>
+            {badge}
+          </span>
+        </div>
+        <h3 className="mt-3.5 text-sm font-bold text-slate-900">{title}</h3>
+        <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">{desc}</p>
       </div>
-      <h3 className="mt-3.5 text-sm font-bold text-slate-900">{title}</h3>
-      <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">{desc}</p>
     </div>
+  );
+}
+
+function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const faqs = [
+    {
+      q: 'What if I miss a day during the 60-day challenge?',
+      a: 'Life happens! Every builder receives a free Streak Freeze pass per 60-day cycle to safeguard their streak during college exams, sick days, or emergencies. You can also catch up on previous days anytime from your calendar.',
+    },
+    {
+      q: 'Is ABTalks completely free for college students?',
+      a: 'Yes, 100% free! There are no hidden fees, paywalls, or premium tiers. ABTalks is built specifically to help engineering and CS students build real proof-of-work portfolios.',
+    },
+    {
+      q: 'What if I am a beginner or new to coding?',
+      a: 'The challenge is structured progressively. Daily tasks are carefully scoped to take 45–90 minutes with clear requirements, architectural hints, and definitions of done so you never feel lost.',
+    },
+    {
+      q: 'How does the dual-verification (GitHub + LinkedIn) work?',
+      a: 'To maintain an active daily streak and grow your flame, you submit your public GitHub repo commit URL and a short LinkedIn post URL showing what you built. This builds your code history and personal brand simultaneously.',
+    },
+    {
+      q: 'Do tech companies and recruiters actually view these projects?',
+      a: 'Yes! Recruiters track our public leaderboards to discover student developers who demonstrate genuine consistency, problem-solving stamina, and proof of work over static resume claims.',
+    },
+    {
+      q: 'Can I switch my track or specialization midway?',
+      a: 'Absolutely! You can switch between Full Stack & AI, Backend Systems, DevOps & Cloud, or Data & ML anytime from the interactive track picker on your home or dashboard.',
+    },
+  ];
+
+  return (
+    <section className="px-4 sm:px-6 lg:px-8 py-12 bg-slate-50 border-t border-slate-200/90">
+      <div className="max-w-4xl mx-auto">
+        <ScrollReveal>
+          <div className="text-center max-w-xl mx-auto mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-100/80 px-3.5 py-1 rounded-full border border-orange-200 shadow-2xs">
+              Got Questions?
+            </span>
+            <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-2 text-xs sm:text-sm text-slate-500">
+              Everything you need to know about the 60-Day ABTalks challenge before getting started.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="space-y-3">
+          {faqs.map((faq, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <ScrollReveal key={faq.q} delay={idx * 50}>
+                <div
+                  className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                    isOpen
+                      ? 'border-orange-500 bg-white shadow-md ring-1 ring-orange-500/20'
+                      : 'border-slate-200 bg-white hover:border-slate-300'
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? null : idx)}
+                    className="flex w-full items-center justify-between p-4 sm:p-5 text-left font-bold text-slate-900 text-sm sm:text-base gap-4 cursor-pointer"
+                  >
+                    <span className="flex items-center gap-3">
+                      <span
+                        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-extrabold transition-colors ${
+                          isOpen ? 'bg-orange-500 text-white shadow-xs' : 'bg-slate-100 text-slate-600'
+                        }`}
+                      >
+                        Q{idx + 1}
+                      </span>
+                      <span>{faq.q}</span>
+                    </span>
+                    <ChevronDown
+                      size={18}
+                      className={`shrink-0 text-slate-500 transition-transform duration-200 ${
+                        isOpen ? 'rotate-180 text-orange-600' : ''
+                      }`}
+                    />
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-5 pb-5 pt-1 text-xs sm:text-sm leading-relaxed text-slate-600 border-t border-slate-100/80 animate-fade-in font-medium">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              </ScrollReveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
 

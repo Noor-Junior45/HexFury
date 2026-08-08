@@ -38,6 +38,17 @@
 
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-religath: 'Religath', 'Syne', 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-baskerville: 'Libre Baskerville', Georgia, serif;
+}
+
+@layer utilities {
+  .font-religath {
+    font-family: 'Religath', 'Syne', 'Outfit', system-ui, -apple-system, sans-serif;
+  }
+  .font-baskerville {
+    font-family: 'Libre Baskerville', Georgia, serif;
+  }
 }
 
 @layer base {
