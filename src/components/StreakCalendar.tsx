@@ -20,19 +20,6 @@ export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay:
     new Set(appData.streakHistory.filter((d) => d.status === 'complete').map((d) => d.day))
   );
 
-  const toggleDayCompletion = (day: number) => {
-    setUserCompletedDays((prev) => {
-      const next = new Set(prev);
-      if (next.has(day)) {
-        next.delete(day);
-      } else {
-        next.add(day);
-        triggerSuccessConfetti();
-      }
-      return next;
-    });
-  };
-
   const getDayStatus = (day: number): DayStatus => {
     if (freezeAppliedDay === day) return 'frozen';
     if (userCompletedDays.has(day)) return 'complete';
@@ -43,39 +30,22 @@ export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay:
     return 'future';
   };
 
-  const completeCount = userCompletedDays.size;
-  const missedCount = appData.streakHistory.filter(
-    (day) => day.status === 'missed' && freezeAppliedDay !== day.day && !userCompletedDays.has(day.day)
-  ).length;
-  const remainingCount = total - completeCount - missedCount;
-
   return (
-    <section className="rounded-2xl border border-obsidian-700 bg-obsidian-850 p-3">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-ember-500/15 text-ember-400">
-              <Flame size={16} />
-            </span>
-            <div>
-              <h3 className="text-sm font-semibold text-mist-100">Your 60-day streak</h3>
-              <p className="text-[10px] text-mist-500">Click any unlocked day (1–{appData.student.currentDay}) to view or build!</p>
-            </div>
-          </div>
+    <section className="rounded-2xl border border-obsidian-700 bg-obsidian-850 p-3.5">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-ember-500/15 text-ember-400">
+            <Flame size={16} />
+          </span>
+          <h3 className="text-sm font-semibold text-mist-100">60-Day Streak Map</h3>
         </div>
-        <span className="rounded-full border border-obsidian-600 bg-obsidian-800 px-2 py-1 text-[10px] font-semibold text-mist-400">
+        <span className="rounded-md bg-obsidian-800 px-2.5 py-1 text-[10px] font-medium text-mist-300">
           Day {appData.student.currentDay}/{total}
         </span>
       </div>
 
-      <div className="mt-3 grid grid-cols-3 gap-1.5">
-        <SummaryCard value={completeCount} label="Done" valueClass="text-sage-400" />
-        <SummaryCard value={missedCount} label="Missed" valueClass="text-rose-400" />
-        <SummaryCard value={remainingCount} label="To go" valueClass="text-mist-200" />
-      </div>
-
       <div
-        className="mt-3 flex flex-wrap gap-1"
+        className="mt-3.5 flex flex-wrap gap-1"
         aria-label="60-day streak calendar"
       >
         {Array.from({ length: total }, (_, index) => {
@@ -91,11 +61,14 @@ export default function StreakCalendar({ freezeAppliedDay }: { freezeAppliedDay:
         })}
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-obsidian-700 pt-3 text-[10px] text-mist-500">
-        <LegendItem marker="+" label="Done" markerClass="text-sage-400" />
-        <LegendItem marker="x" label="Missed" markerClass="text-rose-400" />
-        <LegendItem marker="-" label="Upcoming" />
-        <LegendItem marker="*" label="Freeze" markerClass="text-sky-300" />
+      <div className="mt-3.5 flex flex-wrap items-center justify-between border-t border-obsidian-700/80 pt-3 text-[10px] text-mist-400">
+        <div className="flex items-center gap-3">
+          <LegendItem marker="✓" label="Done" markerClass="text-sage-400" />
+          <LegendItem marker="x" label="Missed" markerClass="text-rose-400" />
+          <LegendItem marker="-" label="Upcoming" />
+          <LegendItem marker="*" label="Freeze" markerClass="text-sky-300" />
+        </div>
+        <span className="text-[10px] text-mist-500">Click unlocked days to view</span>
       </div>
     </section>
   );
@@ -110,7 +83,7 @@ function DayBox({
 }) {
   const isUnlocked = day <= appData.student.currentDay;
   const statusMarker =
-    status === 'complete' ? '+' : status === 'missed' ? 'x' : status === 'frozen' ? '*' : status === 'pending' ? 'o' : '-';
+    status === 'complete' ? '✓' : status === 'missed' ? 'x' : status === 'frozen' ? '*' : status === 'pending' ? 'o' : '-';
 
   const statusStyle: Record<DayStatus, string> = {
     complete: 'border-sage-500/40 bg-sage-500/10 text-mist-100 shadow-xs shadow-sage-500/10 hover:border-sage-400',

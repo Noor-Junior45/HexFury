@@ -4,6 +4,7 @@ import {
   Flame,
   ArrowRight,
   Trophy,
+  Award,
   Eye,
   Snowflake,
   ShieldCheck,
@@ -48,6 +49,7 @@ export default function DashboardPage() {
 
   const [freezeAppliedDay, setFreezeAppliedDay] = useState<number | null>(null);
   const [showFreezeToast, setShowFreezeToast] = useState(false);
+  const [badgeTab, setBadgeTab] = useState<'all' | 'earned' | 'locked'>('all');
 
   const handleApplyFreeze = () => {
     const firstMissed = missed[0];
@@ -61,6 +63,9 @@ export default function DashboardPage() {
   const hasSubmissions = completed.length > 0;
   const effectiveStreak = freezeAppliedDay ? streak.count + 1 : streak.count;
   const completionPercentage = Math.round((completed.length / appData.brand.cycleDays) * 100);
+
+  const displayedBadges =
+    badgeTab === 'earned' ? earned : badgeTab === 'locked' ? locked : appData.badges;
 
   // Milestone calculation for ring visualizer
   const nextMilestone = 15;
@@ -462,18 +467,51 @@ export default function DashboardPage() {
           </div>
 
           {/* Badges Grid */}
-          <div className="pt-1">
-            <div className="mb-2.5 flex items-center justify-between px-1">
-              <span className="text-xs font-extrabold text-slate-800">Earned & Locked Badges</span>
-              <span className="text-[11px] font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded-md border border-orange-200/60">
-                {earned.length} Unlocked
-              </span>
+          <div className="pt-1 space-y-2.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-1">
+              <div>
+                <div className="flex items-center gap-1.5">
+                  <Award size={16} className="text-amber-500 fill-amber-500/20" />
+                  <span className="text-xs font-extrabold text-slate-800">Achievements</span>
+                </div>
+                <p className="text-[10px] text-slate-500 font-medium">Earned directly from your verified code builds</p>
+              </div>
+              <div className="flex items-center gap-1 rounded-lg bg-slate-100 p-1 border border-slate-200 shrink-0">
+                <button
+                  onClick={() => setBadgeTab('all')}
+                  className={`px-2.5 py-1 text-[10px] font-extrabold rounded-md transition-all cursor-pointer ${
+                    badgeTab === 'all'
+                      ? 'bg-white text-slate-900 shadow-2xs'
+                      : 'text-slate-500 hover:text-slate-800'
+                  }`}
+                >
+                  All ({appData.badges.length})
+                </button>
+                <button
+                  onClick={() => setBadgeTab('earned')}
+                  className={`px-2.5 py-1 text-[10px] font-extrabold rounded-md transition-all cursor-pointer ${
+                    badgeTab === 'earned'
+                      ? 'bg-amber-500 text-white shadow-2xs'
+                      : 'text-slate-500 hover:text-slate-800'
+                  }`}
+                >
+                  Earned ({earned.length})
+                </button>
+                <button
+                  onClick={() => setBadgeTab('locked')}
+                  className={`px-2.5 py-1 text-[10px] font-extrabold rounded-md transition-all cursor-pointer ${
+                    badgeTab === 'locked'
+                      ? 'bg-slate-700 text-white shadow-2xs'
+                      : 'text-slate-500 hover:text-slate-800'
+                  }`}
+                >
+                  Locked ({locked.length})
+                </button>
+              </div>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-              {earned.map((b) => (
-                <BadgeCard key={b.id} badge={b} />
-              ))}
-              {locked.slice(0, 3).map((b) => (
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5">
+              {displayedBadges.map((b) => (
                 <BadgeCard key={b.id} badge={b} />
               ))}
             </div>

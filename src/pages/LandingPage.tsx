@@ -22,7 +22,6 @@ import { Github, Linkedin } from '@/components/BrandIcons';
 import { appData, getTrack } from '@/data/mockData';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import TopBar from '@/components/TopBar';
-import StreakCalendar from '@/components/StreakCalendar';
 import MobileShell from '@/components/MobileShell';
 
 // Scroll reveal hook for buttery smooth entry animations
@@ -532,19 +531,6 @@ export default function LandingPage() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* 60-Day Interactive Calendar Preview */}
-      <section className="px-4 sm:px-6 py-10">
-        <div className="max-w-3xl mx-auto">
-          <ScrollReveal>
-            <div className="text-center mb-5">
-              <h2 className="text-xl font-bold text-slate-900">Your 60-Day Progress Map</h2>
-              <p className="text-xs text-slate-500 mt-1">Every box is a project pushed. Complete all 60 to unlock your Recruiter Verified Badge.</p>
-            </div>
-            <StreakCalendar freezeAppliedDay={null} />
-          </ScrollReveal>
         </div>
       </section>
 

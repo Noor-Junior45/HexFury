@@ -8,6 +8,13 @@ import {
   Eye,
   Award,
   Lock,
+  Zap,
+  Rocket,
+  Cpu,
+  ShieldCheck,
+  Search,
+  Medal,
+  Star,
 } from 'lucide-react';
 import type { Badge } from '@/data/mockData';
 import Tooltip from './Tooltip';
@@ -21,6 +28,13 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   GitPullRequestArrow,
   Eye,
   Award,
+  Zap,
+  Rocket,
+  Cpu,
+  ShieldCheck,
+  Search,
+  Medal,
+  Star,
 };
 
 export default function BadgeCard({ badge }: { badge: Badge }) {
@@ -28,46 +42,78 @@ export default function BadgeCard({ badge }: { badge: Badge }) {
 
   return (
     <div
-      className={`relative flex min-h-[96px] flex-col items-center justify-between rounded-2xl p-3 text-center transition-all border ${
+      className={`group relative flex flex-col items-center justify-between rounded-xl p-2.5 text-center transition-all border ${
         badge.earned
-          ? 'bg-gradient-to-b from-amber-50/90 via-white to-orange-50/40 border-amber-300/80 shadow-xs hover:shadow-md hover:-translate-y-0.5'
-          : 'bg-slate-50/80 border-slate-200/80 opacity-75'
+          ? 'bg-gradient-to-b from-amber-50/90 via-white to-orange-50/30 border-amber-300/80 shadow-2xs hover:shadow-sm hover:-translate-y-0.5'
+          : 'bg-slate-50/80 border-slate-200/80 opacity-80 hover:opacity-100'
       }`}
     >
-      <div
-        className={`relative flex h-10 w-10 items-center justify-center rounded-xl shadow-2xs ${
-          badge.earned
-            ? 'bg-gradient-to-br from-orange-500 to-amber-500 text-white shadow-orange-500/20'
-            : 'bg-slate-200 text-slate-400'
-        }`}
-      >
-        {badge.earned ? (
-          <Icon size={20} />
-        ) : (
-          <Lock size={16} />
-        )}
+      {/* Tooltip in top-right corner */}
+      <span className="absolute right-1 top-1 z-10">
+        <Tooltip text={badge.description} />
+      </span>
+
+      {/* Hexagonal Badge Emblem */}
+      <div className="relative mt-0.5 flex items-center justify-center">
+        {/* Outer Hexagon Border */}
+        <div
+          className={`flex h-10 w-10 items-center justify-center p-[2px] transition-transform duration-300 group-hover:scale-105 ${
+            badge.earned
+              ? 'bg-gradient-to-br from-amber-400 via-orange-500 to-amber-600 shadow-xs shadow-orange-500/20'
+              : 'bg-slate-300'
+          }`}
+          style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+        >
+          {/* Inner Hexagon Core */}
+          <div
+            className={`flex h-full w-full items-center justify-center ${
+              badge.earned
+                ? 'bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 text-white'
+                : 'bg-slate-200 text-slate-400'
+            }`}
+            style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+          >
+            {badge.earned ? (
+              <Icon size={18} className="drop-shadow-xs" />
+            ) : (
+              <Lock size={14} />
+            )}
+          </div>
+        </div>
       </div>
 
-      <div className="w-full">
-        <p className={`text-[11px] font-bold leading-snug line-clamp-1 ${badge.earned ? 'text-slate-900' : 'text-slate-500'}`}>
+      {/* Badge Name & Progress */}
+      <div className="mt-1.5 w-full">
+        <p
+          className={`text-[11px] font-extrabold leading-tight line-clamp-1 ${
+            badge.earned ? 'text-slate-900' : 'text-slate-600'
+          }`}
+        >
           {badge.name}
         </p>
         {badge.earned ? (
-          <span className="mt-0.5 inline-block text-[9px] font-extrabold uppercase tracking-wider text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded-md border border-orange-200/60">
-            Earned
+          <span className="mt-0.5 inline-flex items-center gap-0.5 rounded-md border border-amber-300/80 bg-amber-100/90 px-1.5 py-0.2 text-[8px] font-extrabold uppercase tracking-wider text-amber-900">
+            ★ Earned
           </span>
         ) : (
           badge.progress && (
-            <p className="mt-0.5 text-[10px] font-bold text-slate-400">
-              {badge.progress.current}/{badge.progress.target}
-            </p>
+            <div className="mt-1 flex flex-col items-center">
+              <div className="h-1 w-10 overflow-hidden rounded-full bg-slate-200">
+                <div
+                  className="h-full bg-orange-500 transition-all"
+                  style={{
+                    width: `${Math.min((badge.progress.current / badge.progress.target) * 100, 100)}%`,
+                  }}
+                />
+              </div>
+              <p className="mt-0.5 text-[8px] font-bold text-slate-500">
+                {badge.progress.current}/{badge.progress.target}
+              </p>
+            </div>
           )
         )}
       </div>
-
-      <span className="absolute right-1.5 top-1.5">
-        <Tooltip text={badge.description} />
-      </span>
     </div>
   );
 }
+

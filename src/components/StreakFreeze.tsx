@@ -64,28 +64,28 @@ export default function StreakFreeze({
               ? `${remaining} of ${total} pass available. Use it to cover a missed day.`
               : 'No passes remaining this cycle.'}
           </p>
-
-          {onApply && !isApplied && available && (
-            <div className="mt-3">
-              <button
-                onClick={onApply}
-                className="w-full sm:w-auto inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-sky-700 active:scale-[0.98] transition-all cursor-pointer shadow-xs"
-              >
-                <Snowflake size={15} />
-                <span>Apply Freeze Pass</span>
-              </button>
-            </div>
-          )}
-          {isApplied && (
-            <div className="mt-3">
-              <span className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-sky-100 border border-sky-300 px-4 py-2 text-xs font-bold text-sky-800">
-                <ShieldCheck size={15} className="text-sky-600" />
-                <span>Streak Protected</span>
-              </span>
-            </div>
-          )}
         </div>
       </div>
+
+      {onApply && !isApplied && available && (
+        <div className="mt-3.5">
+          <button
+            onClick={onApply}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-sky-600 py-3.5 px-4 text-sm font-extrabold text-white shadow-md shadow-sky-600/25 transition-all hover:bg-sky-700 active:scale-[0.98] cursor-pointer"
+          >
+            <Snowflake size={18} />
+            <span>Apply Freeze Pass</span>
+          </button>
+        </div>
+      )}
+      {isApplied && (
+        <div className="mt-3.5">
+          <span className="flex w-full items-center justify-center gap-2 rounded-xl bg-sky-100 border border-sky-300 py-3 px-4 text-xs font-bold text-sky-800 shadow-xs">
+            <ShieldCheck size={18} className="text-sky-600" />
+            <span>Streak Protected with Pass</span>
+          </span>
+        </div>
+      )}
     </div>
   );
 }

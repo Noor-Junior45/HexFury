@@ -235,6 +235,15 @@
       "tier": "milestone"
     },
     {
+      "id": "three-day-streak",
+      "name": "3-Day Streak",
+      "description": "Maintained an unbroken streak for 3 consecutive days.",
+      "icon": "Zap",
+      "earned": true,
+      "earnedDate": "2025-11-14",
+      "tier": "streak"
+    },
+    {
       "id": "seven-day-streak",
       "name": "7-Day Streak",
       "description": "Seven days in a row. Discipline is becoming a habit.",
@@ -242,6 +251,24 @@
       "earned": true,
       "earnedDate": "2025-11-18",
       "tier": "streak"
+    },
+    {
+      "id": "ten-projects",
+      "name": "10 Projects Shipped",
+      "description": "Shipped 10 complete code repositories and LinkedIn proofs.",
+      "icon": "Rocket",
+      "earned": true,
+      "earnedDate": "2025-11-22",
+      "tier": "milestone"
+    },
+    {
+      "id": "fullstack-ai-specialist",
+      "name": "AI Track Specialist",
+      "description": "Shipped multiple Full Stack & AI track builds.",
+      "icon": "Cpu",
+      "earned": true,
+      "earnedDate": "2025-11-20",
+      "tier": "special"
     },
     {
       "id": "early-bird",
@@ -262,15 +289,36 @@
       "tier": "special"
     },
     {
+      "id": "streak-freeze-shield",
+      "name": "Streak Protector",
+      "description": "Equipped a Streak Freeze pass to safeguard your flame.",
+      "icon": "ShieldCheck",
+      "earned": true,
+      "earnedDate": "2025-11-19",
+      "tier": "special"
+    },
+    {
       "id": "fifteen-day",
       "name": "15-Day Streak",
-      "description": "Halfway to the summit. Three more days to unlock.",
+      "description": "Halfway to 30 days. Keep building daily.",
       "icon": "Trophy",
       "earned": false,
       "tier": "streak",
       "progress": {
-        "current": 12,
+        "current": 7,
         "target": 15
+      }
+    },
+    {
+      "id": "semantic-search-master",
+      "name": "Semantic Search Pro",
+      "description": "Ship Day 12 Semantic Search API with Python & TF-IDF.",
+      "icon": "Search",
+      "earned": false,
+      "tier": "special",
+      "progress": {
+        "current": 11,
+        "target": 12
       }
     },
     {
@@ -290,6 +338,18 @@
       "tier": "special"
     },
     {
+      "id": "thirty-day-legend",
+      "name": "30-Day Legend",
+      "description": "Reach the 30-day halfway mark of the challenge.",
+      "icon": "Medal",
+      "earned": false,
+      "tier": "milestone",
+      "progress": {
+        "current": 10,
+        "target": 30
+      }
+    },
+    {
       "id": "cycle-complete",
       "name": "60-Day Finisher",
       "description": "Completed the full 60-day challenge. The summit.",
@@ -297,7 +357,7 @@
       "earned": false,
       "tier": "milestone",
       "progress": {
-        "current": 12,
+        "current": 10,
         "target": 60
       }
     }
