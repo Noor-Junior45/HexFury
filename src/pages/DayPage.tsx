@@ -67,7 +67,7 @@ export default function DayPage() {
     const isLeftSwipe = distance > 55;
     const isRightSwipe = distance < -55;
 
-    if (isLeftSwipe && dayNum < appData.brand.cycleDays) {
+    if (isLeftSwipe && dayNum < appData.brand.cycleDays && dayNum + 1 <= appData.student.currentDay) {
       navigate(`/day/${dayNum + 1}`);
     } else if (isRightSwipe && dayNum > 1) {
       navigate(`/day/${dayNum - 1}`);
@@ -77,8 +77,10 @@ export default function DayPage() {
     touchEndX.current = null;
   };
 
-  // If task is unavailable or day is out of bounds
-  if (!task) {
+  const isLocked = dayNum > appData.student.currentDay;
+
+  // If task is unavailable or day is locked
+  if (!task || isLocked) {
     return (
       <MobileShell>
         <TopBar showBack backTo="/dashboard" />
@@ -91,11 +93,13 @@ export default function DayPage() {
           </div>
 
           <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900">
-            Day {dayNum} Task Unavailable
+            {isLocked ? `Day ${dayNum} Challenge Locked` : `Day ${dayNum} Task Unavailable`}
           </h1>
 
           <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-sm leading-relaxed">
-            This challenge day is beyond the active 60-day cohort cycle.
+            {isLocked
+              ? `Day ${dayNum} unlocks when you reach Day ${dayNum} in your 60-day cohort journey.`
+              : `This challenge day is beyond the active 60-day cohort cycle.`}
           </p>
 
           <Link
