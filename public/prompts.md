@@ -410,6 +410,8 @@ Apply style changes to the selected element(s).
 Apply style changes to the selected element(s).
 2 components
 
+**Prompt:** 
+There is one problem with our site that when our website is hosted and like it open on https://hexfury.vercel.app/dashboard and page is refreshed than it show 404: NOT_FOUNDCode: NOT_FOUNDID: bom1:bom1::tvnjc-1786218265905-274a1f6d88d4, can you fix or let not make history type function in all our website.
 
 
 
